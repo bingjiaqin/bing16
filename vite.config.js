@@ -12,5 +12,9 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  base: "/bing16/",
+  build: {
+    outDir: "docs"
   }
 })
