@@ -1,5 +1,5 @@
 import Index from "@/components/index/Index.vue";
-import Sslx from "@/components/Sslx.vue";
+import Sslx from "@/components/sslx/Sslx.vue";
 import Wyzx from "@/components/Wyzx.vue";
 import Fgly from "@/components/Fgly.vue";
 import Intro from "@/components/Intro.vue";

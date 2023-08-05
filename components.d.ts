@@ -23,7 +23,7 @@ declare module 'vue' {
     Fgly: typeof import('./src/components/Fgly.vue')['default']
     Index: typeof import('./src/components/index/Index.vue')['default']
     Intro: typeof import('./src/components/Intro.vue')['default']
-    Sslx: typeof import('./src/components/Sslx.vue')['default']
+    Sslx: typeof import('./src/components/sslx/Sslx.vue')['default']
     TopBar: typeof import('./src/components/topbar/TopBar.vue')['default']
     Wyzx: typeof import('./src/components/Wyzx.vue')['default']
   }
