@@ -91,6 +91,13 @@ const filter = (key) => {
         shadow="hover"
         v-for="item in currData.lists"
     >
+      <div>
+        <el-image
+            v-if="item.pic"
+            :src="item.pic"
+            :title="item.title"
+            style="padding-left: 2em; width: 300px"
+            fit="contain"/></div>
       <div v-html="item.content"></div>
       <div class="time-box">
         <div>{{ item.time }}</div>
