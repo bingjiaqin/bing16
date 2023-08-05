@@ -54,7 +54,6 @@ import {
 
 const emit = defineEmits(["changeMenu"])
 const activeIndex = ref(DEFAULT_MENU)
-const showVertical = ref(false)
 const mobile = isMobile()
 
 const handleSelect = (key: string) => {
