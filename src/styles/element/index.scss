@@ -1,0 +1,35 @@
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $colors: (
+    'primary': (
+      'base': #EA5857,
+    ),
+    'success': (
+      'base': #3CB73C,
+    ),
+    'warning': (
+      'base': #EDB612,
+    ),
+    'danger': (
+      'base': #F9502A,
+    ),
+    'error': (
+      'base': #F9502A,
+    ),
+    'info': (
+      'base': #00D1E0,
+    ),
+  ),
+  $font-size: (
+    'extra-large': 20px,
+    'large': 18px,
+    'medium': 16px,
+    'base': 16px,
+    'small': 14px,
+    'extra-small': 13px,
+  ),
+  $menu: (
+    'ctive-color': #fff,
+    'hover-bg-color': #fff,
+  ),
+);
+@use 'element-plus/theme-chalk/src/index.scss' as *;

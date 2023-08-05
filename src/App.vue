@@ -1,47 +1,56 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script lang="ts" setup>
+import { shallowRef } from 'vue'
+import { COMPONENT_MAP, DEFAULT_MENU } from './components/topbar/config/Menu'
+import TopBar from "@/components/topbar/TopBar.vue";
+
+const selectedComponent = shallowRef(COMPONENT_MAP.get(DEFAULT_MENU));
+
+const changeMenu = (newMenu: string) => {
+  selectedComponent.value = COMPONENT_MAP.get(newMenu);
+}
+
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div class="common-layout">
+    <el-container>
+      <el-header>
+        <el-affix>
+          <top-bar
+              @changeMenu="changeMenu"
+          >
+          </top-bar>
+        </el-affix>
+      </el-header>
+      <el-main>
+        <component :is="selectedComponent"></component>
+      </el-main>
+    </el-container>
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+
+.common-layout {
+  position:absolute;
+  top: 0;
+  left: 30px;
+  bottom: 0;
+  right: 30px;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.el-header {
+  position: relative;
+  width: 100%;
+  height: 90px;
+}
+
+.el-main {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 @media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
 }
 </style>
