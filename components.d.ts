@@ -20,7 +20,7 @@ declare module 'vue' {
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElRow: typeof import('element-plus/es')['ElRow']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
-    Fgly: typeof import('./src/components/Fgly.vue')['default']
+    Fgly: typeof import('./src/components/fgly/Fgly.vue')['default']
     Index: typeof import('./src/components/index/Index.vue')['default']
     Intro: typeof import('./src/components/intro/Intro.vue')['default']
     Sslx: typeof import('./src/components/sslx/Sslx.vue')['default']
