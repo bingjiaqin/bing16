@@ -1,8 +1,8 @@
 <script setup>
-import { ref } from 'vue'
-import { DATA } from './sslx.js'
+import { ref } from 'vue';
+import { DATA } from './sslx.js';
 import { isMobile } from "@/utils/MobileUtils";
-import { Search } from '@element-plus/icons-vue'
+import { Search } from '@element-plus/icons-vue';
 
 const data = DATA;
 const filteredData = ref(data);
@@ -114,6 +114,11 @@ const filter = (key) => {
         :total="filteredData.length"
         @currentChange="currentChange"
     />
+    <div class="more">
+      <a href="sslx/History.html">
+        more
+      </a>
+    </div>
   </div>
 </template>
 
@@ -137,9 +142,16 @@ const filter = (key) => {
 }
 .pagination-bottom {
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: 60px;
+  bottom: 30px;
   margin-bottom: 30px;
+}
+.more {
+  position: absolute;
+  right: 18px;
+  bottom: 36px;
+  margin-bottom: 30px;
+  font-size: 14px;
 }
 .card-box {
   width: 100%;;

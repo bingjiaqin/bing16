@@ -1,35 +1,46 @@
 <script setup>
 import { PIC_LIST } from "@/components/index/PicConfig";
+import {isMobile} from "@/utils/MobileUtils";
 
+const mobile = isMobile()
 </script>
 
 <template>
-  <el-row class="main-row">
-    <el-col :sm="24" :md="12">
-      <div class="main-col main-text">
+  <el-row>
+    <el-col :sm="2" :md="0"></el-col>
+    <el-col :sm="20" :md="12">
+      <div
+          class="main-col main-text"
+          :class="{mobile:mobile, notMobile:!mobile}">
         <h1>你好，欣喜相逢</h1>
-        <p><span class="divcss5-x2-r">我就是我</span>。</p>
+        <p><span>我就是我</span>。</p>
         <p>这里是我的个人网站，会有一些个人的
-          <span class="divcss5-x2-b">项目记录</span>
+          <span>项目记录</span>
           以及比较
-          <span class="divcss5-x2-y">个人的随感</span>。
+          <span>个人的随感</span>。
         </p>
         <p>如果你从别的地方找到这里，
-          <span class="divcss5-x2-r" @click="showMessage">
+          <span>
             欢迎联系我
           </span>。
         </p>
       </div>
     </el-col>
+    <el-col :sm="2" :md="0"></el-col>
     <el-col :sm="24" :md="12">
       <div class="main-col">
-        <el-carousel height="450px" indicator-position="outside" arrow="never" interval="6000">
+        <el-carousel
+            :height="mobile ? '300px' : '450px'"
+            indicator-position="outside"
+            arrow="never"
+            interval="6000">
           <el-carousel-item v-for="(item, index) in PIC_LIST" :key="index">
             <el-image
                 :src="item.src"
                 :key="index"
                 :title="item.title"
                 class="pic"
+                :class="{mobile:mobile, notMobile:!mobile}"
                 fit="contain"/>
           </el-carousel-item>
         </el-carousel>
@@ -42,21 +53,28 @@ import { PIC_LIST } from "@/components/index/PicConfig";
 h1 {
   margin-bottom: 20px;
 }
-.main-row {
-  min-height: 450px;
-}
 .main-col {
   position: relative;
   top:50%;
   transform: translateY(-50%);
-  margin-bottom: 20px;
 }
 .main-text {
   position: relative;
   top:calc(50%);
-  transform: translateY(-50%)
+  transform: translateY(-50%);
+  &.mobile {
+    min-height: 20px;
+  }
+  &.notMobile {
+    min-height: 230px;
+  }
 }
 .pic {
-  height: 450px;
+  &.mobile {
+    height: 350px;
+  }
+  &.notMobile {
+    height: 450px;
+  }
 }
 </style>
