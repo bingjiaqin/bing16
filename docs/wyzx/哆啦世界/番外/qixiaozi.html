@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>七小子</title>
+<style type="text/css">
+<!--
+#Layer4 {
+	position:absolute;
+	width:715px;
+	height:360px;
+	z-index:1;
+	visibility: visible;
+	overflow: hidden;
+}
+#Layer5 {
+	position:absolute;
+	width:715px;
+	height:360px;
+	z-index:1;
+	top: -180px;
+	visibility: visible;
+}
+body,td,th {
+	color: #000000;
+}
+
+-->
+</style>
+<script type="text/JavaScript">
+<!--
+function MM_timelinePlay(tmLnName, myID) { //v1.2
+  //Copyright 1998, 1999, 2000, 2001, 2002, 2003, 2004 Macromedia, Inc. All rights reserved.
+  var i,j,tmLn,props,keyFrm,sprite,numKeyFr,firstKeyFr,propNum,theObj,firstTime=false;
+  if (document.MM_Time == null) MM_initTimelines(); //if *very* 1st time
+  tmLn = document.MM_Time[tmLnName];
+  if (myID == null) { myID = ++tmLn.ID; firstTime=true;}//if new call, incr ID
+  if (myID == tmLn.ID) { //if Im newest
+    setTimeout('MM_timelinePlay("'+tmLnName+'",'+myID+')',tmLn.delay);
+    fNew = ++tmLn.curFrame;
+    for (i=0; i<tmLn.length; i++) {
+      sprite = tmLn[i];
+      if (sprite.charAt(0) == 's') {
+        if (sprite.obj) {
+          numKeyFr = sprite.keyFrames.length; firstKeyFr = sprite.keyFrames[0];
+          if (fNew >= firstKeyFr && fNew <= sprite.keyFrames[numKeyFr-1]) {//in range
+            keyFrm=1;
+            for (j=0; j<sprite.values.length; j++) {
+              props = sprite.values[j]; 
+              if (numKeyFr != props.length) {
+                if (props.prop2 == null) sprite.obj[props.prop] = props[fNew-firstKeyFr];
+                else        sprite.obj[props.prop2][props.prop] = props[fNew-firstKeyFr];
+              } else {
+                while (keyFrm<numKeyFr && fNew>=sprite.keyFrames[keyFrm]) keyFrm++;
+                if (firstTime || fNew==sprite.keyFrames[keyFrm-1]) {
+                  if (props.prop2 == null) sprite.obj[props.prop] = props[keyFrm-1];
+                  else        sprite.obj[props.prop2][props.prop] = props[keyFrm-1];
+        } } } } }
+      } else if (sprite.charAt(0)=='b' && fNew == sprite.frame) eval(sprite.value);
+      if (fNew > tmLn.lastFrame) tmLn.ID = 0;
+  } }
+}
+
+function MM_timelineGoto(tmLnName, fNew, numGotos) { //v2.0
+  //Copyright 1998, 1999, 2000, 2001, 2002, 2003, 2004 Macromedia, Inc. All rights reserved.
+  var i,j,tmLn,props,keyFrm,sprite,numKeyFr,firstKeyFr,lastKeyFr,propNum,theObj;
+  if (document.MM_Time == null) MM_initTimelines(); //if *very* 1st time
+  tmLn = document.MM_Time[tmLnName];
+  if (numGotos != null)
+    if (tmLn.gotoCount == null) tmLn.gotoCount = 1;
+    else if (tmLn.gotoCount++ >= numGotos) {tmLn.gotoCount=0; return}
+  jmpFwd = (fNew > tmLn.curFrame);
+  for (i = 0; i < tmLn.length; i++) {
+    sprite = (jmpFwd)? tmLn[i] : tmLn[(tmLn.length-1)-i]; //count bkwds if jumping back
+    if (sprite.charAt(0) == "s") {
+      numKeyFr = sprite.keyFrames.length;
+      firstKeyFr = sprite.keyFrames[0];
+      lastKeyFr = sprite.keyFrames[numKeyFr - 1];
+      if ((jmpFwd && fNew<firstKeyFr) || (!jmpFwd && lastKeyFr<fNew)) continue; //skip if untouchd
+      for (keyFrm=1; keyFrm<numKeyFr && fNew>=sprite.keyFrames[keyFrm]; keyFrm++);
+      for (j=0; j<sprite.values.length; j++) {
+        props = sprite.values[j];
+        if (numKeyFr == props.length) propNum = keyFrm-1 //keyframes only
+        else propNum = Math.min(Math.max(0,fNew-firstKeyFr),props.length-1); //or keep in legal range
+        if (sprite.obj != null) {
+          if (props.prop2 == null) sprite.obj[props.prop] = props[propNum];
+          else        sprite.obj[props.prop2][props.prop] = props[propNum];
+      } }
+    } else if (sprite.charAt(0)=='b' && fNew == sprite.frame) eval(sprite.value);
+  }
+  tmLn.curFrame = fNew;
+  if (tmLn.ID == 0) eval('MM_timelinePlay(tmLnName)');
+}
+
+function MM_timelineStop(tmLnName) { //v1.2
+  //Copyright 1998, 1999, 2000, 2001, 2002, 2003, 2004 Macromedia, Inc. All rights reserved.
+  if (document.MM_Time == null) MM_initTimelines(); //if *very* 1st time
+  if (tmLnName == null)  //stop all
+    for (var i=0; i<document.MM_Time.length; i++) document.MM_Time[i].ID = null;
+  else document.MM_Time[tmLnName].ID = null; //stop one
+}
+
+function MM_initTimelines() { //v4.0
+    //MM_initTimelines() Copyright 1997 Macromedia, Inc. All rights reserved.
+    var ns = navigator.appName == "Netscape";
+    var ns4 = (ns && parseInt(navigator.appVersion) == 4);
+    var ns5 = (ns && parseInt(navigator.appVersion) > 4);
+    var macIE5 = (navigator.platform ? (navigator.platform == "MacPPC") : false) && (navigator.appName == "Microsoft Internet Explorer") && (parseInt(navigator.appVersion) >= 4);
+    document.MM_Time = new Array(1);
+    document.MM_Time[0] = new Array(2);
+    document.MM_Time["Timeline1"] = document.MM_Time[0];
+    document.MM_Time[0].MM_Name = "Timeline1";
+    document.MM_Time[0].fps = 4;
+    document.MM_Time[0][0] = new String("sprite");
+    document.MM_Time[0][0].slot = 1;
+    if (ns4)
+        document.MM_Time[0][0].obj = document["Layer4"] ? document["Layer4"].document["Layer5"] : document["Layer5"];
+    else if (ns5)
+        document.MM_Time[0][0].obj = document.getElementById("Layer5");
+    else
+        document.MM_Time[0][0].obj = document.all ? document.all["Layer5"] : null;
+    document.MM_Time[0][0].keyFrames = new Array(1, 50);
+    document.MM_Time[0][0].values = new Array(4);
+    if (ns5 || macIE5)
+        document.MM_Time[0][0].values[0] = new Array("0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px");
+    else
+        document.MM_Time[0][0].values[0] = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+    document.MM_Time[0][0].values[0].prop = "left";
+    if (ns5 || macIE5)
+        document.MM_Time[0][0].values[1] = new Array("250px", "233px", "215px", "198px", "181px", "163px", "146px", "129px", "111px", "94px", "77px", "59px", "42px", "24px", "7px", "-10px", "-28px", "-45px", "-62px", "-80px", "-97px", "-114px", "-132px", "-149px", "-166px", "-184px", "-201px", "-218px", "-236px", "-253px", "-270px", "-288px", "-305px", "-322px", "-340px", "-357px", "-374px", "-392px", "-409px", "-427px", "-444px", "-461px", "-479px", "-496px", "-513px", "-531px", "-548px", "-565px", "-583px", "-600px");
+    else
+        document.MM_Time[0][0].values[1] = new Array(250,233,215,198,181,163,146,129,111,94,77,59,42,24,7,-10,-28,-45,-62,-80,-97,-114,-132,-149,-166,-184,-201,-218,-236,-253,-270,-288,-305,-322,-340,-357,-374,-392,-409,-427,-444,-461,-479,-496,-513,-531,-548,-565,-583,-600);
+    document.MM_Time[0][0].values[1].prop = "top";
+    if (!ns4) {
+        document.MM_Time[0][0].values[0].prop2 = "style";
+        document.MM_Time[0][0].values[1].prop2 = "style";
+    }
+    document.MM_Time[0][0].values[2] = new Array("visible","visible");
+    document.MM_Time[0][0].values[2].prop = "visibility";
+    if (!ns4)
+        document.MM_Time[0][0].values[2].prop2 = "style";
+    if (ns5 || macIE5)
+        document.MM_Time[0][0].values[3] = new Array("115px", "120px", "125px", "130px", "135px", "140px", "145px", "150px", "155px", "160px", "165px", "170px", "175px", "180px", "185px", "190px", "195px", "200px", "205px", "210px", "215px", "220px", "225px", "230px", "235px", "240px", "245px", "250px", "255px", "260px", "265px", "270px", "275px", "280px", "285px", "290px", "295px", "300px", "305px", "310px", "315px", "320px", "325px", "330px", "335px", "340px", "345px", "350px", "355px", "360px");
+    else
+        document.MM_Time[0][0].values[3] = new Array(115,120,125,130,135,140,145,150,155,160,165,170,175,180,185,190,195,200,205,210,215,220,225,230,235,240,245,250,255,260,265,270,275,280,285,290,295,300,305,310,315,320,325,330,335,340,345,350,355,360);
+    document.MM_Time[0][0].values[3].prop = "height";
+    if (!ns4)
+        document.MM_Time[0][0].values[3].prop2 = "style";
+    document.MM_Time[0][1] = new String("behavior");
+    document.MM_Time[0][1].frame = 51;
+    document.MM_Time[0][1].value = "MM_timelineGoto('Timeline1','1')";
+    document.MM_Time[0].lastFrame = 51;
+    for (i=0; i<document.MM_Time.length; i++) {
+        document.MM_Time[i].ID = null;
+        document.MM_Time[i].curFrame = 0;
+        document.MM_Time[i].delay = 1000/document.MM_Time[i].fps;
+    }
+}
+//-->
+</script>
+</head>
+
+<body onload="MM_timelinePlay('Timeline1')" >
+<table width="760" border="0" cellspacing="1" cellpadding="0">
+  <tbody>
+       <tr height="20">
+              <td><h1 align="left"><strong>&nbsp;哆啦A梦七小子</strong> </h1></td>
+    </tr>
+
+              <td ><div id="Layer4">
+                <div id="Layer5" style="top: 250px; left: 0px; height: 115px;" onmouseover="MM_timelineStop('Timeline1')" onmouseout="MM_timelinePlay('Timeline1')">
+				<p><strong>介绍:</strong></p>
+	  <p>&nbsp;&nbsp;&nbsp;&nbsp;1995年4月，日本3DO公司发布了《友情传说哆啦A梦七小子》游戏。藤子老师仅挂名监制，游戏剧本由寺田宪史先生担任。他创作了与《哆啦A梦》原作不同的世界，六只机器猫和哆啦A梦一起出生入死。此后，哆啦A梦七小子在漫画中由田中道明与三谷幸广连载，並在电影《2112 年哆啦A梦诞生》中登场。</p>
+	  <p>&nbsp;&nbsp;&nbsp;&nbsp;因为本作在推出之后颇受好评，一直都有电影与《哆啦A梦》大长篇电影一同推出。但在2002年推出《哆啦A梦七小子 GOAL! GOAL! GOAL!》以后，电影再也没有新作。</p>
+	  <p><strong>时间表：</strong></p>
+	  <p>
+	  &nbsp;&nbsp;&nbsp;&nbsp;1996：哆啦美与哆啦A梦七小子·机器人学校七大不可思议！？</br/>
+	  &nbsp;&nbsp;&nbsp;&nbsp;1997：哆啦A梦七小子·怪盗哆啦邦迷样的挑战书！<br/>
+	  &nbsp;&nbsp;&nbsp;&nbsp;1998：哆啦A梦七小子·虫虫大作战！</br/>
+	  &nbsp;&nbsp;&nbsp;&nbsp;1999：哆啦A梦七小子·点心娜娜王国</br/>
+	  &nbsp;&nbsp;&nbsp;&nbsp;2000：哆啦A梦七小子·心跳加速的火车大暴走！</br/>
+	  &nbsp;&nbsp;&nbsp;&nbsp;2001：哆啦美与哆啦A梦七小子·宇宙乐园之千钧一发</br/>
+	  &nbsp;&nbsp;&nbsp;&nbsp;2002：哆啦A梦七小子 GOAL! GOAL! GOAL!</br/>	  </p>
+	  <p>&nbsp;&nbsp;&nbsp;&nbsp;哆啦七小子包括（图中从左到右依次排）：哆啦利钮（ドラリーニョ DORARINHO）、哆啦梅度三世（ドラメッドⅢ世 DORAMED Ⅲ）、耶鲁马他哆啦（エル·マタドーラ EL MATADORA）、哆啦A梦（ドラえもん DORAEMON）、哆啦小子（ドラ·ザ·キッド　DORA THE KID）、哆啦王（王ドラ WANG DORA）、哆啦尼可夫（ドラニコフ DORANIKOV）。</p>
+              </div></div></td>
+            </tr>
+			<tr>
+              <td width="180" height="400"></td>
+            </tr>
+			<tr>
+              <td width="180" height="260"><img src="images/qixiaozi.jpg" width="735" border="1"/></td>
+            </tr>
+
+            <tr>
+            <tr>
+              <td height="260">&nbsp;</td>
+            </tr>
+  </tbody>
+</table>
+</body>
+</html>

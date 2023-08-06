@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>BDMI-3</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" media="screen and (min-width:600px)"/>
+<link rel="stylesheet" type="text/css" href="../css/mstyle.css" media="screen and (max-width:600px)"/>
+<link rel="shortcut icon" type="../image/x-icon" href="../images/favicon.ico" media="screen"/>
+<style type="text/css">
+</style> 
+</head>
+
+<body>
+
+<h2>BDMI-3</h2>
+
+<h3>一、复杂度符号</h3>
+
+<p>O：最坏的情况</p>
+
+<p>$\Omega$：最好情况</p>
+
+<p>$\Theta$：渐进复杂度</p>
+
+<h3>二、快排、桶排</h3>
+
+<h4>1. 快排 $O(nlog(n))$</h4>
+
+<ol>
+<li><p>随便找到一个支点</p></li>
+<li><p>小于支点的放左边，大于的放右边</p></li>
+<li><p>继续找支点、分成两部分</p></li>
+</ol>
+
+<p>最坏的情况 $n^2$</p>
+
+<h4>2. 桶排 $O(n)$</h4>
+
+<ol>
+<li><p>从最低位依次排，遍历数组，把每个元素放到对应的桶（0~9）中</p></li>
+<li><p>取出 S</p></li>
+</ol>
+
+<h3>三、Binary earch Trees</h3>
+
+<p>每个节点包含一个 key，最上边节点为 root...</p>
+
+<p>二元搜索树：左边字节点 &lt; 父节点 &lt; 右边字节点</p>
+
+<p>存在不平衡的情况，查找最坏 $O(n)$</p>
+
+<h3>四、2-3-4 Trees</h3>
+
+<p>可以更好地维护树的高度？？？</p>
+
+<p>平衡、根到所有的叶节点有同样的长度，优美</p>
+
+<h3>五、Red-Black Trees</h3>
+
+<p>拆分 2-3-4 Trees 的 3、4 节点而得</p>
+
+<p>旋转可使树变得平衡</p>
+
+<p>红节点的孩子必须是黑节点</p>
+
+<p>根节点和NIL字节点为黑</p>
+
+<p>$O(log(n))$</p>
+
+<details class="menu" close>
+	<summary><h3>markdown代码</h3><div align="right">[展开]</div></summary>
+<xmp>
+## 一、复杂度符号
+
+O：最坏的情况
+
+$\Omega$：最好情况
+
+$\Theta$：渐进复杂度
+
+## 二、快排、桶排
+
+### 1. 快排 $O(nlog(n))$
+
+1. 随便找到一个支点
+
+2. 小于支点的放左边，大于的放右边
+
+3. 继续找支点、分成两部分
+
+最坏的情况 $n^2$
+
+###  2. 桶排 $O(n)$
+
+1. 从最低位依次排，遍历数组，把每个元素放到对应的桶（0~9）中
+
+2. 取出 S
+
+## 三、Binary earch Trees
+
+每个节点包含一个 key，最上边节点为 root...
+
+二元搜索树：左边字节点 < 父节点 < 右边字节点
+
+存在不平衡的情况，查找最坏 $O(n)$
+
+## 四、2-3-4 Trees
+
+可以更好地维护树的高度？？？
+
+平衡、根到所有的叶节点有同样的长度，优美
+
+## 五、Red-Black Trees
+
+拆分 2-3-4 Trees 的 3、4 节点而得
+
+旋转可使树变得平衡
+
+红节点的孩子必须是黑节点
+
+根节点和NIL字节点为黑
+
+$O(log(n))$
+</xmp>
+</details>
+
+<h4>&nbsp;</h4>
+<p>BDMI系列：
+    <ul>
+	    <li>BDMI-3</li>
+    </ul>
+</p>
+
+<ul class="icons">
+	<li><a href="../wyzx.html"><span >back</span></a></li>
+</ul>
+
+<h4>&nbsp;</h4>
+
+</body>
+<html>
+

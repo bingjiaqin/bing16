@@ -25,6 +25,6 @@ declare module 'vue' {
     Intro: typeof import('./src/components/intro/Intro.vue')['default']
     Sslx: typeof import('./src/components/sslx/Sslx.vue')['default']
     TopBar: typeof import('./src/components/topbar/TopBar.vue')['default']
-    Wyzx: typeof import('./src/components/Wyzx.vue')['default']
+    Wyzx: typeof import('./src/components/wyzx/Wyzx.vue')['default']
   }
 }

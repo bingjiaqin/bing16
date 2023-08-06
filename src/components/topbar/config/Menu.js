@@ -1,6 +1,6 @@
 import Index from "@/components/index/Index.vue";
 import Sslx from "@/components/sslx/Sslx.vue";
-import Wyzx from "@/components/Wyzx.vue";
+import Wyzx from "@/components/wyzx/Wyzx.vue";
 import Fgly from "@/components/Fgly.vue";
 import Intro from "@/components/intro/Intro.vue";
 import { markRaw } from "vue";

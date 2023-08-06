@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>数据结构-1</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" media="screen and (min-width:600px)"/>
+<link rel="stylesheet" type="text/css" href="../css/mstyle.css" media="screen and (max-width:600px)"/>
+<link rel="shortcut icon" type="../image/x-icon" href="../images/favicon.ico" media="screen"/>
+<style type="text/css">
+</style> 
+</head>
+
+<body>
+    <h1>数据结构-1</h1>
+    <h2>绪论</h2>
+    <h3>计算</h3>
+    <p>研究对象的本质和规律并进行总结归纳相应的方法以实现高效的计算。</p>
+    <p>计算=信息处理：借助某种工具，遵照一定规则，以明确而机械的形式进行。</p>
+    <p>算法：特定计算模型下，旨在解决特性问题的指令序列。具有输入、输出、正确性、确定性、可行性、有穷性的要求。</p>
+    <p>好的程序：正确、健壮、可读、效率。</p>
+
+    <p>计算模型</p>
+    <p>性能测度：正确性、成本（运行时间+存储空间）。</p>
+    <p>最坏情况、理想模型</p>
+    <p>图灵机（读写头）、RAM模型</p>
+
+    <p>大O记号：常系数可忽略、低次项可忽略。</p>
+    <p>大omega：下界（最好情况）。</p>
+    <p>大theta：确界？？？</p>
+
+    <p>多项式复杂度、指数复杂度（如两个子集的划分问题是一个典型的NPC问题）</p>
+
+    <p>增长速度</p>
+
+    <h3>算法分析</h3>
+
+    <p>主要任务：正确性（不变性×单调性）+复杂度</p>
+    <p>复杂度分析的主要方法：<ul>
+        <li>迭代：级数求和</li>
+        <li>递归：递归跟踪+递推方程</li>
+        <li>猜测+验证</li>
+    </ul></p>
+    <p>起泡排序</p>
+    <p>封底估计</p>
+    <p><ul>
+        <li>1天～10^5 sec</li>
+        <li>1世纪～3*10^9 sec</li>
+        <li>三生三世～10^10 sec</li>
+        <li>宇宙大爆炸至今～10^21 sec</li>
+        <li>phi^36～2^25</li>
+    </ul></p>
+
+    <h3>动态规划</h3>
+    <p>递归->迭代</p>
+    <p>fib()迭代解决方法：A.记忆；B.动态规划</p>
+    <p>LCS最长公共子序列：A.递归（减而治之+分而治之）；B.动态规划</p>
+    
+    <h2>向量</h2>
+    <p>抽象数据类型：数据模型+定义在该模型上的一组操作</p>
+    <p>数据结构：基于某种特定语言，实现ADT的一整套算法</p>
+
+    <h3>接口与实现</h3>
+    <p>初始化、插入、剔除、size、查找、排序等操作</p>
+    <p>构造与析构、复制等操作</p>
+
+    <h3>可扩充向量</h3>
+    <p>递增式扩容（最坏情况：在初始容量1的满向量中连续插入n=m×I>>2个元素，总体耗时O(n^2)）、加倍式策略（最坏情况：在初始容量1的满向量中连续插入n=2^m>>2个元素，总体耗时O(n)）</p>
+    <p>平均复杂度（根据出现的概率加权平均，割裂了操作之间的相关性和连贯性）、分摊复杂度（足够多次数后分摊至单次操作，更加忠实地刻画了可能出现的操作序列）</p>
+
+    <h3>无序向量</h3>
+    <p>循秩访问：<br>template &lt;typename T&gt;<br>T & Vector<T>::operator[](Rank r) const { return _elem[r]; }</p>
+    <p>插入：检查容量+后移+更新</p>
+    <p>区间删除：移动+检查容量；单元素删除</p>
+    <p>查找</p>
+    <p>唯一化：划分为三个部分（当前、前缀、后继），通过当前在前缀中查找，如果出现，则剔除当前。O(n^2)</p>
+    <p>遍历</p>
+
+    <h3>有序向量</h3>
+    <p>唯一化：有可能被删除的元素会被后继多次地前移</p>
+    <p>二分查找版本A：O(1.5log(n))，向左和向右比较次数不等而递归深度相同</p>
+    <p>Fibonacci查找：若设n=fib(k)-1，则取mi=fib(k-1)-1，前、后子向量长度分别为fib(k-1)-1、fib(k-2)-1</p>
+    <p>二分查找改进版本B：向左或向右只进行一次比较，整体性能更加稳定</p>
+    <p>二分查找改进版本C：待查找区间宽度至0而非1才结束；转入右侧子向量时，左边界取作mi+1；返回--lo</p>
+    <p>插值查找：假设线性分布，O(log(log(n)))，除非查找区间宽度极大，或者比较操作成本非常高，因为容易受到小扰动的干扰，须引入乘法除法的运算</p>
+    <p>起泡排序：O(n^2)</p>
+    <p>起泡排序改进1：扫描过程中记录是否存在逆序</p>
+    <p>起泡排序改进2：记录上一次扫描的最后一次交换（对于++lo且交换lo-1和lo，令last=lo），减小hi（hi=last）</p>
+    <p>归并排序：O(nlog(n))<xmp>template <typename T>;
+void Vector<T>::mergeSort(Rank lo, Rankhi) {
+    if (hi-li<2) return;
+    int mi = (lo+hi)>>1;
+    mergeSort(lo,mi);
+    mergeSort(mi,hi);
+    merge(lo,mi,hi);
+}
+
+template <typename T>;
+void Vector<T>::mergeSort(Rank lo, Rankhi) {
+    T* A = _elem + lo;
+    int lb = mi - lo; T* B = new T[lb];
+    for (Rank i = 0; i < lb; B[i] = A[i++]); // 复制向前子向量B
+    int lc = hi - mi; T* C = _elem + mi; // 向后子向量C
+    /*
+    for (Rank i = 0, j = 0, k = 0; (j < lb || k <lc);){
+        if((j<lb)&&(lc<=k||B[j]<=C[k])))A[i++]=B[j++];
+        if((k<lc)&&(lb<=j||C[k]<=B[j])))A[i++]=C[j++];
+    } // 此循环实现紧凑，但就效率而言不如拆分处理
+    */
+    // 简化：
+    for (Rank i = 0, j = 0, k = 0; j < lb;){
+        if((k<lc)&&C[k]<=B[j]))A[i++]=C[j++];
+        if(B[j]<=C[k]))A[i++]=B[j++];
+    } // 交换循环体内的次序，删除冗余逻辑
+    delect [] B;
+}
+</xmp></p>
+
+    <h2>列表</h2>
+    <h3>接口与实现</h3>
+    <p>从静态到动态：操作、存储空间的结构（各节点通过指针或引用彼此相联接）</p>
+    <p>头、首、……、末、尾</p>
+
+    <h3>无序列表</h3>
+    <p>插入和复制、删除与析构、唯一化</p>
+
+    <h3>有序列表</h3>
+    <p>唯一化</p>
+    <p>查找</p>
+    <p>选择排序：从交换次数上看，比起泡排序有很大的提高</p>
+    <p>插入排序</p>
+
+    <h2>栈与队列</h2>
+    <h3>栈接口与实现</h3>
+    <h3>栈应用</h3>
+    <p>进制转换</p>
+    <p>括号匹配</p>
+    <p>栈混洗</p>
+    <p>中缀表达式求值：符号栈、数字栈</p>
+    <p>逆波兰表达式：添加括号、将运算符移到对应右括号右侧、抹去括号。（前一个优先级大于时符号才入栈）</p>
+    <h3>队列</h3>
+    <p>一端进，一端出</p>
+
+    <h2>二叉树</h2>
+    <h3>树</h3>
+    <p>有根树、有序树</p>
+    <p>路径+环路、连通+无环</p>
+    <p>树是在无环、连通间达到平衡的图</p>
+    <p>深度、高度</p>
+
+    <h2>图</h2>
+
+<ul class="icons">
+	<li><a href="../wyzx.html"><span class="label">back</span></a></li>
+					</ul>
+<div align="right"><div align="right" style="font-size: 0.9em; margin-top: 2em; margin-bottom: 1em; color:#AAA; width: 500px">© 2018-2019 <a href="https://bingjiaqin.github.io" style="color: #AAA">Bing16</a>. All rights reserved. <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1276882696'%3E%3C/span%3E%3Cscript src='https://s23.cnzz.com/z_stat.php%3Fid%3D1276882696%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div></div>
+</body>
+</html>
