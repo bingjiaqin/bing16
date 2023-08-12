@@ -30,7 +30,19 @@
   $menu: (
     'ctive-color': var(--color-background),
     'hover-bg-color': var(--color-background),
-    'text-color': var(--color-text),
   ),
+  $card: (
+    'bg-color': var(--color-background),
+  ),
+  $text-color: (
+    'primary': var(--color-text),
+  ),
+  $pagination: (
+    'bg-color': var(--color-background),
+    'button-disabled-bg-color': var(--color-background),
+  ),
+  $input: (
+    'bg-color': var(--color-background),
+  )
 );
 @use 'element-plus/theme-chalk/src/index.scss' as *;
