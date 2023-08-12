@@ -68,7 +68,6 @@ const handleSelect = (key: string) => {
 .top-manu {
   height: 90px;
   padding-top: 25px;
-  background-color: #ffffff;
 
   .logo {
     position: relative;
@@ -91,6 +90,7 @@ const handleSelect = (key: string) => {
   }
   .el-menu {
     height: 40px;
+    background-color: var(--color-background);
   }
   .el-menu-item {
     width: 90px;

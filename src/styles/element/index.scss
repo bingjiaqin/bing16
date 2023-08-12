@@ -28,8 +28,9 @@
     'extra-small': 13px,
   ),
   $menu: (
-    'ctive-color': #fff,
-    'hover-bg-color': #fff,
+    'ctive-color': var(--color-background),
+    'hover-bg-color': var(--color-background),
+    'text-color': var(--color-text),
   ),
 );
 @use 'element-plus/theme-chalk/src/index.scss' as *;
