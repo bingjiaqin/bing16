@@ -46,7 +46,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { MENU_LIST, INTRO, DEFAULT_MENU } from './config/Menu'
+import { MENU_LIST, INTRO, DEFAULT_MENU } from './config/Menu.js'
 import { isMobile } from '@/utils/MobileUtils'
 import {
   Menu as IconMenu,

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { shallowRef } from 'vue'
-import { COMPONENT_MAP, DEFAULT_MENU } from './components/topbar/config/Menu'
+import {onMounted, shallowRef} from 'vue'
+import { COMPONENT_MAP, DEFAULT_MENU } from './components/topbar/config/Menu.js'
 import TopBar from "@/components/topbar/TopBar.vue";
 
 const selectedComponent = shallowRef(COMPONENT_MAP.get(DEFAULT_MENU));
@@ -15,16 +15,16 @@ const changeMenu = (newMenu: string) => {
   <div class="common-layout">
     <el-container>
       <el-header>
-        <el-affix>
-          <top-bar
-              @changeMenu="changeMenu"
-          >
-          </top-bar>
-        </el-affix>
+        <top-bar
+            @changeMenu="changeMenu"
+        >
+        </top-bar>
       </el-header>
-      <el-main>
-        <component :is="selectedComponent"></component>
-      </el-main>
+      <el-container>
+        <el-main>
+          <component :is="selectedComponent"></component>
+        </el-main>
+      </el-container>
     </el-container>
   </div>
 </template>
@@ -46,9 +46,11 @@ const changeMenu = (newMenu: string) => {
 }
 
 .el-main {
-  position: relative;
+  position: absolute;
   width: 100%;
-  height: 100%;
+  top: 90px;
+  bottom: 0;
+  overflow-y: scroll;
 }
 
 @media (min-width: 1024px) {

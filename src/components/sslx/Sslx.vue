@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { DATA } from './sslx.js';
 import { isMobile } from "@/utils/MobileUtils";
 import { Search } from '@element-plus/icons-vue';
@@ -57,6 +57,12 @@ const filter = (key) => {
   }
   currentChange(filteredData.value.length);
 }
+
+onMounted(() => {
+  for (let elements of document.getElementsByClassName("el-pagination__goto")) {
+    elements.childNodes[0].nodeValue = "";
+  }
+});
 </script>
 <template>
   <div class="pagination-box">
@@ -72,9 +78,10 @@ const filter = (key) => {
       </el-col>
       <el-col :sm="24" :md="12">
         <el-pagination
+            :small="!!mobile"
             class="pagination-top"
             :page-size="1"
-            :pager-count="mobile ? 3 : 11"
+            :pager-count="mobile ? 5 : 11"
             :current-page="currPage"
             layout="prev, pager, next, jumper"
             :total="filteredData.length"
@@ -105,20 +112,25 @@ const filter = (key) => {
     </el-card>
   </div>
   <div class="pagination-box">
-    <el-pagination
-        class="pagination-bottom"
-        :page-size="1"
-        :pager-count="mobile ? 3 : 11"
-        :current-page="currPage"
-        layout="prev, pager, next, jumper"
-        :total="filteredData.length"
-        @currentChange="currentChange"
-    />
-    <div class="more">
-      <a href="sslx/History.html">
-        more
-      </a>
-    </div>
+    <el-row>
+      <el-col :xs="24" :sm="22">
+        <el-pagination
+            :small="!!mobile"
+            class="pagination-bottom"
+            :page-size="1"
+            :pager-count="mobile ? 5 : 11"
+            :current-page="currPage"
+            layout="prev, pager, next, jumper"
+            :total="filteredData.length"
+            @currentChange="currentChange"
+        />
+      </el-col>
+      <el-col :xs="24" :sm="2">
+        <a href="sslx/History.html">
+          more
+        </a>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -133,25 +145,13 @@ const filter = (key) => {
 .pagination-box {
   width: 100%;
   text-align: right;
-  min-height: 80px;
+  min-height: 90px;
+  overflow-x: hidden;
 }
 .pagination-top {
   position: absolute;
   right: 0;
   margin-bottom: 30px;
-}
-.pagination-bottom {
-  position: absolute;
-  right: 60px;
-  bottom: 30px;
-  margin-bottom: 30px;
-}
-.more {
-  position: absolute;
-  right: 18px;
-  bottom: 36px;
-  margin-bottom: 30px;
-  font-size: 14px;
 }
 .card-box {
   width: 100%;;

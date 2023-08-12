@@ -6,7 +6,7 @@ const mobile = isMobile()
 </script>
 
 <template>
-  <el-row>
+  <el-row class="index">
     <el-col :sm="2" :md="0"></el-col>
     <el-col :sm="20" :md="12">
       <div
@@ -33,7 +33,7 @@ const mobile = isMobile()
             :height="mobile ? '300px' : '450px'"
             indicator-position="outside"
             arrow="never"
-            interval="6000">
+            :interval="6000">
           <el-carousel-item v-for="(item, index) in PIC_LIST" :key="index">
             <el-image
                 :src="item.src"
@@ -52,6 +52,9 @@ const mobile = isMobile()
 <style scoped>
 h1 {
   margin-bottom: 20px;
+}
+.index {
+  height: 90%;
 }
 .main-col {
   position: relative;
