@@ -1,7 +1,7 @@
 <template>
   <div class="top-manu">
     <el-menu
-        v-if="!mobile"
+        v-if="mobile"
         :default-active="activeIndex"
         mode="horizontal"
         :ellipsis="false"
@@ -24,7 +24,7 @@
     </el-menu>
 
     <el-menu
-        v-if="mobile"
+        v-if="!mobile"
         :default-active="activeIndex"
         mode="horizontal"
         :ellipsis="false"
