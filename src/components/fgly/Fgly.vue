@@ -35,5 +35,7 @@ const filteredData = ref(data.itmes);
 </template>
 
 <style scoped>
-
+.el-card {
+  border-radius: 20px;
+}
 </style>

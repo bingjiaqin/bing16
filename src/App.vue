@@ -1,12 +1,14 @@
 <script lang="ts" setup>
-import {onMounted, shallowRef} from 'vue'
+import {ref, shallowRef} from 'vue'
 import { COMPONENT_MAP, DEFAULT_MENU } from './components/topbar/config/Menu.js'
 import TopBar from "@/components/topbar/TopBar.vue";
 
+const currPage = ref(DEFAULT_MENU);
 const selectedComponent = shallowRef(COMPONENT_MAP.get(DEFAULT_MENU));
 
 const changeMenu = (newMenu: string) => {
   selectedComponent.value = COMPONENT_MAP.get(newMenu);
+  currPage.value = newMenu;
 }
 
 </script>
@@ -48,7 +50,7 @@ const changeMenu = (newMenu: string) => {
 .el-main {
   position: absolute;
   width: 100%;
-  top: 90px;
+  top: calc(90px);
   bottom: 0;
   overflow-y: scroll;
 }

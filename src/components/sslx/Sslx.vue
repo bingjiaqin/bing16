@@ -168,5 +168,6 @@ onMounted(() => {
 }
 .el-card {
   border: 0;
+  border-radius: 20px;
 }
 </style>
