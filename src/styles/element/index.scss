@@ -43,6 +43,12 @@
   ),
   $input: (
     'bg-color': var(--color-background),
-  )
+  ),
+  $header: (
+    'padding': 0,
+  ),
+  $main: (
+    'padding': 0,
+  ),
 );
 @use 'element-plus/theme-chalk/src/index.scss' as *;

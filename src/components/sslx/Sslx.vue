@@ -65,76 +65,81 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div class="pagination-box">
-    <el-row>
-      <el-col :sm="24" :md="12" class="search">
-        <el-input
-            v-model="keyword"
-            class="w-50 m-2"
-            placeholder="搜索"
-            :suffix-icon="Search"
-            @change="filter"
-        />
-      </el-col>
-      <el-col :sm="24" :md="12">
-        <el-pagination
-            :small="!!mobile"
-            class="pagination-top"
-            :page-size="1"
-            :pager-count="mobile ? 5 : 11"
-            :current-page="currPage"
-            layout="prev, pager, next, jumper"
-            :total="filteredData.length"
-            @currentChange="currentChange"
-        />
-      </el-col>
-    </el-row>
-  </div>
-  <div class="card-box">
-    <h1 class="title">{{ currData.year }}</h1>
-    <h2 class="title">{{ currData.subTitle }}</h2>
-    <el-card
-        class="box-card"
-        shadow="hover"
-        v-for="item in currData.lists"
-    >
-      <div>
-        <el-image
-            v-if="item.pic"
-            :src="item.pic"
-            :title="item.title"
-            style="padding-left: 2em; width: 300px"
-            fit="contain"/></div>
-      <div v-html="item.content"></div>
-      <div class="time-box">
-        <div>{{ item.time }}</div>
-      </div>
-    </el-card>
-  </div>
-  <div class="pagination-box">
-    <el-row>
-      <el-col :xs="24" :sm="22">
-        <el-pagination
-            :small="!!mobile"
-            class="pagination-bottom"
-            :page-size="1"
-            :pager-count="mobile ? 5 : 11"
-            :current-page="currPage"
-            layout="prev, pager, next, jumper"
-            :total="filteredData.length"
-            @currentChange="currentChange"
-        />
-      </el-col>
-      <el-col :xs="24" :sm="2">
-        <a href="sslx/History.html">
-          more
-        </a>
-      </el-col>
-    </el-row>
+  <div class="content">
+    <div class="pagination-box">
+      <el-row>
+        <el-col :sm="24" :md="12" class="search">
+          <el-input
+              v-model="keyword"
+              class="w-50 m-2"
+              placeholder="搜索"
+              :suffix-icon="Search"
+              @change="filter"
+          />
+        </el-col>
+        <el-col :sm="24" :md="12">
+          <el-pagination
+              :small="!!mobile"
+              class="pagination-top"
+              :page-size="1"
+              :pager-count="mobile ? 5 : 11"
+              :current-page="currPage"
+              layout="prev, pager, next, jumper"
+              :total="filteredData.length"
+              @currentChange="currentChange"
+          />
+        </el-col>
+      </el-row>
+    </div>
+    <div class="card-box">
+      <h1 class="title">{{ currData.year }}</h1>
+      <h2 class="title">{{ currData.subTitle }}</h2>
+      <el-card
+          class="box-card"
+          shadow="hover"
+          v-for="item in currData.lists"
+      >
+        <div>
+          <el-image
+              v-if="item.pic"
+              :src="item.pic"
+              :title="item.title"
+              style="padding-left: 2em; width: 300px"
+              fit="contain"/></div>
+        <div v-html="item.content"></div>
+        <div class="time-box">
+          <div>{{ item.time }}</div>
+        </div>
+      </el-card>
+    </div>
+    <div class="pagination-box">
+      <el-row>
+        <el-col :xs="24" :sm="22">
+          <el-pagination
+              :small="!!mobile"
+              class="pagination-bottom"
+              :page-size="1"
+              :pager-count="mobile ? 5 : 11"
+              :current-page="currPage"
+              layout="prev, pager, next, jumper"
+              :total="filteredData.length"
+              @currentChange="currentChange"
+          />
+        </el-col>
+        <el-col :xs="24" :sm="2">
+          <a href="sslx/History.html">
+            more
+          </a>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 
 <style scoped>
+.content {
+  padding: 0 60px;
+}
 .search {
   margin-bottom: 20px;
 }

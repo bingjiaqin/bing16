@@ -23,7 +23,9 @@ const changeMenu = (newMenu: string) => {
         </top-bar>
       </el-header>
       <el-container>
-        <el-main>
+        <el-main
+            :class="{mainPage:currPage === DEFAULT_MENU,
+            notMainPage:currPage !== DEFAULT_MENU}">
           <component :is="selectedComponent"></component>
         </el-main>
       </el-container>
@@ -36,9 +38,9 @@ const changeMenu = (newMenu: string) => {
 .common-layout {
   position:absolute;
   top: 0;
-  left: 30px;
+  left: 0;
   bottom: 0;
-  right: 30px;
+  right: 0;
 }
 
 .el-header {
@@ -48,11 +50,17 @@ const changeMenu = (newMenu: string) => {
 }
 
 .el-main {
-  position: absolute;
   width: 100%;
-  top: calc(90px);
   bottom: 0;
   overflow-y: scroll;
+  &.mainPage {
+    position: relative;
+    top: calc(90px);
+  }
+  &.notMainPage {
+    position: absolute;
+    top: calc(90px);
+  }
 }
 
 @media (min-width: 1024px) {

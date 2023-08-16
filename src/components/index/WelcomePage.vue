@@ -54,17 +54,19 @@ h1 {
 .main-col {
   position: relative;
   top:50%;
-  transform: translateY(-50%);
+  transform: translateY(-70%);
 }
 .main-text {
   position: relative;
-  top:calc(50%);
-  transform: translateY(-50%);
   &.mobile {
     min-height: 20px;
+    top:calc(50%);
+    transform: translateY(-70%);
   }
   &.notMobile {
-    min-height: 230px;
+    min-height: 350px;
+    top:calc(50%);
+    transform: translateY(-50%);
   }
 }
 .pic {

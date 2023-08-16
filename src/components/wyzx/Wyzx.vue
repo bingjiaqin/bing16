@@ -7,7 +7,7 @@ const filteredData = ref(data);
 </script>
 
 <template>
-  <el-row :gutter="20">
+  <el-row :gutter="20" class="content">
     <el-col
         v-for="(item, index) in filteredData"
         :key="index"
@@ -34,6 +34,9 @@ const filteredData = ref(data);
 </template>
 
 <style scoped>
+.content {
+  padding: 0 60px;
+}
 .el-card {
   border-radius: 20px;
 }

@@ -4,15 +4,17 @@ import WelcomePage from "./WelcomePage.vue";
 </script>
 
 <template>
-  <div class="index">
-    <el-row class="index">
-      <welcome-page></welcome-page>
-    </el-row>
-  </div>
+  <el-row class="index welcome">
+    <welcome-page></welcome-page>
+  </el-row>
 </template>
 
 <style scoped>
 .index {
-  height: 90%;
+  min-height: 100vh;
+}
+.welcome {
+  padding: 0 60px;
+  min-height: calc(100vh - 90px);
 }
 </style>

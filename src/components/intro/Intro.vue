@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div>
+  <div class="content">
     <div>
       <h2>关于我</h2>
       <el-divider />
@@ -37,6 +37,9 @@
 </template>
 
 <style scoped>
+.content {
+  padding: 0 60px;
+}
 h3 {
   margin-top: 30px;
 }

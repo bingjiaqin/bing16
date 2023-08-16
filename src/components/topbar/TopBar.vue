@@ -68,6 +68,8 @@ const handleSelect = (key: string) => {
 .top-manu {
   height: 90px;
   padding-top: 25px;
+  padding-left: 60px;
+  padding-right: 60px;
 
   .logo {
     position: relative;
