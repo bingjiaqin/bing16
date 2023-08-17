@@ -54,7 +54,7 @@ const picList = [IMG_0285, IMG_0306, IMG_0301, IMG_0302, P20716, IMG_0332];
 }
 .smallPic {
   width: calc(100%/5);
-  aspect-ratio: 1.5;
+  aspect-ratio: 3 / 2;
 }
 .text {
   color: #ffffff;

@@ -56,7 +56,7 @@ const picList = [IMG_0414, IMG_0410, IMG_0450, IMG_0444, IMG_0440, IMG_0429, IMG
 }
 .smallPic {
   width: calc(100%/7);
-  aspect-ratio: 1.5;
+  aspect-ratio: 3 / 2;
 }
 .text {
   text-align: left;
