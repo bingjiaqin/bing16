@@ -12,7 +12,7 @@ const picList = [IMG_0285, IMG_0306, IMG_0301, IMG_0302, P20716, IMG_0332];
 </script>
 
 <template>
-  <el-row class="question">
+  <el-row class="sea">
     <el-col :sm="0" :md="1">
     </el-col>
     <el-col :sm="24" :md="13">
@@ -22,7 +22,7 @@ const picList = [IMG_0285, IMG_0306, IMG_0301, IMG_0302, P20716, IMG_0332];
             v-for="(pic, index) in picList"
             :preview-src-list="picList"
             :initial-index="index"
-            :src="pic" fit="contain" />
+            :src="pic" fit="cover" />
       </div>
     </el-col>
     <el-col :sm="24" :md="10">
@@ -40,15 +40,11 @@ const picList = [IMG_0285, IMG_0306, IMG_0301, IMG_0302, P20716, IMG_0332];
 </template>
 
 <style scoped>
-.question {
+.sea {
   background-color: #000000;
   color: #ffffff;
   width: 100%;
   text-align: center;
-}
-.content {
-  padding: 0 60px;
-  width: 100%;
 }
 .pic {
   position: relative;
@@ -58,6 +54,7 @@ const picList = [IMG_0285, IMG_0306, IMG_0301, IMG_0302, P20716, IMG_0332];
 }
 .smallPic {
   width: calc(100%/5);
+  aspect-ratio: 1.5;
 }
 .text {
   color: #ffffff;
@@ -72,26 +69,5 @@ h1 {
 }
 div {
   padding-top: 10px;
-}
-.boxImgTitle{
-  z-index: 10;
-  position: absolute;
-  padding-top: 60px;
-  padding-left: 60px;
-  padding-right: 60px;
-  color: #ffffff;
-}
-.boxImgTitle:hover{
-  z-index: 12;
-}
-.boxImg {
-  z-index: 11;
-  transition: all 0.6s;
-}
-.boxImg:hover {
-  z-index: 9;
-  filter: brightness(0.45);
-  opacity: 0.95;
-  transition: all 0.6s;
 }
 </style>
