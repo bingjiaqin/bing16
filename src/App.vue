@@ -57,6 +57,9 @@ const changeMenu = (newMenu: string) => {
     position: relative;
     top: calc(90px);
   }
+  &.mainPage::-webkit-scrollbar {
+    width: 0;
+  }
   &.notMainPage {
     position: absolute;
     top: calc(90px);

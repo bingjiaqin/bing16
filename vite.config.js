@@ -14,7 +14,7 @@ export default defineConfig({
     ),
     Components({
       resolvers: [ElementPlusResolver()]
-    })
+    }),
   ],
   resolve: {
     alias: {
@@ -28,4 +28,5 @@ export default defineConfig({
   server: {
     host: '0.0.0.0'
   },
+  assetsInclude: ["**/*.JPG"],
 })
