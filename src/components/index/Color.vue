@@ -8,9 +8,17 @@ import IMG_0440 from '@/assets/picture/index/image/IMG_0440.JPG';
 import IMG_0429 from '@/assets/picture/index/image/IMG_0429.JPG';
 import IMG_0454 from '@/assets/picture/index/image/IMG_0454.JPG';
 import IMG_0443 from '@/assets/picture/index/image/IMG_0443.JPG';
+import {ref} from "vue";
 
 const mobile = isMobile()
 const picList = [IMG_0414, IMG_0410, IMG_0450, IMG_0444, IMG_0440, IMG_0429, IMG_0454, IMG_0443];
+const index = ref(0);
+const showViewer = ref(false);
+
+const view = (idx) => {
+  index.value = idx;
+  showViewer.value = true;
+}
 </script>
 
 <template>
@@ -33,11 +41,19 @@ const picList = [IMG_0414, IMG_0410, IMG_0450, IMG_0444, IMG_0440, IMG_0429, IMG
         <el-image
             :class="{smallPic: index !== 0}"
             v-for="(pic, index) in picList"
-            :preview-src-list="picList"
-            :initial-index="index"
+            @click="view(index)"
             :src="pic"
             loading="lazy"
             fit="cover" />
+        <el-image-viewer
+            hide-on-click-modal
+            teleported
+            v-if="showViewer"
+            :url-list="picList"
+            :initial-index="index"
+            @close="showViewer=false"
+        >
+        </el-image-viewer>
       </div>
     </el-col>
     <el-col :sm="0" :md="1">

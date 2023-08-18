@@ -52,3 +52,48 @@
   ),
 );
 @use 'element-plus/theme-chalk/src/index.scss' as *;
+
+
+
+.el-image-viewer__mask {
+  background: #000000 !important;
+  opacity: 1 !important;
+}
+
+.el-image-viewer__actions {
+  opacity: 0.2 !important;
+}
+
+.el-image-viewer__actions:hover {
+  opacity: 0.8 !important;
+}
+
+.el-image-viewer__close {
+  opacity: 0.2 !important;
+}
+
+.el-image-viewer__close:hover {
+  opacity: 0.8 !important;
+}
+
+.el-image-viewer__prev {
+  left: 5px !important;
+  top: auto !important;
+  bottom: 8px !important;
+  opacity: 0.2 !important;
+}
+
+.el-image-viewer__prev:hover {
+  opacity: 0.8 !important;
+}
+
+.el-image-viewer__next {
+  right: 5px !important;
+  top: auto !important;
+  bottom: 8px !important;
+  opacity: 0.2 !important;
+}
+
+.el-image-viewer__next:hover {
+  opacity: 0.8 !important;
+}

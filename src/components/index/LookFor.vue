@@ -14,11 +14,19 @@ import IMG_2626 from '@/assets/picture/index/image/IMG_2626.JPG';
 import IMG_2674 from '@/assets/picture/index/image/IMG_2674.JPG';
 import IMG_2721 from '@/assets/picture/index/image/IMG_2721.JPG';
 import IMG_2722 from '@/assets/picture/index/image/IMG_2722.JPG';
+import {ref} from "vue";
 
 const mobile = isMobile()
 const picList = [IMG_1166, P30102, IMG_2150, IMG_2169,
   IMG_2355, IMG_2366, IMG_2372, IMG_2439, IMG_2615, IMG_2618,
   IMG_2626, IMG_2674, IMG_2721, IMG_2722];
+const index = ref(0);
+const showViewer = ref(false);
+
+const view = (idx) => {
+  index.value = idx;
+  showViewer.value = true;
+}
 </script>
 
 <template>
@@ -30,11 +38,19 @@ const picList = [IMG_1166, P30102, IMG_2150, IMG_2169,
         <el-image
             :class="{smallPic: index !== 0}"
             v-for="(pic, index) in picList"
-            :preview-src-list="picList"
-            :initial-index="index"
+            @click="view(index)"
             :src="pic"
             loading="lazy"
             fit="cover" />
+        <el-image-viewer
+            hide-on-click-modal
+            teleported
+            v-if="showViewer"
+            :url-list="picList"
+            :initial-index="index"
+            @close="showViewer=false"
+        >
+        </el-image-viewer>
       </div>
     </el-col>
     <el-col :sm="24" :md="10">

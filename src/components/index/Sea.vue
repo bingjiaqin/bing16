@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue';
 import {isMobile} from "@/utils/MobileUtils";
 import IMG_0285 from '@/assets/picture/index/image/IMG_0285.JPG';
 import IMG_0306 from '@/assets/picture/index/image/IMG_0306.JPG';
@@ -9,6 +10,13 @@ import IMG_0332 from '@/assets/picture/index/image/IMG_0332.JPG';
 
 const mobile = isMobile()
 const picList = [IMG_0285, IMG_0306, IMG_0301, IMG_0302, P20716, IMG_0332];
+const index = ref(0);
+const showViewer = ref(false);
+
+const view = (idx) => {
+  index.value = idx;
+  showViewer.value = true;
+}
 </script>
 
 <template>
@@ -20,11 +28,19 @@ const picList = [IMG_0285, IMG_0306, IMG_0301, IMG_0302, P20716, IMG_0332];
         <el-image
             :class="{smallPic: index !== 0}"
             v-for="(pic, index) in picList"
-            :preview-src-list="picList"
-            :initial-index="index"
+            @click="view(index)"
             :src="pic"
             loading="lazy"
             fit="cover" />
+        <el-image-viewer
+            hide-on-click-modal
+            teleported
+            v-if="showViewer"
+            :url-list="picList"
+            :initial-index="index"
+            @close="showViewer=false"
+        >
+        </el-image-viewer>
       </div>
     </el-col>
     <el-col :sm="24" :md="10">
