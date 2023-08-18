@@ -2,6 +2,7 @@
 import {ref, shallowRef} from 'vue'
 import { COMPONENT_MAP, DEFAULT_MENU } from './components/topbar/config/Menu.js'
 import TopBar from "@/components/topbar/TopBar.vue";
+import FooterBar from "@/components/footer/FooterBar.vue"
 
 const currPage = ref(DEFAULT_MENU);
 const selectedComponent = shallowRef(COMPONENT_MAP.get(DEFAULT_MENU));
@@ -27,6 +28,9 @@ const changeMenu = (newMenu: string) => {
             :class="{mainPage:currPage === DEFAULT_MENU,
             notMainPage:currPage !== DEFAULT_MENU}">
           <component :is="selectedComponent"></component>
+          <el-footer>
+            <footer-bar></footer-bar>
+          </el-footer>
         </el-main>
       </el-container>
     </el-container>
@@ -64,6 +68,11 @@ const changeMenu = (newMenu: string) => {
     position: absolute;
     top: calc(90px);
   }
+}
+
+.el-footer {
+  position: relative;
+  width: 100%;
 }
 
 @media (min-width: 1024px) {
