@@ -1,6 +1,6 @@
 <script setup>
 import WelcomePage from "./WelcomePage.vue";
-import Question from "./Sea.vue";
+import Sea from "./Sea.vue";
 import Color from "@/components/index/Color.vue";
 import LookFor from "@/components/index/LookFor.vue";
 
@@ -11,7 +11,7 @@ import LookFor from "@/components/index/LookFor.vue";
     <welcome-page></welcome-page>
   </el-row>
   <el-row class="index">
-    <question></question>
+    <sea></sea>
   </el-row>
   <el-row class="index">
     <color></color>

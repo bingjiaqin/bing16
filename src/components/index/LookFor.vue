@@ -32,7 +32,9 @@ const picList = [IMG_1166, P30102, IMG_2150, IMG_2169,
             v-for="(pic, index) in picList"
             :preview-src-list="picList"
             :initial-index="index"
-            :src="pic" fit="cover" />
+            :src="pic"
+            loading="lazy"
+            fit="cover" />
       </div>
     </el-col>
     <el-col :sm="24" :md="10">

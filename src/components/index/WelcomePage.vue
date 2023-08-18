@@ -40,6 +40,7 @@ const mobile = isMobile()
               :title="item.title"
               class="pic"
               :class="{mobile:mobile, notMobile:!mobile}"
+              loading="lazy"
               fit="contain"/>
         </el-carousel-item>
       </el-carousel>
