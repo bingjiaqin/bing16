@@ -56,15 +56,16 @@ const changeMenu = (newMenu: string) => {
 .el-main {
   width: 100%;
   bottom: 0;
-  overflow-y: scroll;
   &.mainPage {
     position: relative;
     top: calc(90px);
+    overflow-y: hidden;
   }
   &.mainPage::-webkit-scrollbar {
     width: 0;
   }
   &.notMainPage {
+    overflow-y: scroll;
     position: absolute;
     top: calc(90px);
   }

@@ -50,7 +50,7 @@ const mobile = isMobile()
 
 <style scoped>
 h1 {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 .main-col {
   position: relative;
