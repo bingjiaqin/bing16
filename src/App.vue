@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {ref, shallowRef} from 'vue'
+import {ref, shallowRef, nextTick} from 'vue'
 import { COMPONENT_MAP, DEFAULT_MENU } from './components/topbar/config/Menu.js'
 import TopBar from "@/components/topbar/TopBar.vue";
 import FooterBar from "@/components/footer/FooterBar.vue"
@@ -10,8 +10,12 @@ const selectedComponent = shallowRef(COMPONENT_MAP.get(DEFAULT_MENU));
 const changeMenu = (newMenu: string) => {
   selectedComponent.value = COMPONENT_MAP.get(newMenu);
   currPage.value = newMenu;
+  nextTick(() => scrollToTop());
 }
 
+const scrollToTop = () => {
+  document.documentElement.scrollTop || document.body.scrollTop;
+}
 </script>
 
 <template>

@@ -14,7 +14,9 @@
 <style scoped>
 .footer {
   width: 100%;
-  padding: 30px 30px 20px;
+  padding-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
   text-align: right;
 }
 </style>
