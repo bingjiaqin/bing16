@@ -46,12 +46,14 @@
   ),
   $header: (
     'padding': 0,
+    'height': 90px,
   ),
   $main: (
     'padding': 0,
   ),
   $footer: (
     'padding': 0,
+    'height': 90px,
   ),
 );
 @use 'element-plus/theme-chalk/src/index.scss' as *;
