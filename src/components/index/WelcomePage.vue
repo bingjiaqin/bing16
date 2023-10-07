@@ -1,8 +1,35 @@
 <script setup>
 import { PIC_LIST } from "@/components/index/PicConfig";
 import {isMobile} from "@/utils/MobileUtils";
+import { h } from 'vue'
+import { ElMessageBox, ElNotification } from 'element-plus'
 
 const mobile = isMobile()
+
+function showInfo() {
+  ElMessageBox({
+    title: '特殊物品✨',
+    message: h('p', null, [
+      h('div', null, '其他联系方式：'),
+      h('div', null, 'WeChat：At_Deprecated'),
+      h('div', null, '网易云音乐：KareNoNeko'),
+      h('div', null, '新浪微博：香香的鸽子牌柠檬味复读机'),
+    ]),
+    buttonSize: 'small',
+    confirmButtonText: '关闭袋子 +'
+  })
+}
+
+function findMe() {
+  ElNotification({
+    title: '呀哈哈~',
+    message: h('div', null, [
+      h('div', { style: 'color: teal' }, "获得呀哈哈给予的小小果实。"),
+      h('div', { style: 'text-align: right; font-size: 10px', onClick: showInfo }, "打开袋子 +")
+    ]),
+    offset: 100,
+  })
+}
 </script>
 
 <template>
@@ -19,9 +46,7 @@ const mobile = isMobile()
         <span>个人的随感</span>。
       </p>
       <p>如果你从别的地方找到这里，
-        <span>
-            欢迎联系我
-          </span>。
+        <span @click="findMe">欢迎联系我</span>。
       </p>
     </div>
   </el-col>
