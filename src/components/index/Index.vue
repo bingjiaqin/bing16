@@ -3,21 +3,28 @@ import WelcomePage from "./WelcomePage.vue";
 import Sea from "./Sea.vue";
 import Color from "@/components/index/Color.vue";
 import LookFor from "@/components/index/LookFor.vue";
+import { ref } from 'vue';
 
+const allComponents = [Sea, Color, LookFor];
+const components = ref([allComponents[0]]);
+const nextComponentIdx = ref(1);
+
+function load() {
+  if (nextComponentIdx.value < allComponents.length) {
+    components.value.push(allComponents[nextComponentIdx.value]);
+    nextComponentIdx.value = nextComponentIdx.value + 1;
+  }
+}
 </script>
 
 <template>
   <el-row class="index welcome">
     <welcome-page></welcome-page>
   </el-row>
-  <el-row class="index">
-    <sea></sea>
-  </el-row>
-  <el-row class="index">
-    <color></color>
-  </el-row>
-  <el-row class="index">
-    <look-for></look-for>
+  <el-row v-infinite-scroll="load">
+    <el-row v-for="component in components" class="index">
+      <component :is="component"></component>
+    </el-row>
   </el-row>
 </template>
 
