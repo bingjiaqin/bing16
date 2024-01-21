@@ -27,10 +27,21 @@ const view = (idx) => {
   index.value = idx;
   showViewer.value = true;
 }
+
+defineProps({
+  bgColor:{
+    type: String,
+    default: ''
+  },
+  color:{
+    type: String,
+    default: ''
+  }
+})
 </script>
 
 <template>
-  <el-row class="look-for">
+  <el-row class="look-for" :style="{ 'background-color': bgColor, color: color }">
     <el-col :sm="0" :md="1">
     </el-col>
     <el-col :sm="24" :md="13">
@@ -56,6 +67,7 @@ const view = (idx) => {
     <el-col :sm="24" :md="10">
       <div class="text">
         <h1>寻觅 · 什么是永恒与唯一</h1>
+        <i>2023.Q1</i>
         <div>2023 我失去了你。</div>
         <div>带着悲伤来到你生活的地方，又独自待到黎明。</div>
         <div>那天人群如潮的时候我想找寻你，却意料之中的没有找到。</div>
@@ -77,8 +89,6 @@ const view = (idx) => {
 
 <style scoped>
 .look-for {
-  background-color: #000000;
-  color: #ffffff;
   width: 100%;
   text-align: center;
 }
@@ -93,7 +103,6 @@ const view = (idx) => {
   aspect-ratio: 3 / 2;
 }
 .text {
-  color: #ffffff;
   text-align: left;
   position: relative;
   padding: 60px 60px;

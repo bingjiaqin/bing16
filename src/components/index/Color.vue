@@ -19,13 +19,25 @@ const view = (idx) => {
   index.value = idx;
   showViewer.value = true;
 }
+
+defineProps({
+  bgColor:{
+    type: String,
+    default: ''
+  },
+  color:{
+    type: String,
+    default: ''
+  }
+})
 </script>
 
 <template>
-  <el-row class="color">
+  <el-row class="color" :style="{ 'background-color': bgColor, color: color }">
     <el-col :sm="24" :md="10">
       <div class="text">
         <h1>生活 · 奔波与停留</h1>
+        <i>2022.Q4</i>
         <div>从早晨，</div>
         <div>到傍晚，</div>
         <div>再到晚上，</div>

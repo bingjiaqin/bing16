@@ -17,10 +17,21 @@ const view = (idx) => {
   index.value = idx;
   showViewer.value = true;
 }
+
+defineProps({
+  bgColor:{
+    type: String,
+    default: ''
+  },
+  color:{
+    type: String,
+    default: ''
+  }
+})
 </script>
 
 <template>
-  <el-row class="sea">
+  <el-row class="sea" :style="{ 'background-color': bgColor, color: color }">
     <el-col :sm="0" :md="1">
     </el-col>
     <el-col :sm="24" :md="13">
@@ -46,6 +57,7 @@ const view = (idx) => {
     <el-col :sm="24" :md="10">
       <div class="text">
         <h1>旅途 · 在人间</h1>
+        <i>2022.Q3</i>
         <div>我们决定来一场说走就走的旅行，</div>
         <div>在人间边界处，找到一所面朝大海的房子。</div>
         <div>在惠州的双月湾，</div>
@@ -59,8 +71,6 @@ const view = (idx) => {
 
 <style scoped>
 .sea {
-  background-color: #000000;
-  color: #ffffff;
   width: 100%;
   text-align: center;
 }
@@ -75,7 +85,6 @@ const view = (idx) => {
   aspect-ratio: 3 / 2;
 }
 .text {
-  color: #ffffff;
   text-align: left;
   position: relative;
   padding: 60px 60px;
