@@ -1,17 +1,17 @@
 <script setup>
 import {isMobile} from "@/utils/MobileUtils";
-import IMG_0414 from '@/assets/picture/index/image/IMG_0414.JPG';
-import IMG_0410 from '@/assets/picture/index/image/IMG_0410.JPG';
-import IMG_0450 from '@/assets/picture/index/image/IMG_0450.JPG';
-import IMG_0444 from '@/assets/picture/index/image/IMG_0444.JPG';
-import IMG_0440 from '@/assets/picture/index/image/IMG_0440.JPG';
-import IMG_0429 from '@/assets/picture/index/image/IMG_0429.JPG';
-import IMG_0454 from '@/assets/picture/index/image/IMG_0454.JPG';
-import IMG_0443 from '@/assets/picture/index/image/IMG_0443.JPG';
 import {ref} from "vue";
 
 const mobile = isMobile()
-const picList = [IMG_0414, IMG_0410, IMG_0450, IMG_0444, IMG_0440, IMG_0429, IMG_0454, IMG_0443];
+const picList = [
+  "https://bing16.dynv6.net:1443/qHe46f.jpg",
+  "https://bing16.dynv6.net:1443/6jKcoB.jpg", 
+  "https://bing16.dynv6.net:1443/VHR5DX.jpg", 
+  "https://bing16.dynv6.net:1443/STjpxN.jpg", 
+  "https://bing16.dynv6.net:1443/AWE7u3.jpg", 
+  "https://bing16.dynv6.net:1443/qWEVSi.jpg", 
+  "https://bing16.dynv6.net:1443/p8LBsj.jpg", 
+  "https://bing16.dynv6.net:1443/dXPmGm.jpg"];
 const index = ref(0);
 const showViewer = ref(false);
 

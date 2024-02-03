@@ -1,15 +1,15 @@
 <script setup>
 import { ref } from 'vue';
 import {isMobile} from "@/utils/MobileUtils";
-import IMG_0285 from '@/assets/picture/index/image/IMG_0285.JPG';
-import IMG_0306 from '@/assets/picture/index/image/IMG_0306.JPG';
-import IMG_0301 from '@/assets/picture/index/image/IMG_0301.JPG';
-import IMG_0302 from '@/assets/picture/index/image/IMG_0302.JPG';
-import P20716 from '@/assets/picture/index/image/P20716.JPG';
-import IMG_0332 from '@/assets/picture/index/image/IMG_0332.JPG';
 
 const mobile = isMobile()
-const picList = [IMG_0285, IMG_0306, IMG_0301, IMG_0302, P20716, IMG_0332];
+const picList = [
+  "https://bing16.dynv6.net:1443/tga1No.jpg",
+  "https://bing16.dynv6.net:1443/1ptJqk.jpg",
+  "https://bing16.dynv6.net:1443/Evs6x6.jpg",
+  "https://bing16.dynv6.net:1443/lrZwjc.jpg",
+  "https://bing16.dynv6.net:1443/fPkHbi.jpg",
+  "https://bing16.dynv6.net:1443/iL2n0G.jpg"];
 const index = ref(0);
 const showViewer = ref(false);
 

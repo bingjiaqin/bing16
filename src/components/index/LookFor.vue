@@ -1,25 +1,23 @@
 <script setup>
 import {isMobile} from "@/utils/MobileUtils";
-import IMG_1166 from '@/assets/picture/index/image/IMG_1166.JPG';
-import P30102 from '@/assets/picture/index/image/P30102.JPG';
-import IMG_2150 from '@/assets/picture/index/image/IMG_2150.JPG';
-import IMG_2169 from '@/assets/picture/index/image/IMG_2169.JPG';
-import IMG_2355 from '@/assets/picture/index/image/IMG_2355.JPG';
-import IMG_2366 from '@/assets/picture/index/image/IMG_2366.JPG';
-import IMG_2372 from '@/assets/picture/index/image/IMG_2372.JPG';
-import IMG_2439 from '@/assets/picture/index/image/IMG_2439.JPG';
-import IMG_2615 from '@/assets/picture/index/image/IMG_2615.JPG';
-import IMG_2618 from '@/assets/picture/index/image/IMG_2618.JPG';
-import IMG_2626 from '@/assets/picture/index/image/IMG_2626.JPG';
-import IMG_2674 from '@/assets/picture/index/image/IMG_2674.JPG';
-import IMG_2721 from '@/assets/picture/index/image/IMG_2721.JPG';
-import IMG_2722 from '@/assets/picture/index/image/IMG_2722.JPG';
 import {ref} from "vue";
 
 const mobile = isMobile()
-const picList = [IMG_1166, P30102, IMG_2150, IMG_2169,
-  IMG_2355, IMG_2366, IMG_2372, IMG_2439, IMG_2615, IMG_2618,
-  IMG_2626, IMG_2674, IMG_2721, IMG_2722];
+const picList = [
+  "https://bing16.dynv6.net:1443/8o1lyP.jpg",
+  "https://bing16.dynv6.net:1443/6Ur6AG.jpg",
+  "https://bing16.dynv6.net:1443/ghFsC0.jpg", 
+  "https://bing16.dynv6.net:1443/IGQlPr.jpg",
+  "https://bing16.dynv6.net:1443/Dw1BLh.jpg", 
+  "https://bing16.dynv6.net:1443/QFVnbB.jpg", 
+  "https://bing16.dynv6.net:1443/O968IH.jpg", 
+  "https://bing16.dynv6.net:1443/BFFAOQ.jpg", 
+  "https://bing16.dynv6.net:1443/K1vO7V.jpg", 
+  "https://bing16.dynv6.net:1443/TtRPg4.jpg",
+  "https://bing16.dynv6.net:1443/fUloce.jpg", 
+  "https://bing16.dynv6.net:1443/s4aM4g.jpg", 
+  "https://bing16.dynv6.net:1443/xWWU7p.jpg", 
+  "https://bing16.dynv6.net:1443/AESbfO.jpg"];
 const index = ref(0);
 const showViewer = ref(false);
 

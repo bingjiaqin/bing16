@@ -1,21 +1,22 @@
 <script setup>
 import {isMobile} from "@/utils/MobileUtils";
-import IMG_3916 from '@/assets/picture/index/image/IMG_3916.JPG';
-import IMG_3962 from '@/assets/picture/index/image/IMG_3962.JPG';
-import IMG_3982 from '@/assets/picture/index/image/IMG_3982.JPG';
-import IMG_4116 from '@/assets/picture/index/image/IMG_4116.JPG';
-import IMG_4106 from '@/assets/picture/index/image/IMG_4106.JPG';
-import IMG_4112 from '@/assets/picture/index/image/IMG_4112.JPG';
-import IMG_4114 from '@/assets/picture/index/image/IMG_4114.JPG';
-import IMG_4117 from '@/assets/picture/index/image/IMG_4117.JPG';
-import IMG_4719 from '@/assets/picture/index/image/IMG_4719.JPG';
-import IMG_4717 from '@/assets/picture/index/image/IMG_4717.JPG';
-import IMG_4716 from '@/assets/picture/index/image/IMG_4716.JPG';
-import IMG_4714 from '@/assets/picture/index/image/IMG_4714.JPG';
 import {ref} from "vue";
 
 const mobile = isMobile()
-const picList = [IMG_4714, IMG_3916, IMG_3962, IMG_3982, IMG_4116, IMG_4106, IMG_4112, IMG_4114, IMG_4117, IMG_4719, IMG_4717, IMG_4716];
+const picList = [
+  "https://bing16.dynv6.net:1443/3XEtfD.jpg", 
+  "https://bing16.dynv6.net:1443/bEEsOQ.jpg", 
+  "https://bing16.dynv6.net:1443/Tq9uFU.jpg", 
+  "https://bing16.dynv6.net:1443/vuNo4r.jpg", 
+  "https://bing16.dynv6.net:1443/QNeHsP.jpg", 
+  "https://bing16.dynv6.net:1443/ATjajr.jpg", 
+  "https://bing16.dynv6.net:1443/dNvQpR.jpg", 
+  "https://bing16.dynv6.net:1443/x8GXVQ.jpg", 
+  "https://bing16.dynv6.net:1443/HsCpBN.jpg", 
+  "https://bing16.dynv6.net:1443/keNQOa.jpg", 
+  "https://bing16.dynv6.net:1443/6GKgtV.jpg", 
+  "https://bing16.dynv6.net:1443/Ly1KtO.jpg"
+];
 const index = ref(0);
 const showViewer = ref(false);
 
