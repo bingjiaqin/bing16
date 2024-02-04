@@ -4,14 +4,14 @@ import {ref} from "vue";
 
 const mobile = isMobile()
 const picList = [
-  "https://bing16.dynv6.net:1443/qHe46f.jpg",
-  "https://bing16.dynv6.net:1443/6jKcoB.jpg", 
-  "https://bing16.dynv6.net:1443/VHR5DX.jpg", 
-  "https://bing16.dynv6.net:1443/STjpxN.jpg", 
-  "https://bing16.dynv6.net:1443/AWE7u3.jpg", 
-  "https://bing16.dynv6.net:1443/qWEVSi.jpg", 
-  "https://bing16.dynv6.net:1443/p8LBsj.jpg", 
-  "https://bing16.dynv6.net:1443/dXPmGm.jpg"];
+  "https://bing16.dynv6.net:1443/i/2024/02/03/65be45ac06dc7.jpg",
+  "https://bing16.dynv6.net:1443/i/2024/02/03/65be45bfbde56.jpg", 
+  "https://bing16.dynv6.net:1443/i/2024/02/03/65be463153865.jpg", 
+  "https://bing16.dynv6.net:1443/i/2024/02/03/65be4619f241c.jpg", 
+  "https://bing16.dynv6.net:1443/i/2024/02/03/65be45eb58950.jpg", 
+  "https://bing16.dynv6.net:1443/i/2024/02/03/65be45d6adf60.jpg", 
+  "https://bing16.dynv6.net:1443/i/2024/02/03/65be464562fde.jpg", 
+  "https://bing16.dynv6.net:1443/i/2024/02/03/65be4601054ae.jpg"];
 const index = ref(0);
 const showViewer = ref(false);
 
