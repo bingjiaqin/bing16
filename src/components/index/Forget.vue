@@ -4,18 +4,18 @@ import {ref} from "vue";
 
 const mobile = isMobile()
 const picList = [
-  "https://bing16.dynv6.net:1443/3XEtfD.jpg", 
-  "https://bing16.dynv6.net:1443/bEEsOQ.jpg", 
-  "https://bing16.dynv6.net:1443/Tq9uFU.jpg", 
-  "https://bing16.dynv6.net:1443/vuNo4r.jpg", 
-  "https://bing16.dynv6.net:1443/QNeHsP.jpg", 
-  "https://bing16.dynv6.net:1443/ATjajr.jpg", 
-  "https://bing16.dynv6.net:1443/dNvQpR.jpg", 
-  "https://bing16.dynv6.net:1443/x8GXVQ.jpg", 
-  "https://bing16.dynv6.net:1443/HsCpBN.jpg", 
-  "https://bing16.dynv6.net:1443/keNQOa.jpg", 
-  "https://bing16.dynv6.net:1443/6GKgtV.jpg", 
-  "https://bing16.dynv6.net:1443/Ly1KtO.jpg"
+  "https://bing16.dynv6.net:1443/i/2024/02/03/3XEtfD.jpg", 
+  "https://bing16.dynv6.net:1443/i/2024/02/03/bEEsOQ.jpg", 
+  "https://bing16.dynv6.net:1443/i/2024/02/03/Tq9uFU.jpg", 
+  "https://bing16.dynv6.net:1443/i/2024/02/03/vuNo4r.jpg", 
+  "https://bing16.dynv6.net:1443/i/2024/02/03/QNeHsP.jpg", 
+  "https://bing16.dynv6.net:1443/i/2024/02/03/ATjajr.jpg", 
+  "https://bing16.dynv6.net:1443/i/2024/02/03/dNvQpR.jpg", 
+  "https://bing16.dynv6.net:1443/i/2024/02/03/x8GXVQ.jpg", 
+  "https://bing16.dynv6.net:1443/i/2024/02/03/HsCpBN.jpg", 
+  "https://bing16.dynv6.net:1443/i/2024/02/03/keNQOa.jpg", 
+  "https://bing16.dynv6.net:1443/i/2024/02/03/6GKgtV.jpg", 
+  "https://bing16.dynv6.net:1443/i/2024/02/03/Ly1KtO.jpg"
 ];
 const index = ref(0);
 const showViewer = ref(false);
