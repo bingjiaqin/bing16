@@ -12,5 +12,6 @@ export const DATA = [
     {"title": "Django学习", "pic": "https://bing16.dynv6.net:1443/i/2024/02/04/65bf974c7e263.jpg", "intro": "新版网站（Django版），目前搁置中。。。", "href": "wyzx/DjangoLearning.html", "tags": ["python"]},
     {"title": "激光SLAM", "pic": "https://bing16.dynv6.net:1443/i/2024/02/04/65bf99050dd15.png", "intro": "参考b站视频激光SLAM及论文绪论部分的整理。", "href": "wyzx/LiDARSLAM.html", "tags": ["c++"]},
     {"title": "数据结构-1", "pic": "https://bing16.dynv6.net:1443/i/2024/02/04/65bf9732637d5.png", "intro": "根据邓老师数据结构课程整理。", "href": "wyzx/shujujiegou1.html", "tags": ["c++", "python"]},
-    {"title": "IV2017-2019", "pic": "https://bing16.dynv6.net:1443/i/2024/02/04/65bf974c7e263.jpg", "intro": "统计2017-2019欧洲学校在IEEE上的IV论文数量。", "href": "wyzx/IV.html", "tags": ["python"]}
+    {"title": "IV2017-2019", "pic": "https://bing16.dynv6.net:1443/i/2024/02/04/65bf974c7e263.jpg", "intro": "统计2017-2019欧洲学校在IEEE上的IV论文数量。", "href": "wyzx/IV.html", "tags": ["python"]},
+    {"title": "PreScan学习", "pic": "https://bing16.dynv6.net:1443/i/2024/02/05/65c0e66db9ce6.png", "intro": "", "href": "wyzx/PreScanLearning.html", "tags": ["ros"]}
 ]

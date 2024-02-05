@@ -59,13 +59,13 @@
 	<p class="formula"><span>从锐变和平面表面提取特征点。令`S`为同一次扫描中点`i`返回的连续点的集合。由于激光扫描仪产生的点是依次的CW或CCW，所以S每边包含一半的点，两个点之间的间隔为0.25。定义一个参数来描述局部表面的平滑度：`c=1/{|s|*||X_{(k,i)}^L||}*||sum_{j\inS,j!=i}(X_{(k,i)}^L-X_{(k,j)}^L)||`。</span></p>
 	<p class="formula"><span>根据`c`值进行排序，大的为边缘点，小的为平面点。因为在实际运用中只是比较点曲率的大小，因此在代码中只是求一个点周围五个点差的平方坐标该点的曲率。为了防止特征点聚集，将每一次扫描的点云分成四份，从每份中选取两个边缘点和四个平面点。</span></p>
 	<p>在选择点时希望避免选取已经选过点周围的点或者是在于激光线接近平行的平面上的点（如下图(a)中的点B），这些点通常认为是不可靠的，因为它们不能被任何时刻都能看到。同时我们也希望避免可能遮挡点（如下图(b)中的点A）。</p>
-	<img src="LOAMLearning/1.png" height="200"/>
+	<img src="https://bing16.dynv6.net:1443/i/2024/02/05/65c0e45f6ae35.png" height="200"/>
 	<p>B. 寻找特征对应</p>
 	<p class="formula"><span>设`t_k`为扫描`k`的起始时间。在完成一次扫描后会获得一个`P_k`，会对应到时间戳`t_{k+1}`，投影后的点云记作`\overline {P_k}`。在下一次扫描中会使用`\overline {P_k}`和`P_{k+1}`做匹配求激光雷达的运动。</span></p>
 	<p class="formula"><span>利用`P_{k+1}`的数据，通过上一步已经获得了特征点：边界点记为`E_{k+1}`、平面点记为`H_{k+1}`。在每次扫描过程中`E_{k+1}`、`H_{k+1}`通过当前的估计被投影到扫描起始点的坐标下，记为`E_{k+1}^~`、`H_{k+1}^~`。并为每个`E_{k+1}^~`、`H_{k+1}^~`找到`\overline {P_k}`中最近的相邻点。`\overline {P_k}`存储在3D KD-tree中，用于快速索引。</span></p>
 	<p class="formula"><span>令`i`为`E_{k+1}^~`中的一点。边线通过两个点表示。令`j`为`\overline{P_{k}}`中最接近`i`的点，令`l`为`j`的临近两个连续扫描中`i`的最近邻点。`(j,l)`构成了`i`的对应关系。为了验证`j`和`l`都是边缘点，我们检查它们的平滑度`c`。在这里我们要求`j`和`l`来自不同的扫描，因为一个线在一个扫描中最多有一个边缘点。除非边线在扫描平面上，但若这样则边缘线退化，在扫描平面上呈现为直线，不应首先提取边缘线上特征点。对于平面点对应上一时刻中的平面，依然首先找到上一帧数据最近点，并在该线扫上找到另一点，再在相邻扫描线上找一点，这样就可以保证三个点不在一条线上组成一个平面。</span></p>
 	<p class="formula"><span>例如下图(a)中橙色线代表j的统一扫描，蓝色线为两个连续扫描。在蓝线上找到点`l`，对应关系表示为`(j,l)`。为了找到图(b)中的平面片对应，分别在橙色线和蓝色线找到另外两个点`l`和`m`，表示为`(j,l,m)`。</span></p>
-	<img src="LOAMLearning/2.png" height="200"/>
+	<img src="https://bing16.dynv6.net:1443/i/2024/02/05/65c0e47de6b65.png" height="200"/>
 	<p class="formula"><span>利用特征点之间的对应关系，推导出计算特征点到特征点对应距离的表达式。对于点`iinE_{k+1}^~`，如果`(j,l)`为对应边界线，`j,lin\overline{P_k}`，点到线的距离表示为：`dE=|(X_{(k+1,i)}^{~L}-\overlineX_{(k,j)}^{L})\times(X_{(k+1,i)}^{~L}-\overlineX_{(k,l)}^{L})|/|\overlineX_{(k,j)}^{L}-\overlineX_{(k,l)}^{L}|`。（这里叉乘取模求2倍面积，然后除底边长度求距离。具体参考<a href="https://blog.csdn.net/liuyanpeng12333/article/details/82718277">LOAM 论文及原理分析</a>，其中关于面积的说法似乎有误。）对于平面点`iinH_{k+1}^~`，如果`(j,l,m)`为对应平面，`j,l,m in\overline{P_k}`，点到平面的距离表示为：`dH=|(X_{(k+1,i)}^{~L}-\overlineX_{(k,j)}^{L}),((\overlineX_{(k,j)}^{L}-\overlineX_{(k,l)}^{L})\times(\overlineX_{(k,j)}^{L}-\overlineX_{(k,m)}^{L}))|/|(\overlineX_{(k,j)}^{L}-\overlineX_{(k,l)}^{L})\times(\overlineX_{(k,j)}^{L}-\overlineX_{(k,m)}^{L})|`。（分子叉乘取模为体积，分母为底面积，求得高。具体参考<a href="https://blog.csdn.net/liuyanpeng12333/article/details/82718277">LOAM 论文及原理分析</a>，其中关于面积的说法似乎有误。）</span></p>
 	<p>C. 运动估计</p>
 	<p class="formula"><span>前面提到过论文假设激光雷达的运动为匀速模型。这允许我们在扫描中对不同时间接收到的点进行线性插值位姿变换。令`T_{k+1}^L=[t_x,t_y,t_z,\theta_x,\theta_y,\theta_z]`为`[t_{k+1},t]`间的雷达位姿变换。对于`iinP_{k+1}`，令`t_i`为其时间戳，`T_{(k+1,i)}^L`为在`[t_{k+1},t_i]`间的位姿变换，满足线性性`T_{(k+1,i)}^L=(t_i-t_{k+1})/(t-t_{k+1})T_{k+1}^L``。</span></p>
@@ -85,7 +85,7 @@
 	<p>2019.11.18：</p>
 	<h3>包含文件</h3>
 	<p>.launch文件包括hector_loam_velodyne.launch和loam_velodyne.launch。主要作用是运行节点程序scanRegistration、laserOdometry、laserMapping、transformMaintenance和可视化rviz，除rviz外分别对应到/src目录下.cpp文件。各节点间的通讯如下图：</p>
-	<img src="LOAMLearning/3.png" width="100%" />
+	<img src="https://bing16.dynv6.net:1443/i/2024/02/05/65c0e49365720.png" width="100%" />
 	<h3>各文件代码</h3>
 	<p>主要参考<a href="https://github.com/cuitaixiang/LOAM_NOTED">翻译过的程序</a>。</p>
 	<details class="menu" open>
@@ -250,7 +250,7 @@
 		对于32线scanID = int((angle + 92.0/3.0) * 3.0 / 4.0)，根据算法，0-31对应-92/3~32/3，即-30.67°~10.67°；<br>
 		对于64线，if (angle >= -8.83) scanID = int((2 - angle) * 3.0 + 0.5); else scanID = N_SCANS / 2 + int((-8.83 - angle) * 2.0 + 0.5)，令(2 - angle) * 3.0 = 0或N_SCANS / 2 + (-8.83 - angle) * 2.0 = 63，得对应2°~-24.33°。</p>
 	<p>根据官方<a href="https://hesaiweb2019.blob.core.chinacloudapi.cn/uploads/Pandar40P_User's_Manual.pdf">使用手册</a>，<br>
-		<img src="LOAMLearning/4.png" height="200" /><br>
+		<img src="https://bing16.dynv6.net:1443/i/2024/02/05/65c0e4a43cdd7.png" height="200" /><br>
 		4° (+11° to +15°) (Channel 2 to 1);<br>
 		3° (+5° to +11°) (Channel 4 to 2);<br>
 		2° (+3° to +5°) (Channel 5 to 4);<br>

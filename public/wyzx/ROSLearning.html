@@ -12,7 +12,7 @@
 
 <body>
 	            <h1>ROS平台简易教程</h1>
-					<img src="../images/1/ROSlearning.jpg" width="510">
+					<img src="https://bing16.dynv6.net:1443/i/2024/02/05/65c0e2871c655.jpg" width="510">
 					<p class="product-intro"><table>
 	            <tr><td>author：</td><td>QINBINGJIA</td> </tr>
 				<tr><td>time：</td><td>2019.02</td> </tr>
@@ -37,8 +37,8 @@
 <a href="http://wiki.ros.org/cn/ROS/Introduction ">cn/ROS/Introduction</a>。</li>
 	<li>其概念分为三个层次：文件系统层、计算图层、社区层<a href="http://wiki.ros.org/cn/ROS/Concepts">cn/ROS/Concepts</a>
 		<ul class="icons">
-			<li>文件系统层包括硬盘里能看到的ROS目录和文件。Packages是组成ROS的基本单元，用于创建ROS程序。<br><img src="ROSLearning/1.jpg" height="190" title="文件系统层"></li>
-			<li>计算图是ROS在点对点网络里整合并处理数据的过程。节点是ros程序的运行实例，类似于运行的一个进程。节点通过主题实现多对多的发送消息，通过服务完成一对一的请求和回复。Bags存储和返回ROS消息数据。<br><img src="ROSLearning/2.jpg" height="150" title="计算图层1">&emsp;&emsp;<img src="ROSLearning/3.jpg" height="180" title="计算图层2"></li>
+			<li>文件系统层包括硬盘里能看到的ROS目录和文件。Packages是组成ROS的基本单元，用于创建ROS程序。<br><img src="https://bing16.dynv6.net:1443/i/2024/02/05/65c0e2a921c02.jpg" height="190" title="文件系统层"></li>
+			<li>计算图是ROS在点对点网络里整合并处理数据的过程。节点是ros程序的运行实例，类似于运行的一个进程。节点通过主题实现多对多的发送消息，通过服务完成一对一的请求和回复。Bags存储和返回ROS消息数据。<br><img src="https://bing16.dynv6.net:1443/i/2024/02/05/65c0e2c18d91d.jpg" height="150" title="计算图层1">&emsp;&emsp;<img src="https://bing16.dynv6.net:1443/i/2024/02/05/65c0e2d5a77c2.jpg" height="180" title="计算图层2"></li>
 			<li>社区包括ROS的分发、存储库、论坛等。</li>
 		</ul>
 	</li>
@@ -62,7 +62,7 @@
      <p><ol>
 		<li>创建及打开visualization<br>$ catkin_create_pkg using_markers roscpp visualization_msgs #创建工作包<br>$ rosrun rviz rviz<br><br>export ROS_PACKAGE_PATH=~/catkin_ws/src:$ROS_PACKAGE_PATH</li><br>
 		<li>平台框架：<br><ul>
-			<li>目前搭建的框架：<br>目前来看 /map 和 /road 的功能类似，在可视化平台上显示路面信息，其中 /map 用灰度图表示障碍信息和道路信息。<br>主题 /car_info 收发车辆信息，其类型保存在 car_msg.msg 文件，vehicle类中有car_msg信息和主题消息发布的函数。<br><img src="ROSLearning/4.jpg" height="180" title="目前搭建的框架"></li>
+			<li>目前搭建的框架：<br>目前来看 /map 和 /road 的功能类似，在可视化平台上显示路面信息，其中 /map 用灰度图表示障碍信息和道路信息。<br>主题 /car_info 收发车辆信息，其类型保存在 car_msg.msg 文件，vehicle类中有car_msg信息和主题消息发布的函数。<br><img src="https://bing16.dynv6.net:1443/i/2024/02/05/65c0e2e357174.jpg" height="180" title="目前搭建的框架"></li>
 			<li>框架构想：<br>车辆信息通过car_msg类型传输<br>车辆的节点在一个主题发布自己的车辆信息<br>云平台接收原始数据，在另一个主题发送处理后的数据（flag、他车行为识别结果）<br>地图实现车辆、道路信息，冲突点栅格</li><br>
 			</ul></li>
 		<li>创建cpp文件<br>
@@ -309,7 +309,7 @@ int main( int argc, char** argv )
 		<li>可视化工具<br><ul>
 			<li>rqt_graph显示当前系统运行情况<br>安装：<br>sudo apt-get install ros-&lt;distro>-rqt&gt;<br>sudo apt-get install ros-&lt;distro&gt;-rqt-common-plugins<br>运行：<br>rosrun rqt_graph rqt_graph</li><br>
 			<li>rostopic echo [topic] 显示在某个话题上发布的数据<br>可能需要先运行：source devel/setup.bash</li><br>
-			<li>rqt_plot<br>$ rosrun rqt_plot rqt_plot 绘制话题数据的变化图形<br>可能也需要先运行：source devel/setup.bash<br><img src="ROSLearning/5.jpg" height="300"></li>
+			<li>rqt_plot<br>$ rosrun rqt_plot rqt_plot 绘制话题数据的变化图形<br>可能也需要先运行：source devel/setup.bash<br><img src="https://bing16.dynv6.net:1443/i/2024/02/05/65c0e2f6ceb77.jpg" height="300"></li>
 			</ul></li>
 		</ol></p>
 	 <p> </p>
