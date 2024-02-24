@@ -9,14 +9,39 @@ const routes = [
     },
     {
       path: '/bing16',
-      name: 'home',
+      name: 'bing16',
       component: HomeView
     },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   component: () => import('../views/AboutView.vue')
-    // }
+    {
+      path: '/index',
+      name: 'index',
+      component: HomeView
+    },
+    {
+      path: '/wyzx',
+      name: 'wyzx',
+      component: HomeView
+    },
+    {
+      path: '/sslx',
+      name: 'sslx',
+      component: HomeView
+    },
+    {
+      path: '/fgly',
+      name: 'fgly',
+      component: HomeView
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: HomeView
+    },
+    {
+      path: '/article/:pathMatch(.*)*',
+      name: 'article',
+      component: () => import('../views/Article.vue')
+    }
 ]
 
 const router = createRouter({

@@ -1,6 +1,6 @@
 export const DATA = [
     {"title": "一个网页制作作业", "pic": "https://bing16.dynv6.net:1443/i/2024/02/04/65bf9573a9f31.jpg", "intro": "初次学习网页制作的时候的课程作业，部分资源做了些许修改。", "href": "wyzx/哆啦世界/welcome.html", "tags": ["html"]},
-    {"title": "基于XY双轴移动LED的图片再现装置", "pic": "https://bing16.dynv6.net:1443/i/2024/02/04/65bf937be6588.jpg", "intro": "个人的智能硬件与智能系统小组项目。目前第二版封装完毕。", "href": "wyzx/ClassProject.html", "tags": ["machine", "art", "python", "arduino"]},
+    {"title": "基于XY双轴移动LED的图片再现装置", "pic": "https://bing16.dynv6.net:1443/i/2024/02/04/65bf937be6588.jpg", "intro": "个人的智能硬件与智能系统小组项目。目前第二版封装完毕。", "href": "wyzx/classProject", "type": "md", "tags": ["machine", "art", "python", "arduino"]},
     {"title": "MyRPI", "pic": "https://bing16.dynv6.net:1443/i/2024/02/04/65bf993366994.jpeg", "intro": "时隔多日，直到2022年中旬，该树莓派才沦为软路由，并兼具了NAS的功能。。。", "href": "wyzx/MyRPi.html", "tags": ["rpi", "ubuntu", "python"]},
     {"title": "ReRe-未来之书", "pic": "https://bing16.dynv6.net:1443/i/2024/02/04/65bf9655da853.jpg", "intro": "比赛项目，目前搁置。。。", "href": "wyzx/ReRe.html", "tags": ["art", "machine", "arduino"]},
     {"title": "ROS平台简易教程", "pic": "https://bing16.dynv6.net:1443/i/2024/02/04/65bf970018175.jpg", "intro": "结合个人在SRT项目中的使用情况完成。", "href": "wyzx/ROSLearning.html", "tags": ["python", "c++", "ubuntu", "ros"]},

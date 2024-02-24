@@ -102,3 +102,7 @@
 .el-image-viewer__next:hover {
   opacity: 0.8 !important;
 }
+
+.el-backtop:hover {
+  --el-backtop-hover-bg-color: #fffaf9 !important;
+}

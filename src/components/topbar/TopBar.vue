@@ -10,16 +10,16 @@
     >
       <img src="../../assets/logo.png" class="logo logo-phone" alt="bing16">
       <div class="flex-grow" />
-      <el-sub-menu index="2-4">
+      <el-sub-menu index="2-4" v-if="props.backTo === ''">
         <template #title>
           <el-icon><IconMenu /></el-icon>
         </template>
         <el-menu-item
             v-for="item in MENU_LIST"
             :index="item.key">
-          {{ item.name }}
+            <router-link :to="`/${item.key}`">{{ item.name }}</router-link>
         </el-menu-item>
-        <el-menu-item :index="INTRO">关于我</el-menu-item>
+        <el-menu-item :index="INTRO"><router-link :to="`/${INTRO}`">关于我</router-link></el-menu-item>
       </el-sub-menu>
     </el-menu>
 
@@ -33,31 +33,52 @@
       <img src="../../assets/logo.png" class="logo" alt="bing16">
       <span class="website-name">Bing16</span>
       <div class="flex-grow" />
-      <el-menu-item
+      <el-menu-item v-if="props.backTo === ''"
           v-for="item in MENU_LIST"
           :index="item.key">
-        {{ item.name }}
+          <router-link :to="`/${item.key}`">{{ item.name }}</router-link>
+      </el-menu-item>
+      <el-menu-item v-if="props.backTo !== ''">
+        <router-link :to="{ path: props.backTo }">返回</router-link>
       </el-menu-item>
       <el-divider direction="vertical" class="split"/>
-      <el-menu-item :index="INTRO">关于我</el-menu-item>
+      <el-menu-item v-if="props.backTo === ''" :index="INTRO"><router-link :to="`/${INTRO}`">关于我</router-link></el-menu-item>
+      <el-menu-item v-if="props.backTo !== ''" @click="close">关闭</el-menu-item>
     </el-menu>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { useRoute } from 'vue-router';
 import { MENU_LIST, INTRO, DEFAULT_MENU } from './config/Menu.js'
 import { isMobile } from '@/utils/MobileUtils'
 import {
   Menu as IconMenu,
 } from '@element-plus/icons-vue'
 
+const props = defineProps({
+    backTo: {
+      default: '',
+      type: String,
+    },
+    default: {
+      default: DEFAULT_MENU,
+      type: String,
+    }
+});
+
 const emit = defineEmits(["changeMenu"])
-const activeIndex = ref(DEFAULT_MENU)
+const activeIndex = ref(props.default)
 const mobile = isMobile()
 
+const router = useRoute()
 const handleSelect = (key: string) => {
   emit('changeMenu', key);
+}
+
+const close = () => {
+  window.close();
 }
 </script>
 

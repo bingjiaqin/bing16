@@ -1,16 +1,25 @@
 <script lang="ts" setup>
-import {ref, shallowRef, nextTick} from 'vue'
-import { COMPONENT_MAP, DEFAULT_MENU } from '@/components/topbar/config/Menu.js'
+import {ref, shallowRef, nextTick} from 'vue';
+import { useRoute } from 'vue-router';
+import { COMPONENT_MAP, DEFAULT_MENU } from '@/components/topbar/config/Menu.js';
 import TopBar from "@/components/topbar/TopBar.vue";
-import FooterBar from "@/components/footer/FooterBar.vue"
+import FooterBar from "@/components/footer/FooterBar.vue";
 
 const currPage = ref(DEFAULT_MENU);
 const selectedComponent = shallowRef(COMPONENT_MAP.get(DEFAULT_MENU));
 
 const changeMenu = (newMenu: string) => {
-  selectedComponent.value = COMPONENT_MAP.get(newMenu);
-  currPage.value = newMenu;
-  nextTick(() => scrollToTop());
+  const component = COMPONENT_MAP.get(newMenu)
+  if (component) {
+    selectedComponent.value = component;
+    currPage.value = newMenu;
+    nextTick(() => scrollToTop());
+  }
+}
+
+const { path, query, params } = useRoute();
+if (path !== '') {
+  changeMenu(path.substring(1));
 }
 
 const scrollToTop = () => {
@@ -23,14 +32,13 @@ const scrollToTop = () => {
     <el-container>
       <el-header>
         <top-bar
+            :default="currPage"
             @changeMenu="changeMenu"
         >
         </top-bar>
       </el-header>
       <el-container>
-        <el-main
-            :class="{mainPage:currPage === DEFAULT_MENU,
-            notMainPage:currPage !== DEFAULT_MENU}">
+        <el-main class="mainPage">
           <component :is="selectedComponent"></component>
           <el-footer>
             <footer-bar></footer-bar>

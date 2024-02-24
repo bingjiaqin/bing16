@@ -9,7 +9,7 @@ export const FGLY = 'fgly';
 export const SSLX = 'sslx';
 export const WYZX = 'wyzx';
 export const INDEX = 'index';
-export const INTRO = 'intro';
+export const INTRO = 'about';
 
 export const DEFAULT_MENU = INDEX;
 
