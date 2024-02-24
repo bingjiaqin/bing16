@@ -12,7 +12,7 @@ const mobile = isMobile()
  // 动态导入txt文件内容
  async function loadTxtFile() {
     const { path, query, params } = useRoute();
-    const filePath = `/public/${path}.md`;
+    const filePath = `${path}.md`;
     try {
         const response = await fetch(filePath);
         if (!response.ok) throw new Error('Failed to load the file');

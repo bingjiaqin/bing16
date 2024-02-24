@@ -26,7 +26,7 @@ const filteredData = ref(data);
               <time class="time">{{ item.intro }}</time>
             </div>
             <div v-if="item.type==='md'">
-              <router-link :to="{ path: `article/${item.href}` }" target="_blank">查看</router-link>
+              <router-link :to="{ path: `/article/${item.href}` }" target="_blank">查看</router-link>
             </div>
             <div v-else>
               <a :href="item.href" target="_blank">查看</a>
