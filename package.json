@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --mode gh",
+    "cfbuild": "vite build --mode cf",
     "preview": "vite preview"
   },
   "dependencies": {
