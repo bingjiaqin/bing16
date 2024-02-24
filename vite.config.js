@@ -21,7 +21,7 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  base: "/",
+  base: "/bing16/",
   build: {
     outDir: "docs"
   },
