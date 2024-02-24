@@ -24,8 +24,11 @@ const filteredData = ref(data.itmes);
             <div class="bottom" style="margin-bottom: 20px;">
               <time class="time">{{ item.intro }}</time>
             </div>
-            <div style="margin-bottom: 20px;">[{{ item.type }}]</div>
-            <div>
+            <div style="margin-bottom: 20px;">[{{ item.group }}]</div>
+            <div v-if="item.type==='md'">
+              <router-link :to="{ path: `/article/${item.href}` }" target="_blank">查看</router-link>
+            </div>
+            <div v-else>
               <a :href="item.href" target="_blank">查看</a>
             </div>
           </div>

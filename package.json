@@ -14,6 +14,7 @@
     "element-plus": "^2.3.9",
     "or": "^0.2.0",
     "vh-check": "^2.0.5",
+    "vite-plugin-prismjs": "^0.0.11",
     "vue": "^3.3.4",
     "vue-router": "^4.3.0"
   },

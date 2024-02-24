@@ -5,6 +5,7 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import prismjs from 'vite-plugin-prismjs'
 
 export default defineConfig(({ command, mode }) => {
   let base;
@@ -21,6 +22,9 @@ export default defineConfig(({ command, mode }) => {
       ),
       Components({
         resolvers: [ElementPlusResolver()]
+      }),
+      prismjs({
+        languages: ['json','python','bash','cpp'],
       }),
     ],
     resolve: {
