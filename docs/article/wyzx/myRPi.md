@@ -368,3 +368,252 @@ pip install opencv-contrib-python
 具体使用起来，作为NAS，连接网线的时候速度还好，但wifi接入时，拷贝大量数据的场景下就挺吃力了，尤其当作mac时间机器初次拷贝就要很久（相关配置参考：[时间机器还可以和smb共享文件夹配合做局域网内备份&苹果备份&nas苹果备份](https://www.bilibili.com/read/cv17340577/)、[Mac时间机器备份加速教程，Time Machine 备份太慢的解决方法](https://www.bilibili.com/read/cv14824020)）。
 
 未来可能想要做的功能有：接入homekit进行智能控制（可能需要红外硬件）、基于docker的尝试（毕竟tf卡还有很大一块空间）……
+
+## openwrt安装和基本配置
+
+2024.02.07补充
+
+* 下载镜像包
+
+https://github.com/SuLingGG/OpenWrt-Rpi
+
+https://openwrt.cc/releases/targets/bcm27xx/bcm2711/
+
+immortalwrt-bcm27xx-bcm2711-rpi-4-ext4-factory.img.gz
+
+* 烧录
+
+* 插入sd卡
+
+* 连接wifi
+
+* 登录
+
+* 修改登录密码
+
+* 修改wifi密码
+
+* 配置网络端口
+
+wan - DHCP客户端
+
+Lan - 静态地址，开启动态DHCP
+
+* 修改ssh端口号
+
+``` bash
+rm -rf /Users/xxx/.ssh/known_host # 删除mac上的ssh记录
+```
+
+``` bash
+ssh -p xxx root@192.168.19.1
+```
+
+* 挂载磁盘
+
+rm -f /sbin/mount.ntfs
+opkg install ntfs-3g
+mkdir /mnt/usb2
+ntfs-3g /dev/sda2 /mnt/usb2 -o rw,lazytime,noatime,big_writes
+mkdir /mnt/usb
+ntfs-3g /dev/sdb2 /mnt/usb -o rw,lazytime,noatime,big_writes
+
+* 配置启动项
+
+``` bash
+sleep 1
+
+ntfs-3g /dev/sda2 /mnt/usb2 -o rw,lazytime,noatime,big_writes
+ntfs-3g /dev/sdb2 /mnt/usb -o rw,lazytime,noatime,big_writes
+
+docker kill lsky-pro
+docker start lsky-pro
+
+docker kill nginx-proxy
+docker start nginx-proxy
+
+exit 0
+```
+
+* 扩容
+
+``` bash
+fdisk -l
+
+fdisk /dev/mmcblk0
+
+mkfs.ext4 /dev/mmcblk0p3
+```
+
+挂载点
+
+添加
+
+启用
+
+根
+
+``` bash
+mkdir -p /tmp/introot
+mkdir -p /tmp/extroot
+mount --bind / /tmp/introot
+mount /dev/mmcblk0p3 /tmp/extroot
+tar -C /tmp/introot -cvf - . | tar -C /tmp/extroot -xf -
+umount /tmp/introot
+umount /tmp/extroot
+
+reboot
+```
+
+* 订阅飞机场节点
+
+* Wan6 配置
+
+https://github.com/SuLingGG/OpenWrt-Rpi/wiki/IPV6配置
+
+https://openwrt.cc/scripts/
+
+ipv6-helper.sh
+
+* lan
+
+ipv6分配长度：64
+
+使用内置IPV6管理
+
+路由通告服务：服务器
+
+DHCPv6服务：服务器
+
+NDP代理：混合
+
+DHCPv6模式：无状态+有状态
+
+* WAN6
+
+指定请求长度的ipv6前缀：64
+
+使用内置IPV6管理
+
+* /etc/config/dhcp
+
+```
+config dhcp 'lan'                                              
+        option interface 'lan'                                 
+        option start '100'                                     
+        option limit '150'                                     
+        option leasetime '12h'                                 
+        option ra_slaac '1'                                    
+        list ra_flags 'managed-config'                         
+        list ra_flags 'other-config'                           
+        option ra 'server'            
+        option dhcpv6 'server'        
+        option ndp 'hybrid'           
+        option ra_management '1'
+```
+
+```
+config dhcp 'wan'                                              
+        option interface 'wan'                                 
+        option ignore '1'                                      
+        option dhcpv6 'relay'                                  
+        option ra 'relay'                                      
+        option ndp 'relay'                                     
+        option master '1' 
+```
+
+```
+config dhcp 'wan6'                                   
+        option interface 'wan6'                      
+        option ignore '1'                            
+        option master '1'                            
+        option ra 'relay'                            
+        list ra_flags 'none'                         
+        option dhcpv6 'relay'                        
+        option ndp 'relay' 
+```
+
+* ddns
+
+* https证书
+
+``` bash
+cd ~ && mkdir dynv6
+```
+
+* smba配置
+
+```
+	#invalid users = root
+```
+
+```
+smbpasswd -a root
+```
+
+* transmission配置
+
+## nginx docker
+
+``` bash
+docker run --name nginx -p xxx:443 -d nginx
+
+docker run --name nginx-proxy -p xxx:443 -d nginx
+
+docker exec  -it nginx-proxy /bin/bash
+
+vi /etc/nginx/nginx.conf
+```
+
+```
+    server {
+        listen 443 ssl;
+        server_name xxxxx.net;
+        ssl_certificate /dynv6/fullchain.crt;
+        ssl_certificate_key /dynv6/private.pem;
+        ssl_session_timeout 5m;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+        ssl_prefer_server_ciphers on;
+
+        client_max_body_size 1024m;
+
+        location / {
+	    proxy_pass http://192.168.19.1:xxx;
+            proxy_set_header X-Forwarded-Host $http_host;
+        }
+    }
+```
+
+``` bash
+nginx -s reload
+```
+
+配置重启策略
+
+## lsky docker
+
+``` bash
+docker run -d --name lsky-pro --restart unless-stopped -p xxx:8089 -v $PWD/lsky:/var/www/html -v /xxxxx:/var/www/html/storage/app/uploads -e WEB_PORT=8089 halcyonazure/lsky-pro-docker:latest
+
+docker start lsky-pro
+```
+
+lsky-pro/app/Providers/AppServiceProvider.php 32行添加：
+
+``` php
+\Illuminate\Support\Facades\URL::forceScheme('https');
+```
+
+.env 文件：
+
+```
+ASSET_URL=https://你的域名
+```
+
+nginx转发添加：
+```
+proxy_set_header X-Forwarded-Host $http_host
+```
+
+配置重启策略

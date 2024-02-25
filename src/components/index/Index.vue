@@ -28,7 +28,7 @@ function load() {
     <el-row v-for="(component, index) in components" class="index">
       <component :is="component"
        :bgColor="`${index % 2 === 0 ? '#000' : ''}`"
-       :color="`${index % 2 === 0 ? '#fff' : ''}`"></component>
+       :color="`${index % 2 === 0 ? '#9f9f9f' : ''}`"></component>
     </el-row>
   </el-row>
 </template>

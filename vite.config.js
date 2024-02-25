@@ -24,7 +24,7 @@ export default defineConfig(({ command, mode }) => {
         resolvers: [ElementPlusResolver()]
       }),
       prismjs({
-        languages: ['json','python','bash','cpp'],
+        languages: ['json','python','bash','cpp','php'],
       }),
     ],
     resolve: {
