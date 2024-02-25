@@ -1,6 +1,8 @@
 <h1 align="center">ClassProject：基于XY双轴移动LED的图片再现装置</h1>
 
-![](https://bing16.dynv6.net:1443/i/2024/02/04/65bf937be6588.jpg "初次成功曝光") {{{width="200" height="auto"}}}
+<p align="center">
+<img src="https://bing16.dynv6.net:1443/i/2024/02/04/65bf937be6588.jpg" width="510" />
+</p>
 
 - author：QINBINGJIA、LIUHENG、NIUXIANGFU
 - time： 2018.05

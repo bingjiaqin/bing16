@@ -5,7 +5,7 @@ import TopBar from "@/components/topbar/TopBar.vue";
 import FooterBar from "@/components/footer/FooterBar.vue";
 import { isMobile } from '@/utils/MobileUtils';
 
-const markdown = ref('## 404 Not Fount');
+const markdown = ref('');
 const root = ref('notFound');
 const mobile = isMobile()
  
@@ -17,11 +17,13 @@ const mobile = isMobile()
         const response = await fetch(filePath);
         if (!response.ok) throw new Error('Failed to load the file');
         markdown.value = await response.text();
+        const rootStart = path.indexOf('/', 1);
+        root.value = path.substring(rootStart, path.indexOf('/', rootStart + 1));
     } catch (error) {
         console.log(`Error loading the text file: ${error}`);
+        markdown.value = '## 404 Not Fount';
+        root.value = 'notFound';
     }
-    const rootStart = path.indexOf('/', 1);
-    root.value = path.substring(rootStart, path.indexOf('/', rootStart + 1))
  }
 
  loadTxtFile();
