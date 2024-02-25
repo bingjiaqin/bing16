@@ -551,7 +551,7 @@ cd ~ && mkdir dynv6
 smbpasswd -a root
 ```
 
-* transmission配置
+## transmission配置
 
 ## nginx docker
 
