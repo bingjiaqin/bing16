@@ -60,7 +60,7 @@ onMounted(() => updateTitiles());
         await nextTick();
         updateTitiles();
         const gitalk = new Gitalk({
-          proxy: 'https://vercel.prohibitorum.top/github_access_token',
+          proxy: 'https://cors-server-bingjiaqins-projects.vercel.app/github_access_token',
           clientID: 'bd70159022856152eba3',
           clientSecret: '00c5f2aa482dab0cad6074e4d96ccae5def604a5',
           repo: 'bing16',      // The repository of store comments,
