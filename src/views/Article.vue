@@ -137,6 +137,7 @@ onMounted(() => updateTitiles());
       align-items: center;
       cursor: pointer;
       z-index: 999;
+      box-shadow: var(--el-box-shadow-lighter);
     }
 
     .directory:hover {
