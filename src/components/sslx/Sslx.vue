@@ -3,6 +3,8 @@ import { onMounted, ref } from 'vue';
 import { DATA } from './sslx.js';
 import { isMobile } from "@/utils/MobileUtils";
 import { Search } from '@element-plus/icons-vue';
+import 'gitalk/dist/gitalk.css';
+import Gitalk from 'gitalk';
 
 const data = DATA;
 const filteredData = ref(data);
@@ -24,7 +26,6 @@ const currentChange = (curr) => {
 }
 
 const filter = (key) => {
-  debugger
   keyword.value = key;
   if (keyword.value.length > 0) {
     const filtered = [];
@@ -62,6 +63,18 @@ onMounted(() => {
   for (let elements of document.getElementsByClassName("el-pagination__goto")) {
     elements.childNodes[0].nodeValue = "";
   }
+
+  const gitalk = new Gitalk({
+    proxy: 'https://cors-server-bingjiaqins-projects.vercel.app/github_access_token',
+    clientID: 'bd70159022856152eba3',
+    clientSecret: '00c5f2aa482dab0cad6074e4d96ccae5def604a5',
+    repo: 'bing16',      // The repository of store comments,
+    owner: 'bingjiaqin',
+    admin: ['bingjiaqin'],
+    id: `sslx-${currPage.value}`,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  });
+  gitalk.render('gitalk-container');
 });
 </script>
 <template>
@@ -133,6 +146,8 @@ onMounted(() => {
         </el-col>
       </el-row>
     </div>
+    <el-divider />
+    <div id="gitalk-container"></div>
   </div>
 </template>
 

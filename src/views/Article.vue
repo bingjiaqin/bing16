@@ -113,6 +113,7 @@ loadTxtFile();
               </div>
             </el-popover>
           <v-md-editor :model-value="markdown" mode="preview" ref="previewRef"></v-md-editor>
+          <el-divider />
           <div id="gitalk-container"></div>
         </div>
       </el-main>
