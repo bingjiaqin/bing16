@@ -23,7 +23,6 @@ const currentChange = (curr) => {
   } else {
     currData.value = filteredData.value[curr - 1];
   }
-  loadGitalk();
 }
 
 const filter = (key) => {
@@ -75,7 +74,7 @@ const loadGitalk = () => {
     repo: 'bing16',      // The repository of store comments,
     owner: 'bingjiaqin',
     admin: ['bingjiaqin'],
-    id: `sslx-${currPage.value}`,      // Ensure uniqueness and length less than 50
+    id: `sslx`,      // Ensure uniqueness and length less than 50
     distractionFreeMode: false  // Facebook-like distraction free mode
   });
   gitalk.render('gitalk-container');
