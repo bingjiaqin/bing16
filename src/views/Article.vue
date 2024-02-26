@@ -31,7 +31,6 @@ const titles = ref();
 
 const updateTitiles = () => {
   const anchors = previewRef.value.$el.querySelectorAll('h2,h3,h4,h5');
-  debugger
   titles.value = Array.from(anchors).filter((title:any) => !!title.innerText.trim());
   if (!titles.value.length) {
     titles.value = [];
