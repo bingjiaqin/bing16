@@ -4,8 +4,6 @@ import { useRoute } from 'vue-router';
 import TopBar from "@/components/topbar/TopBar.vue";
 import FooterBar from "@/components/footer/FooterBar.vue";
 import { isMobile } from '@/utils/MobileUtils';
-import 'gitalk/dist/gitalk.css';
-import Gitalk from 'gitalk';
 
 const markdown = ref('');
 const root = ref('notFound');
@@ -60,16 +58,6 @@ onMounted(() => updateTitiles());
         root.value = path.substring(rootStart, path.indexOf('/', rootStart + 1));
         await nextTick();
         updateTitiles();
-        const gitalk = new Gitalk({
-          clientID: 'bd70159022856152eba3',
-          clientSecret: '00c5f2aa482dab0cad6074e4d96ccae5def604a5',
-          repo: 'bing16',      // The repository of store comments,
-          owner: 'bingjiaqin',
-          admin: ['bingjiaqin'],
-          id: filePath,      // Ensure uniqueness and length less than 50
-          distractionFreeMode: false  // Facebook-like distraction free mode
-        });
-        gitalk.render('gitalk-container');
     } catch (error) {
         console.log(`Error loading the text file: ${error}`);
         markdown.value = '## 404 Not Fount';
@@ -77,8 +65,7 @@ onMounted(() => updateTitiles());
     }
  }
 
-loadTxtFile();
-
+ loadTxtFile();
  
 </script>
 
@@ -113,7 +100,6 @@ loadTxtFile();
               </div>
             </el-popover>
           <v-md-editor :model-value="markdown" mode="preview" ref="previewRef"></v-md-editor>
-          <div id="gitalk-container"></div>
         </div>
       </el-main>
       <el-footer>
