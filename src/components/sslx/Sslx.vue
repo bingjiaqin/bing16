@@ -23,6 +23,7 @@ const currentChange = (curr) => {
   } else {
     currData.value = filteredData.value[curr - 1];
   }
+  loadGitalk();
 }
 
 const filter = (key) => {
@@ -63,7 +64,10 @@ onMounted(() => {
   for (let elements of document.getElementsByClassName("el-pagination__goto")) {
     elements.childNodes[0].nodeValue = "";
   }
+  loadGitalk();
+});
 
+const loadGitalk = () => {
   const gitalk = new Gitalk({
     proxy: 'https://cors-server-bingjiaqins-projects.vercel.app/github_access_token',
     clientID: 'bd70159022856152eba3',
@@ -75,7 +79,8 @@ onMounted(() => {
     distractionFreeMode: false  // Facebook-like distraction free mode
   });
   gitalk.render('gitalk-container');
-});
+}
+
 </script>
 <template>
   <div class="content">
