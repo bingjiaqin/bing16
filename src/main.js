@@ -12,6 +12,7 @@ import '@kangc/v-md-editor/lib/style/base-editor.css';
 import vuepressTheme from '@kangc/v-md-editor/lib/theme/vuepress.js';
 import '@kangc/v-md-editor/lib/theme/style/vuepress.css';
 import Prism from 'prismjs';
+import './styles/font.scss';
 
 VueMarkdownEditor.use(vuepressTheme, {
     Prism,
