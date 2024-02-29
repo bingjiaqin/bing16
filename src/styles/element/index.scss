@@ -110,3 +110,35 @@
 * {
   font-family: "lxgw";
 }
+
+.gt-container {
+  .gt-btn {
+    background-color: #EA5857;
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .gt-btn-preview {
+    background-color: #fff;
+    color: #EA5857;
+  }
+
+  .gt-svg svg {
+    fill: #EA5857;
+  }
+
+  .gt-ico-github svg {
+    fill: #000;
+  }
+
+  .gt-header-controls-tip {
+    color: #EA5857;
+  }
+
+  .gt-link {
+    border-bottom: 1px dotted #EA5857;
+  }
+
+  a {
+    color: #EA5857;
+  }
+}
