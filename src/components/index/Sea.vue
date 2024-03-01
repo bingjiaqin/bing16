@@ -36,13 +36,12 @@ defineProps({
     </el-col>
     <el-col :sm="24" :md="13">
       <div class="pic">
-        <el-image
-            :class="{smallPic: index !== 0}"
+        <img
+            :class="{smallPic: index !== 0, mainPic: index === 0}"
             v-for="(pic, index) in picList"
             @click="view(index)"
             :src="pic"
-            loading="lazy"
-            fit="cover" />
+            loading="lazy"/>
         <el-image-viewer
             hide-on-click-modal
             teleported
@@ -79,6 +78,9 @@ defineProps({
   width: 100%;
   top:calc(50%);
   transform: translateY(-50%);
+}
+.mainPic {
+  width: 100%;
 }
 .smallPic {
   width: calc(100%/5);

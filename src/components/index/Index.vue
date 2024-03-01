@@ -39,7 +39,7 @@ function load() {
   width: 100%;
 }
 .welcome {
-  padding: 0 60px;
-  min-height: calc(100vh - 90px);
+  padding: 0 30px;
+  min-height: calc(100vh - 180px);
 }
 </style>
