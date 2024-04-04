@@ -33,7 +33,7 @@ function findMe() {
 </script>
 
 <template>
-  <el-row class="welcome" :style="{ 'background-color': bgColor, color: color }">
+  <el-row class="welcome1" :style="{ 'background-color': bgColor, color: color }">
     <el-col :sm="24" :md="12">
       <div
         class="main-col main-text"
@@ -42,8 +42,8 @@ function findMe() {
         <p><span>我就是我</span>。</p>
         <p>这里是我的个人网站，会有一些个人的
           <span>项目记录</span>
-          以及比较个人的
-          <span>随感</span>。
+          以及比较
+          <span>个人的随感</span>。
         </p>
         <p>如果你从别的地方找到这里，
           <span @click="findMe">欢迎联系我</span>。
@@ -81,7 +81,7 @@ h1 {
 }
 .main-col {
   position: relative;
-  top: 50%;
+  top: 35%;
   transform: translateY(-55%);
 }
 .main-text {
@@ -91,12 +91,12 @@ h1 {
 
   &.mobile {
     min-height: 20px;
-    top:calc(50%);
+    top:calc(35%);
     transform: translateY(-50%);
   }
   &.notMobile {
     min-height: 350px;
-    top:calc(50%);
+    top:calc(32%);
     transform: translateY(-30%);
   }
 }
@@ -108,7 +108,12 @@ h1 {
     height: 450px;
   }
 }
-.welcome {
+.welcome1 {
+  top: 150px;
   width: 100%;
+  padding: 90px 60px 0 60px;
+  background-color: var(--color-background);
+  z-index: 100;
+  min-height: 100vh;
 }
 </style>

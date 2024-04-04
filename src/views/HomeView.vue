@@ -38,9 +38,9 @@ const scrollToTop = () => {
         </top-bar>
       </el-header>
       <el-container>
-        <el-main class="mainPage">
+        <el-main class="mainPage" :class="{notMainPage: currPage !== 'index'}">
           <component :is="selectedComponent"></component>
-          <el-footer>
+          <el-footer v-if="currPage !== 'index'">
             <footer-bar></footer-bar>
           </el-footer>
         </el-main>
@@ -63,14 +63,14 @@ const scrollToTop = () => {
   position: relative;
   width: 100%;
   height: 90px;
+  z-index: 99;
 }
 
 .el-main {
   width: 100%;
   bottom: 0;
   &.mainPage {
-    position: relative;
-    top: calc(90px);
+    position: absolute;
     overflow-y: hidden;
   }
   &.mainPage::-webkit-scrollbar {

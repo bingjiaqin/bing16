@@ -4,11 +4,14 @@ import Sea from "./Sea.vue";
 import Color from "@/components/index/Color.vue";
 import LookFor from "@/components/index/LookFor.vue";
 import Forget from "@/components/index/Forget.vue";
+import {isMobile} from "@/utils/MobileUtils";
 import { ref, shallowRef } from 'vue';
 
 const allComponents = [Forget, LookFor, Color, Sea];
 const components = shallowRef([allComponents[0]]);
 const nextComponentIdx = ref(1);
+
+const mobile = isMobile()
 
 function load() {
   if (nextComponentIdx.value < allComponents.length) {
@@ -19,27 +22,39 @@ function load() {
 </script>
 
 <template>
-  <el-row class="index welcome">
-    <welcome-page></welcome-page>
-  </el-row>
-  <el-row
-    v-infinite-scroll="load"
-    :infinite-scroll-disabled="nextComponentIdx >= allComponents.length">
-    <el-row v-for="(component, index) in components" class="index">
-      <component :is="component"
-       :bgColor="`${index % 2 === 0 ? '#000' : ''}`"
-       :color="`${index % 2 === 0 ? '#9f9f9f' : ''}`"></component>
+  <main :class="{mobile:mobile, notMobile:!mobile}">
+    <el-row class="index">
+      <welcome-page></welcome-page>
     </el-row>
-  </el-row>
+    <el-row
+      v-infinite-scroll="load"
+      :infinite-scroll-disabled="nextComponentIdx >= allComponents.length">
+      <el-row v-for="(component, index) in components" class="index" style="z-index: 100;">
+        <component :is="component"
+        :bgColor="`${index % 2 === 0 ? '#000' : 'var(--color-background)'}`"
+        :color="`${index % 2 === 0 ? '#9f9f9f' : ''}`"></component>
+      </el-row>
+    </el-row>
+  </main>
 </template>
 
 <style scoped>
+main {
+  overflow: scroll;
+  height: 100vh;
+  overflow-x: hidden;
+
+  &.mobile {
+  scroll-snap-type: y proximity;
+  }
+
+  &.notMobile {
+  scroll-snap-type: y mandatory;
+  }
+}
 .index {
   min-height: 100vh;
   width: 100%;
-}
-.welcome {
-  padding: 0 30px;
-  min-height: calc(100vh - 180px);
+  scroll-snap-align: start;
 }
 </style>
