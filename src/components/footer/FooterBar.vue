@@ -18,5 +18,6 @@
   padding-left: 30px;
   padding-right: 30px;
   text-align: right;
+  z-index: 99;
 }
 </style>
