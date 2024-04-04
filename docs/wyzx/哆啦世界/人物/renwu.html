@@ -1,0 +1,359 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>人物介绍</title>
+<style type="text/css">
+<!--
+body {
+	background-image: url(../images/bg-tree-bark.png);
+}
+-->
+#Layer3 {
+	position:fixed;
+	width:200px;
+	bottom:150px;
+	height:115px;
+	z-index:1;
+}
+#Layer1 {
+	position:fixed;
+	width:200px;
+	bottom:70px;
+	height:115px;
+	z-index:1;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+</style>
+<script type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+</head>
+
+<body link="#1e8bc3" vlink="#fd8b46" alink="white" style="" onload="MM_preloadImages('../images/renwu2.png','../images/juchang2.png','../images/fanwai2.png','../images/xiangguan2.png','../images/none.png','../images/diantibantext.png')">
+
+<a name="top"></a>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+    <tr>
+      <td height="10"></td>
+    </tr>
+</table>
+
+<div align="center"><img src="../images/logo.gif" width="400" height="150" />
+  <table width="800" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><div align="center"><a href="../人物/renwu.html" target="_self" onclick="MM_nbGroup('down','group1','renwu','../images/renwu2.png',1)" onmouseover="MM_nbGroup('over','renwu','../images/renwu2.png','',1)" onmouseout="MM_nbGroup('out')"><img src="../images/renwu.png" alt="" name="renwu" width="120" height="50" border="0" id="renwu" onload="" /></a></div></td>
+      <td><div align="center"><a href="../剧场/juchang.html" target="_self" onclick="MM_nbGroup('down','group1','juchang','../images/juchang2.png',1)" onmouseover="MM_nbGroup('over','juchang','../images/juchang2.png','',1)" onmouseout="MM_nbGroup('out')"><img src="../images/juchang.png" alt="" name="juchang" width="120" height="50" border="0" id="juchang" onload="" /></a></div></td>
+      <td><div align="center"><a href="../番外/fanwai.html" target="_self" onclick="MM_nbGroup('down','group1','fanwai','../images/fanwai2.png',1)" onmouseover="MM_nbGroup('over','fanwai','../images/fanwai2.png','',1)" onmouseout="MM_nbGroup('out')"><img src="../images/fanwai.png" alt="" name="fanwai" width="120" height="50" border="0" id="fanwai" onload="" /></a></div></td>
+      <td><div align="center"><a href="../相关/xiangguan.html" target="_self" onclick="MM_nbGroup('down','group1','xiangguan','../images/xiangguan2.png',1)" onmouseover="MM_nbGroup('over','xiangguan','../images/xiangguan2.png','',1)" onmouseout="MM_nbGroup('out')"><img src="../images/xiangguan.png" alt="" name="xiangguan" width="120" height="50" border="0" id="xiangguan" onload="" /></a></div></td>
+    </tr>
+  </table>
+</div>
+  
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+    <tr>
+      <td height="20"></td>
+    </tr>
+</table>
+
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr height="20">
+    <td width="20" background="../images/1.png"></td>
+    <td width="771" bgcolor="#FFFFFF"></td>
+    <td width="1" bgcolor="#FFFFFF"></td>
+    <td width="148" bgcolor="#FFFFFF"></td>
+    <td width="20" height="20" background="../images/2.png"></td>
+  </tr>
+  <tr height="150">
+    <td bgcolor="#FFFFFF"></td>
+    <td bgcolor="#FFFFFF"><table width="610" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td></td>
+      </tr>
+	  <tr>
+        <td height="340" background="images/card.png">
+<a name="duola"></a>		
+		  <table width="500" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="165" height="20">姓名： 哆啦A梦</td>
+            <td width="182">ドラえもん</td>
+            <td width="153" height="176" rowspan="3"><div align="center">
+              <p><img src="images/doraemon.jpg" width="150" height="176" border="2" /></p>
+              </div></td>
+          </tr>
+          <tr>
+            <td width="165" height="20">性别： 男</td>
+            <td>生日： 2112年9月3日</td>
+            </tr>
+          <tr>
+            <td>身高：129.3cm</td>
+            <td>体重：129.3kg</td>
+            </tr>
+          <tr>
+            <td height="25" colspan="3"></td>
+            </tr>
+          <tr>
+            <td height="20" colspan="3">简介：猫型机器人，来自未来。喜欢铜锣烧，讨厌老鼠。配音：大山のぶ代&rarr;水田山葵&nbsp;<a href="duoraemon.html" target="_blank" >more...</a></td>
+            </tr>
+        </table>
+		
+		</td>
+      </tr>
+	  
+	       <tr height="20">
+            <td></td>
+            <td width="10"></td>
+        </tr>
+          <tr>
+		  
+  
+      <tr>
+
+        <td height="341" background="images/card.png">		<table width="500" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>	  <a name="daxiong"></a>		
+            <td width="165" height="20">姓名： 野比大雄</td>
+            <td width="182">野比のび太</td>
+            <td width="153" height="176" rowspan="3"><div align="center">
+              <p><img src="images/daxiong.jpg" width="150" height="176" border="2" /></p>
+              </div></td>
+          </tr>
+          <tr>
+            <td height="20">性别： 男</td>
+            <td>生日： 1964年8月7日</td>
+            </tr>
+          <tr>
+            <td>身高：136厘米</td>
+            <td>体重：28千克</td>
+            </tr>
+          <tr>
+            <td height="20" colspan="3"></td>
+            </tr>
+		  
+          <tr>
+            <td height="20" colspan="3">简介：擅长射击、翻花绳。配音：小原乃梨子&rarr;大原惠&nbsp;<a href="daxiong.html" target="_blank">more...</a></td>
+            </tr>
+		  
+		  
+        </table>
+		</td>
+      </tr>
+	  
+	  
+      <tr>
+        <td height="20"></td>
+      </tr>
+
+	  
+      <tr>
+        <td height="340" background="images/card.png"><table width="500" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>	  <a name="jingxiang"></a>
+            <td width="165" height="20">姓名： 静香</td>
+            <td width="182">源 静香</td>
+            <td width="153" height="176" rowspan="3"><div align="center">
+              <p><img src="images/jingxiang.jpg" width="150" height="176" border="2" /></p>
+              </div></td>
+          </tr>
+          <tr>
+            <td width="165" height="20">性别： 女</td>
+            <td>生日： 1964年5月2日</td>
+            </tr>
+          <tr>
+            <td>身高：136厘米</td>
+            <td>体重：28千克</td>
+            </tr>
+          <tr>
+            <td height="20" colspan="3"></td>
+            </tr>
+          <tr>
+            <td height="20" colspan="3"><p>简介：喜欢弹小提琴、烤地瓜、爬树、下厨等。
+              配音：野村道子&rarr;かかずゆみ&nbsp;<a href="jingxiang.html" target="_blank" >more...</a></p></td>
+            </tr>
+        </table></td>
+      </tr>
+	  
+	  <tr>
+        <td height="20"></td>
+      </tr>
+	  
+
+	  
+      <tr>
+        <td height="340" background="images/card.png"><table width="500" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>	  <a name="panghu"></a>
+            <td width="165" height="20">姓名： 刚田虎</td>
+            <td width="182">刚田 武シァィンり</td>
+            <td width="153" height="176" rowspan="3"><div align="center">
+              <p><img src="images/panghu.jpg" width="150" height="176" border="2" /></p>
+              </div></td>
+          </tr>
+          <tr>
+            <td width="165" height="20">性别： 男</td>
+            <td>生日： 1964年6月15日</td>
+            </tr>
+          <tr>
+            <td>身高：145厘米</td>
+            <td>体重：34千克</td>
+            </tr>
+          <tr>
+            <td height="20" colspan="3"></td>
+            </tr>
+          <tr>
+            <td height="20" colspan="3">简介：&ldquo;孩子王&rdquo;，兴趣多元，&ldquo;胖虎棒球队&rdquo;队长。配音：立壁和也&rarr;木村昴&nbsp;<a href="panghu.html" target="_blank" >more...</a></td>
+            </tr>
+        </table></td>
+      </tr>
+	  
+
+	  
+	  	  <tr>
+        <td height="20"></td>
+      </tr>
+	  
+      <tr>
+        <td height="340" background="images/card.png"><table width="500" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>	  <a name="xiaofu"></a>
+            <td width="165" height="20">姓名： 骨川小夫</td>
+            <td width="182">骨川 スネ夫</td>
+            <td width="153" height="176" rowspan="3"><div align="center">
+              <p><img src="images/xiaofu.jpg" width="150" height="176" border="2" /></p>
+              </div></td>
+          </tr>
+          <tr>
+            <td width="165" height="20">性别： 男</td>
+            <td>生日： 1965年2月29日</td>
+            </tr>
+          <tr>
+            <td>身高：125厘米</td>
+            <td>体重：20千克</td>
+            </tr>
+          <tr>
+            <td height="20" colspan="3"></td>
+            </tr>
+          <tr>
+            <td height="20" colspan="3">简介：家庭富裕，很自信。配音：肝付兼太&rarr;關智一&nbsp;<a href="xiaofu.html" target="_blank" >more...</a></td>
+            </tr>
+        </table></td>
+      </tr>
+	  
+      <tr>
+        <td height="20"></td>
+      </tr>
+    </table></td>
+    <td bgcolor="#000000"></td>
+    <td bgcolor="#FFFFFF"><div id="Layer3">
+            <table width="300" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="40"></td>
+                <td width="70"><a href="#top"><img src="../images/top.gif" width="70" id="Image1" onmouseover="MM_swapImage('top','','../images/none.png',1)" onmouseout="MM_swapImgRestore()" /></a></td>
+                <td><img src="../images/TOP.png" name="top" width="50" height="50" onmouseover="MM_swapImage('top','','../images/none.png',1)" onmouseout="MM_swapImgRestore()" /></td>
+              </tr>
+            </table>
+          </div>
+      <table width="100" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="17"></td>
+          <td><div id="Layer1">
+            <table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td height="30"  width="120" ><div align="center"><a href="#duola">哆啦A梦</a></div></td>
+              </tr>
+              <tr>
+                <td height="30"><div align="center"><a href="#daxiong">大雄</a></div></td>
+				</tr>
+              <tr>
+                <td height="30"><div align="center"><a href="#jingxiang">静香</a></div></td>
+				</tr>
+              <tr>
+                <td height="30"><div align="center"><a href="#panghu">胖虎</a></div></td>
+				</tr>
+              <tr>
+                <td height="30"><div align="center"><a href="#xiaofu">小夫</a></div></td>
+              </tr>
+              <tr>
+                <td colspan="8"><img src="../images/diantiban.png" name="diantiban" width="120" height="20" onmouseover="MM_swapImage('diantibantext','','../images/diantibantext.png',1)" onmouseout="MM_swapImgRestore()" /></td>
+                </tr>
+            </table>
+          </div></td>
+        </tr>
+      </table></td>
+    <td bgcolor="#FFFFFF"></td>
+  </tr>
+  <tr height="20">
+    <td background="../images/3.png"></td>
+    <td bgcolor="#FFFFFF"></td>
+    <td bgcolor="#FFFFFF"></td>
+    <td bgcolor="#FFFFFF"></td>
+    <td height="20" background="../images/4.png"></td>
+  </tr>
+</table>
+</body>
+</html>
