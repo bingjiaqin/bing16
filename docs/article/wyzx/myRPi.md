@@ -617,3 +617,47 @@ proxy_set_header X-Forwarded-Host $http_host
 ```
 
 配置重启策略
+
+## 网络检查
+
+```shell
+echo "[$(date +%Y-%m-%d\ %H:%M:%S)] network daemon start"
+
+if /bin/ping -c 1 baidu.com >/dev/null
+then
+    echo "[$(date +%Y-%m-%d\ %H:%M:%S)] ipv4 pass."
+else
+    echo "[$(date +%Y-%m-%d\ %H:%M:%S)] ipv4 error, reconnect..."
+    ifdown wan
+    ifup wan
+    echo "[$(date +%Y-%m-%d\ %H:%M:%S)] ipv4 reconnect finished."
+fi
+
+if ifconfig | grep "inet6 addr:" | grep "Scope:Global" | grep -q "::"
+then
+    echo "[$(date +%Y-%m-%d\ %H:%M:%S)] ipv6 pass."      
+else      
+    echo "[$(date +%Y-%m-%d\ %H:%M:%S)] ipv6 error, reconnect..."
+    ifdown wan6
+    ifup wan6
+    echo "[$(date +%Y-%m-%d\ %H:%M:%S)] ipv6 reconnect finished."
+fi
+
+if cat /proc/net/arp | grep "24:e8:e5:c9:0e:ca" | grep -q "0x2"
+then
+    echo "[$(date +%Y-%m-%d\ %H:%M:%S)] lan pass."
+else
+    echo "[$(date +%Y-%m-%d\ %H:%M:%S)] lan error, reconnect..."
+    ifdown lan
+    ifup lan
+    echo "[$(date +%Y-%m-%d\ %H:%M:%S)] lan reconnect finished."
+fi
+
+echo ""
+```
+
+```
+*/5 * * * *  sh /root/Code/network_daemon.sh >> /root/log
+```
+
+配置重启策略
