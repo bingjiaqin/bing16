@@ -36,7 +36,7 @@ export default defineConfig(({ command, mode }) => {
         deleteOriginFile: false, // 是否删除原文件
         // 需要压缩的文件类型
         filter: (filename) => {
-          return /(\.js$|\.css$|\.html$|\.json$)/.test(filename);
+          return /(\.js$|\.css$|\.html$|\.json$|\.ttf$)/.test(filename);
         },
       }),
     ],
