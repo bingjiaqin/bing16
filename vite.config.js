@@ -33,10 +33,10 @@ export default defineConfig(({ command, mode }) => {
         threshold: 10240, // 压缩文件的大小阈值（以字节为单位）
         algorithm: 'gzip', // 压缩算法
         ext: '.gz', // 压缩文件的后缀名
-        deleteOriginFile: false, // 是否删除原文件
+        deleteOriginFile: true, // 是否删除原文件
         // 需要压缩的文件类型
         filter: (filename) => {
-          return /(\.js$|\.css$|\.html$|\.json$|\.ttf$)/.test(filename);
+          return /(\.js$|\.css$|\.html$|\.json$)/.test(filename);
         },
       }),
     ],
