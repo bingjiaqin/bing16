@@ -42,8 +42,8 @@ function findMe() {
         <p><span>我就是我</span>。</p>
         <p>这里是我的个人网站，会有一些个人的
           <span>项目记录</span>
-          以及比较
-          <span>个人的随感</span>。
+          以及比较个人的
+          <span>随感</span>。
         </p>
         <p>如果你从别的地方找到这里，
           <span @click="findMe">欢迎联系我</span>。
