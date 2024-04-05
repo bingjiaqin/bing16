@@ -192,6 +192,6 @@ const loadGitalk = () => {
 }
 .el-card {
   border: 0;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 </style>

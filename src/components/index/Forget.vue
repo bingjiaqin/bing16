@@ -39,19 +39,7 @@ defineProps({
 
 <template>
   <el-row class="color" :style="{ 'background-color': bgColor, color: color }">
-    <el-col :sm="24" :md="10">
-      <div class="text">
-        <h1>遗忘 · 重蹈覆辙</h1>
-        <i>2024.Q1</i>
-        <div>我仍记得他说了一句不要得寸进尺。</div>
-        <div>虽然在后面仍见过几次YMW，但是一切都变了。</div>
-        <div>错过的终究是错过，一回头已经是不同的道路。</div>
-        <div>对于Y是这样，对于Z也是。</div>
-        <div>我似乎已经忘了曾经欲求不得的痛苦。</div>
-        <div>但一次次的重蹈覆辙告诉我，</div>
-        <div>这似乎只是下一个重复的开始。</div>
-        <div></div>
-      </div>
+    <el-col :sm="0" :md="1">
     </el-col>
     <el-col :sm="24" :md="13">
       <div class="pic">
@@ -72,7 +60,19 @@ defineProps({
         </el-image-viewer>
       </div>
     </el-col>
-    <el-col :sm="0" :md="1">
+    <el-col :sm="24" :md="10">
+      <div class="text">
+        <h1>遗忘 · 重蹈覆辙</h1>
+        <i>2024.Q1</i>
+        <div>我仍记得他说了一句不要得寸进尺。</div>
+        <div>虽然在后面仍见过几次YMW，但是一切都变了。</div>
+        <div>错过的终究是错过，一回头已经是不同的道路。</div>
+        <div>对于Y是这样，对于Z也是。</div>
+        <div>我似乎已经忘了曾经欲求不得的痛苦。</div>
+        <div>但一次次的重蹈覆辙告诉我，</div>
+        <div>这似乎只是下一个重复的开始。</div>
+        <div></div>
+      </div>
     </el-col>
   </el-row>
 </template>
@@ -81,6 +81,7 @@ defineProps({
 .color {
   width: 100%;
   text-align: center;
+  padding: 50px 0;
 }
 .pic {
   position: relative;

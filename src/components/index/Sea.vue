@@ -72,6 +72,7 @@ defineProps({
 .sea {
   width: 100%;
   text-align: center;
+  padding: 50px 0;
 }
 .pic {
   position: relative;

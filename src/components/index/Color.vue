@@ -34,19 +34,7 @@ defineProps({
 
 <template>
   <el-row class="color" :style="{ 'background-color': bgColor, color: color }">
-    <el-col :sm="24" :md="10">
-      <div class="text">
-        <h1>生活 · 奔波与停留</h1>
-        <i>2022.Q4</i>
-        <div>从早晨，</div>
-        <div>到傍晚，</div>
-        <div>再到晚上，</div>
-        <div>一直到窗外的灯光穿过玻璃窗照在墙顶。</div>
-        <div>从天空由紫色，</div>
-        <div>到蓝色，</div>
-        <div>再到手中点亮的灯。</div>
-        <div>发现奔波与停留之间，生活依旧充满色彩。</div>
-      </div>
+    <el-col :sm="0" :md="1">
     </el-col>
     <el-col :sm="24" :md="13">
       <div class="pic">
@@ -67,7 +55,19 @@ defineProps({
         </el-image-viewer>
       </div>
     </el-col>
-    <el-col :sm="0" :md="1">
+    <el-col :sm="24" :md="10">
+      <div class="text">
+        <h1>生活 · 奔波与停留</h1>
+        <i>2022.Q4</i>
+        <div>从早晨，</div>
+        <div>到傍晚，</div>
+        <div>再到晚上，</div>
+        <div>一直到窗外的灯光穿过玻璃窗照在墙顶。</div>
+        <div>从天空由紫色，</div>
+        <div>到蓝色，</div>
+        <div>再到手中点亮的灯。</div>
+        <div>发现奔波与停留之间，生活依旧充满色彩。</div>
+      </div>
     </el-col>
   </el-row>
 </template>
@@ -76,6 +76,7 @@ defineProps({
 .color {
   width: 100%;
   text-align: center;
+  padding: 50px 0;
 }
 .pic {
   position: relative;

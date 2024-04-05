@@ -18,7 +18,7 @@ const filteredData = ref(data);
           :lg="6"
           style="text-align: center; margin-bottom: 20px"
       >
-        <el-card :body-style="{ padding: '0px' }">
+        <el-card :body-style="{ padding: '0px' }" shadow="hover">
           <el-image :src="item.pic"/>
           <div style="padding: 14px">
             <h3>{{ item.title }}</h3>
@@ -43,6 +43,6 @@ const filteredData = ref(data);
   padding: 0 60px;
 }
 .el-card {
-  border-radius: 20px;
+  border-radius: 10px;
 }
 </style>
