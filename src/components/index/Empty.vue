@@ -24,7 +24,7 @@ defineProps({
 <template>
   <el-row class="empty">
     <el-col :span="24">
-      <div class="pic" style="text-align: center;">
+      <div class="text" style="text-align: center;">
         <h1>你好，欣喜相逢</h1>
       </div>
     </el-col>
@@ -34,19 +34,21 @@ defineProps({
 <style scoped>
 .empty {
   width: 100%;
-  text-align: center;
-  z-index: 0;
 }
-.pic {
+.text {
   position: relative;
   width: 100%;
-  top:calc(40%);
-  transform: translateY(-50%);
+  height: calc(100vh - 120px);
+  background-color: var(--color-background);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 h1 {
   padding-bottom: 10px;
 }
 div {
-  padding-top: 10px;
+  padding-top: 0;
 }
 </style>

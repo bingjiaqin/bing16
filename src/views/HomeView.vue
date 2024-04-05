@@ -40,11 +40,14 @@ const scrollToTop = () => {
       <el-container>
         <el-main class="mainPage" :class="{notMainPage: currPage !== 'index'}">
           <component :is="selectedComponent"></component>
+          <el-footer v-if="currPage !== 'index'" style="position: relative;">
+            <footer-bar></footer-bar>
+          </el-footer>
         </el-main>
       </el-container>
-      <el-footer>
-        <footer-bar></footer-bar>
-      </el-footer>
+      <el-footer v-if="currPage === 'index'" style="position: absolute;">
+          <footer-bar></footer-bar>
+        </el-footer>
     </el-container>
   </div>
 </template>
@@ -84,7 +87,6 @@ const scrollToTop = () => {
 }
 
 .el-footer {
-  position: absolute;
   width: 100%;
   bottom: 0;
 }
