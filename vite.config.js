@@ -34,7 +34,18 @@ export default defineConfig(({ command, mode }) => {
     },
     base: base,
     build: {
-      outDir: "docs"
+      outDir: "docs",
+      split: true,
+      rollupOptions: {
+      output: {
+        // manualChunks 配置
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'lodash': ['lodash-es'],
+          'gitalk': ['gitalk'],
+        },
+      },
+    }
     },
     server: {
       host: '0.0.0.0'
