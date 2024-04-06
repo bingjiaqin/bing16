@@ -45,9 +45,9 @@ export default defineConfig(({ command, mode }) => {
             'gitalk': ['gitalk'],
             'md': ['@kangc/v-md-editor'],
             'library': ['or', 'vh-check'],
-            'wyzx': ['src/components/wyzx/wyzx.js'],
-            'sslx': ['src/components/sslx/sslx.js'],
-            'fgly': ['src/components/fgly/fgly.js'],
+            'wyzx': ['src/components/wyzx/Wyzx.vue'],
+            'sslx': ['src/components/sslx/Sslx.vue'],
+            'fgly': ['src/components/fgly/Fgly.vue'],
           },
         },
       }
