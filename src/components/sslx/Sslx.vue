@@ -157,7 +157,7 @@ const loadGitalk = () => {
 
 <style scoped>
 .content {
-  padding: 0 60px;
+  padding: 100px 60px;
 }
 .search {
   margin-bottom: 20px;

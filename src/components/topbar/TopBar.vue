@@ -88,7 +88,7 @@ const close = () => {
 }
 .top-manu {
   height: 90px;
-  padding-top: 25px;
+  padding-top: 20px;
   padding-left: 60px;
   padding-right: 60px;
 
@@ -113,6 +113,13 @@ const close = () => {
   }
   .el-menu {
     height: 40px;
+    background-color: unset;
+  }
+  .el-menu--horizontal .el-menu-item:not(.is-disabled):hover, .el-menu--horizontal .el-menu-item:not(.is-disabled):focus {
+    background-color: unset;
+  }
+  .el-menu--horizontal > .el-sub-menu .el-sub-menu__title:hover {
+    background-color: unset;
   }
   .el-menu-item {
     width: 90px;

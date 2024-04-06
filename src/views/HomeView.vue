@@ -65,12 +65,17 @@ const scrollToTop = () => {
 .el-header {
   position: relative;
   width: 100%;
-  height: 90px;
+  height: 75px;
   z-index: 99;
+  background: linear-gradient(to top, rgba(var(--color-background-num), 0.5), var(--color-background));
+  backdrop-filter: blur(10px) saturate(1.8);
+  -webkit-backdrop-filter: blur(10px) saturate(1.8);
 }
 
 .el-main {
   width: 100%;
+  position: absolute;
+  top: 0;
   bottom: 0;
   &.mainPage {
     position: absolute;
@@ -82,7 +87,6 @@ const scrollToTop = () => {
   &.notMainPage {
     overflow-y: scroll;
     position: absolute;
-    top: calc(90px);
   }
 }
 

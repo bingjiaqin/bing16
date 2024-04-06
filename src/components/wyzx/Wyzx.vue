@@ -40,7 +40,7 @@ const filteredData = ref(data);
 
 <style scoped>
 .content {
-  padding: 0 60px;
+  padding: 100px 60px;
 }
 .el-col {
   padding-top: 30px;

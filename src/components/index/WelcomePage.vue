@@ -116,7 +116,7 @@ h1 {
   z-index: 100;
   min-height: 100vh;
   background: linear-gradient(to bottom, rgba(var(--color-background-num), 0.5), var(--color-background) 40%);
-  backdrop-filter: blur( 10px );
-  -webkit-backdrop-filter: blur( 10px );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 </style>
