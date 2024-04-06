@@ -36,16 +36,22 @@ export default defineConfig(({ command, mode }) => {
     build: {
       outDir: "docs",
       split: true,
+      chunkSizeWarningLimit: 1000,
       rollupOptions: {
-      output: {
-        // manualChunks 配置
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-          'lodash': ['lodash-es'],
-          'gitalk': ['gitalk'],
+        output: {
+          // manualChunks 配置
+          manualChunks: {
+            'element': ['element-plus'],
+            'element-icon': ['@element-plus/icons-vue'],
+            'gitalk': ['gitalk'],
+            'md': ['@kangc/v-md-editor'],
+            'library': ['or', 'vh-check'],
+            'wyzx': ['src/components/wyzx/Wyzx.vue'],
+            'sslx': ['src/components/sslx/Sslx.vue'],
+            'fgly': ['src/components/fgly/Fgly.vue'],
+          },
         },
-      },
-    }
+      }
     },
     server: {
       host: '0.0.0.0'
