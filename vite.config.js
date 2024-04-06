@@ -41,13 +41,9 @@ export default defineConfig(({ command, mode }) => {
         output: {
           // manualChunks 配置
           manualChunks: {
-            'element-icon': ['@element-plus/icons-vue'],
             'gitalk': ['gitalk'],
             'md': ['@kangc/v-md-editor'],
-            'library': ['or', 'vh-check'],
-            'wyzx': ['src/components/wyzx/Wyzx.vue'],
-            'sslx': ['src/components/sslx/Sslx.vue'],
-            'fgly': ['src/components/fgly/Fgly.vue'],
+            'library': ['or', 'vh-check', '@element-plus/icons-vue'],
           },
         },
       }
