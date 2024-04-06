@@ -18,7 +18,7 @@ const filteredData = ref(data);
           :lg="6"
           style="text-align: center; margin-bottom: 20px"
       >
-        <el-card :body-style="{ padding: '0px' }" shadow="hover">
+        <div class="card" :body-style="{ padding: '0px' }">
           <el-image :src="item.pic"/>
           <div style="padding: 14px">
             <h3>{{ item.title }}</h3>
@@ -32,7 +32,7 @@ const filteredData = ref(data);
               <a :href="item.href" target="_blank">查看</a>
             </div>
           </div>
-        </el-card>
+        </div>
       </el-col>
     </el-row>
   </div>
@@ -43,9 +43,20 @@ const filteredData = ref(data);
   padding: 0 60px;
 }
 .el-col {
-  padding-top: 10px;
+  padding-top: 30px;
 }
-.el-card {
-  border-radius: 10px;
+.card {
+  border: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 6px 6px 9px var(--color-shadow),
+             -6px -6px 9px var(--color-light);
+  transition: all 100ms linear;
+}
+.card:hover {
+  transform: scale(1.02);
+  transition: all 100ms linear;
+  box-shadow: 10px 10px 20px var(--color-shadow),
+             -3px -3px 12px var(--color-light);
 }
 </style>

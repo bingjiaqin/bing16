@@ -1,10 +1,10 @@
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
-  --vt-c-white: #ffffff;
+  --vt-c-white-num: 255, 255, 255;
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
 
-  --vt-c-black: #181818;
+  --vt-c-black-num: 24, 24, 24;
   --vt-c-black-soft: #222222;
   --vt-c-black-mute: #282828;
 
@@ -19,11 +19,18 @@
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+
+  --vt-c-light-light: #f4f4f4;
+  --vt-c-light-dark: #353535;
+
+  --vt-c-shadow-light: #e5e5e5;
+  --vt-c-shadow-dark: #0d0d0d;
 }
 
 /* semantic color variables for this project */
 :root {
-  --color-background: var(--vt-c-white);
+  --color-background: rgb(var(--vt-c-white-num));
+  --color-background-num: var(--vt-c-white-num);
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
 
@@ -34,11 +41,15 @@
   --color-text: var(--vt-c-text-light-1);
 
   --section-gap: 160px;
+
+  --color-light: var(--vt-c-light-light);
+  --color-shadow: var(--vt-c-shadow-light);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(--vt-c-black);
+    --color-background: rgb(var(--vt-c-black-num));
+    --color-background-num: var(--vt-c-black-num);
     --color-background-soft: var(--vt-c-black-soft);
     --color-background-mute: var(--vt-c-black-mute);
 
@@ -47,6 +58,9 @@
 
     --color-heading: var(--vt-c-text-dark-1);
     --color-text: var(--vt-c-text-dark-2);
+
+    --color-light: var(--vt-c-light-dark);
+    --color-shadow: var(--vt-c-shadow-dark);
   }
 }
 

@@ -33,7 +33,7 @@ function findMe() {
 </script>
 
 <template>
-  <el-row class="welcome1" :style="{ 'background-color': bgColor, color: color }">
+  <el-row class="welcome1" :style="{ color: color }">
     <el-col :sm="24" :md="12">
       <div
         class="main-col main-text"
@@ -113,8 +113,10 @@ h1 {
   top: 150px;
   width: 100%;
   padding: 90px 60px 0 60px;
-  background-color: var(--color-background);
   z-index: 100;
   min-height: 100vh;
+  background: linear-gradient(to bottom, rgba(var(--color-background-num), 0.5), var(--color-background) 40%);
+  backdrop-filter: blur( 10px );
+  -webkit-backdrop-filter: blur( 10px );
 }
 </style>

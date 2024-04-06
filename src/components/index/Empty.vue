@@ -51,11 +51,13 @@ defineProps({
   position: relative;
   width: 100%;
   height: calc(100vh - 120px);
-  background-color: var(--color-background);
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(to top, rgba(var(--color-background-num), 0.5), var(--color-background) 40%);
+  backdrop-filter: blur( 10px );
+  -webkit-backdrop-filter: blur( 10px );
 }
 h1 {
   padding-bottom: 10px;
