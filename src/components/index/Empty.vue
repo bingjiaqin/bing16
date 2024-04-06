@@ -50,7 +50,7 @@ defineProps({
 .text {
   position: relative;
   width: 100%;
-  height: calc(100vh - 120px);
+  height: calc(100vh - 150px);
   z-index: 100;
   display: flex;
   align-items: center;
