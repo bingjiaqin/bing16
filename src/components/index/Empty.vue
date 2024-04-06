@@ -50,7 +50,7 @@ defineProps({
 .text {
   position: relative;
   width: 100%;
-  height: calc(100vh - 150px);
+  height: calc(100vh - 180px);
   z-index: 100;
   display: flex;
   align-items: center;
@@ -60,7 +60,7 @@ defineProps({
   -webkit-backdrop-filter: blur(10px);
 }
 h1 {
-  padding-bottom: 10px;
+  padding: 15px;
 }
 div {
   padding-top: 0;
