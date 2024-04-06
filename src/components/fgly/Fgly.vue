@@ -42,6 +42,9 @@ const filteredData = ref(data.itmes);
 .content {
   padding: 0 60px;
 }
+.el-col {
+  padding-top: 10px;
+}
 .el-card {
   border-radius: 10px;
 }
