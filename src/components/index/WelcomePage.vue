@@ -48,7 +48,7 @@ function findMe() {
         <p>如果你从别的地方找到这里，
           <span @click="findMe">欢迎联系我</span>。
         </p>
-        <p style="margin-top: 20px; font-size: 15px;">最佳打开方式：Safari, iPv4+iPv6 network</p>
+        <p style="margin-top: 20px; font-size: 15px;">最佳打开方式：Safari, iPv4+iPv6</p>
       </div>
     </el-col>
     <el-col :sm="24" :md="12">
