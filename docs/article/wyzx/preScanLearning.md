@@ -21,11 +21,11 @@
 
 测试在干燥(表面无明显水分)、均匀、铺实、坡度在1%至1%之间的地面进行试验，测试表面的最小峰值制动系数(PBC)应为0.9。环境温度在5℃以上和40℃以下，无降水，地面水平能见度大于1km。风速应低于10m/s，以尽量减少GVT和VUT的干扰。评估场景分为CCRs（前车静止）、CCRm（前车运动）和CCRb（前车制动）三种，具体如下图所示。
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e66db9ce6.png)![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e689b882b.png)
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e66db9ce6.png)![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e689b882b.png)
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e68eaa641.png)![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e6c1b0fbb.png)
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e68eaa641.png)![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e6c1b0fbb.png)
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e6a102447.png)![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e6cbc27e7.png)
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e6a102447.png)![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e6cbc27e7.png)
 
 其中CCRs和CCRm场景的速度以5km/h为步长变化，横向重叠率以25%为步长变化。GVT需要在1s内达到期望减速度。
 

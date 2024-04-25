@@ -1,7 +1,7 @@
 <h1 align="center">ReRe-未来之书</h1>
 
 <p align="center">
-<img src="https://bing16.dynv6.net:1443/i/2024/02/04/65bf9655da853.jpg" width="400" />
+<img src="https://lsky.bing16.xyz:2096/i/2024/02/04/65bf9655da853.jpg" width="400" />
 </p>
 
 - author：QINBINGJIA、TANSHUHUA、LIUHENG、LUOYUTONG
@@ -22,13 +22,13 @@
 
 ## 基本样式
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e1df474f2.jpg "基本样式")     ![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e20371619.jpg "基本样式")
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e1df474f2.jpg "基本样式")     ![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e20371619.jpg "基本样式")
 
 ## 路演海报、评审及颁奖
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e219f21ab.jpg "海报")
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e219f21ab.jpg "海报")
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e22600eff.jpg "评审")    ![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e2339e16f.jpg "颁奖")
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e22600eff.jpg "评审")    ![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e2339e16f.jpg "颁奖")
 
 ## 功能及介绍
 

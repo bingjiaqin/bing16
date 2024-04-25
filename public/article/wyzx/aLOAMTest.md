@@ -221,7 +221,7 @@ rosbag play YOUR_DATASET_FOLDER/nsh_indoor_out_door.bag
 
 完成安装及测试，理论情况如下图：
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e3919154b.png "初次成功曝光")
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e3919154b.png "初次成功曝光")
 
 站内相关参考文章如下：
 

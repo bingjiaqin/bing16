@@ -8,7 +8,7 @@
 
 比较简便的方法：下载[微PE工具箱](http://www.wepe.com.cn/)，双击打开，注意接下来选择**安装PE到U盘**如下图所示，修改好所需设置后选择立即安装入U盘。
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e332358c4.png)  ![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e3405cbc6.png)
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e332358c4.png)  ![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e3405cbc6.png)
 
 在安装好PE系统后，将系统ISO文件复制到U盘指定文件夹即可。
 

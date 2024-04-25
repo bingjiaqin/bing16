@@ -1,7 +1,7 @@
 <h1 align="center">ClassProject：基于XY双轴移动LED的图片再现装置</h1>
 
 <p align="center">
-<img src="https://bing16.dynv6.net:1443/i/2024/02/04/65bf937be6588.jpg" width="510" />
+<img src="https://lsky.bing16.xyz:2096/i/2024/02/04/65bf937be6588.jpg" width="510" />
 </p>
 
 - author：QINBINGJIA、LIUHENG、NIUXIANGFU
@@ -22,31 +22,31 @@
 
 ## 初次成功曝光
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e011a438b.jpg "初次成功曝光")
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e011a438b.jpg "初次成功曝光")
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e0284b5bd.jpg "初次成功曝光")
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e0284b5bd.jpg "初次成功曝光")
 
 存在长宽比失调的问题，已修复代码bug。通过PS调整后效果：
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e07513b79.png "PS调整效果")
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e07513b79.png "PS调整效果")
 
 博物馆展览图：
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e084a4e3a.jpg "博物馆展览图")
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e084a4e3a.jpg "博物馆展览图")
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e0b748bc2.jpg "2018.6.17博物馆展览图")
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e0b748bc2.jpg "2018.6.17博物馆展览图")
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e0cc383c4.jpg "2018.6.17博物馆展览图")
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e0cc383c4.jpg "2018.6.17博物馆展览图")
 
 ## 第二次曝光
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e09ab79c3.jpg "第二次曝光")
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e09ab79c3.jpg "第二次曝光")
 
 已修正第一次曝光时存在的逻辑bug。
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e07513b79.png "PS调整效果")
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e07513b79.png "PS调整效果")
 
 课程展示海报
 ------
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e0a6aa332.png "课程展示海报")
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e0a6aa332.png "课程展示海报")

@@ -1,7 +1,7 @@
 <h1 align="center">MyRPi</h1>
 
 <p align="center">
-<img src="https://bing16.dynv6.net:1443/i/2024/02/05/65c0e12c3e73d.jpg" width="100" />
+<img src="https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e12c3e73d.jpg" width="100" />
 </p>
 
 - author：QINBINGJIA
@@ -20,7 +20,7 @@
 
 收到
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e142a511f.jpg "2018.06.16")
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e142a511f.jpg "2018.06.16")
 
 ## 安装系统与SSH、VNC连接
 
@@ -46,7 +46,7 @@
 6.  完成连接。
     
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e15532f6d.png "首次连接vnc")
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e15532f6d.png "首次连接vnc")
 
 之后进行修改时区、分辨率及相关系统美化等操作，相关的参考网址：  
 
@@ -64,7 +64,7 @@
 摄像头测试，样图大小2.4M，效果尚可。  
 摄像头设置参考[“树莓派3 B+ 的摄像头简单使用（video-streamer）”](http://www.mamicode.com/info-detail-2018954.html)
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e16562da6.png "CCD测试")
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e16562da6.png "CCD测试")
 
 [motion视频设置](https://blog.csdn.net/u013151320/article/details/50195981)  
 [解决视频灰屏问题](http://bbs.elecfans.com/jishu_1099559_1_1.html)  

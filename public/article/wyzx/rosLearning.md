@@ -1,7 +1,7 @@
 <h1 align="center">ROS平台简易教程</h1>
 
 <p align="center">
-<img src="https://bing16.dynv6.net:1443/i/2024/02/05/65c0e2871c655.jpg" width="200" />
+<img src="https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e2871c655.jpg" width="200" />
 </p>
 
 - author：QINBINGJIA
@@ -31,9 +31,9 @@
 1.  Ros是一种适用于机器人的开源的元操作系统，提供类似操作系统应有的功能，可以在这个平台上进行算法的设计开发。 它提供用于获取、编译、编写、和跨计算机运行代码所需的工具和库函数。在某些方面ROS相当于一种“机器人框架（robot frameworks）”。 [cn/ROS/Introduction](http://wiki.ros.org/cn/ROS/Introduction )。
 2.  其概念分为三个层次：文件系统层、计算图层、社区层[cn/ROS/Concepts](http://wiki.ros.org/cn/ROS/Concepts)
 *   文件系统层包括硬盘里能看到的ROS目录和文件。Packages是组成ROS的基本单元，用于创建ROS程序。  
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e2a921c02.jpg "文件系统层")
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e2a921c02.jpg "文件系统层")
 *   计算图是ROS在点对点网络里整合并处理数据的过程。节点是ros程序的运行实例，类似于运行的一个进程。节点通过主题实现多对多的发送消息，通过服务完成一对一的请求和回复。Bags存储和返回ROS消息数据。  
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e2c18d91d.jpg "计算图层1")  ![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e2d5a77c2.jpg "计算图层2")
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e2c18d91d.jpg "计算图层1")  ![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e2d5a77c2.jpg "计算图层2")
 *   社区包括ROS的分发、存储库、论坛等。
 
 ## ROS常用命令
@@ -175,7 +175,7 @@ export ROS_PACKAGE_PATH=~/catkin_ws/src:$ROS_PACKAGE_PATH
 *   目前搭建的框架：  
 目前来看 /map 和 /road 的功能类似，在可视化平台上显示路面信息，其中 /map 用灰度图表示障碍信息和道路信息。  
 主题 /car_info 收发车辆信息，其类型保存在 car_msg.msg 文件，vehicle类中有car_msg信息和主题消息发布的函数。  
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e2e357174.jpg "目前搭建的框架")
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e2e357174.jpg "目前搭建的框架")
 *   框架构想：  
 车辆信息通过car_msg类型传输  
 车辆的节点在一个主题发布自己的车辆信息  
@@ -458,7 +458,7 @@ rosrun rqt_plot rqt_plot 绘制话题数据的变化图形
 source devel/setup.bash 
 ```
  
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e2f6ceb77.jpg)
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e2f6ceb77.jpg)
 
 ## ROS可视化平台运行方法
 

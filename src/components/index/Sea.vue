@@ -4,12 +4,12 @@ import {isMobile} from "@/utils/MobileUtils";
 
 const mobile = isMobile()
 const picList = [
-  "https://bing16.dynv6.net:1443/i/2024/02/03/65be43b3da60f.jpg",
-  "https://bing16.dynv6.net:1443/i/2024/02/03/65be44ba503e5.jpg",
-  "https://bing16.dynv6.net:1443/i/2024/02/03/65be444796cdd.jpg",
-  "https://bing16.dynv6.net:1443/i/2024/02/03/65be448c727d5.jpg",
-  "https://bing16.dynv6.net:1443/i/2024/02/03/65be450ba5d4e.jpg",
-  "https://bing16.dynv6.net:1443/i/2024/02/03/65be44e6c6c47.jpg"];
+  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be43b3da60f.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be44ba503e5.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be444796cdd.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be448c727d5.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be450ba5d4e.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be44e6c6c47.jpg"];
 const index = ref(0);
 const showViewer = ref(false);
 

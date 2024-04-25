@@ -2,4 +2,4 @@
 
 ## 2021-09-05
 
-![](https://bing16.dynv6.net:1443/i/2024/02/05/65c0e7583b5b1.png)
+![](https://lsky.bing16.xyz:2096/i/2024/02/05/65c0e7583b5b1.png)
