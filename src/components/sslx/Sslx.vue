@@ -86,7 +86,7 @@ const textarea = ref('');
 
 const submit = async () => {
   try {
-    const response = await axios.post('http://localhost:8081/blog/sslx', { data: textarea.value });
+    const response = await axios.post('https://blog.bing16.xyz:2096/blog/sslx', { data: textarea.value });
     if (response.statusText !== 'OK') {
       throw new Error('Network response was not ok');
     }
@@ -187,7 +187,7 @@ const loadGitalk = () => {
         </el-col>
       </el-row>
     </div>
-    <div v-if="gitUser === '未登录用户'">
+    <div v-if="gitUser === 'bingjiaqin'">
       <el-divider />
       <h3>站长工具：添加内容</h3>
       <div style="padding: 10px 0;">
