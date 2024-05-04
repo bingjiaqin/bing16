@@ -1,10 +1,12 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref, nextTick } from 'vue';
 import { DATA } from './sslx.js';
 import { isMobile } from "@/utils/MobileUtils";
 import { Search } from '@element-plus/icons-vue';
 import 'gitalk/dist/gitalk.css';
 import Gitalk from 'gitalk';
+import { ElMessage } from 'element-plus';
+import axios from 'axios';
 
 const data = DATA;
 const filteredData = ref(data);
@@ -59,12 +61,47 @@ const filter = (key) => {
   currentChange(filteredData.value.length);
 }
 
+const gitUser = ref('');
+let timerId = null;
+
 onMounted(() => {
-  for (let elements of document.getElementsByClassName("el-pagination__goto")) {
-    elements.childNodes[0].nodeValue = "";
-  }
   loadGitalk();
+  nextTick(() => {
+    timerId = setInterval(() => {
+        const doms = document.getElementsByClassName('gt-user-name');
+        for (let dom of doms) {
+          gitUser.value = dom.innerText;
+        }
+      }, 500);
+  });
 });
+
+onUnmounted(() => {
+  if (timerId) {
+    clearInterval(timerId);
+  }
+});
+
+const textarea = ref('');
+
+const submit = async () => {
+  try {
+    const response = await axios.post('http://localhost:8081/blog/sslx', { data: textarea.value });
+    if (response.statusText !== 'OK') {
+      throw new Error('Network response was not ok');
+    }
+    textarea.value = '';
+    ElMessage({
+      message: `提交成功，请稍后刷新页面：${response.data.message}`,  
+      type: 'success', 
+    });
+  } catch (error) {
+    ElMessage({
+      message: `Submit error: ${error}`,  
+      type: 'error', 
+    });
+  }
+}
 
 const loadGitalk = () => {
   const gitalk = new Gitalk({
@@ -149,6 +186,21 @@ const loadGitalk = () => {
           </a>
         </el-col>
       </el-row>
+    </div>
+    <div v-if="gitUser === '未登录用户'">
+      <el-divider />
+      <h3>站长工具：添加内容</h3>
+      <div style="padding: 10px 0;">
+        <el-input
+          type="textarea"
+          :rows="2"
+          placeholder="请输入需要添加的内容"
+          v-model="textarea">
+        </el-input>
+      </div>
+      <div style="padding-bottom: 10px; width: 100%; text-align: right;">
+        <el-button type="primary" @click="submit">提交</el-button>
+      </div>
     </div>
     <el-divider />
     <div id="gitalk-container"></div>

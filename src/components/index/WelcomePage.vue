@@ -33,7 +33,7 @@ function findMe() {
 </script>
 
 <template>
-  <el-row class="welcome1" :style="{ color: color }">
+  <el-row class="welcome1">
     <el-col :sm="24" :md="12">
       <div
         class="main-col main-text"
