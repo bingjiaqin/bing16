@@ -33,7 +33,8 @@ function findMe() {
 </script>
 
 <template>
-  <el-row class="welcome1">
+  <el-row class="welcome1"
+  :class="{mobile:mobile, notMobile:!mobile}">
     <el-col :sm="24" :md="12">
       <div
         class="main-col main-text"
@@ -109,13 +110,20 @@ h1 {
   }
 }
 .welcome1 {
-  top: 150px;
   width: 100%;
-  padding: 90px 60px 0 60px;
   z-index: 100;
   min-height: 100vh;
   background: linear-gradient(to bottom, rgba(var(--color-background-num), 0.5), var(--color-background) 40%);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+
+  &.mobile {
+    top: 90px;
+    padding: 90px 60px 90px 60px;
+  }
+  &.notMobile {
+    top: 150px;
+    padding: 90px 60px 0 60px;
+  }
 }
 </style>
