@@ -44,7 +44,7 @@ main {
   overflow: scroll;
   height: 100vh;
   overflow-x: hidden;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
 }
 .index {
