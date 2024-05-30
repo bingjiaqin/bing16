@@ -23,7 +23,7 @@ function load() {
 </script>
 
 <template>
-  <main>
+  <main :class="{notMobile:!mobile}">
     <el-row class="index">
       <welcome-page></welcome-page>
     </el-row>
@@ -44,8 +44,11 @@ main {
   overflow: scroll;
   height: 100vh;
   overflow-x: hidden;
-  scroll-snap-type: y proximity;
-  scroll-behavior: smooth;
+
+  &.notMobile {
+    scroll-snap-type: y proximity;
+    scroll-behavior: smooth;
+  }
 }
 .index {
   min-height: 100vh;
