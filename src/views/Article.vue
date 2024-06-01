@@ -79,7 +79,7 @@ onMounted(() => updateTitiles());
 
 loadTxtFile();
 
- 
+ const showDir = ref(false);
 </script>
 
 <template>
@@ -92,7 +92,25 @@ loadTxtFile();
       <el-backtop :right="mobile ? 10 : 100" :bottom="100" />
       <el-main class="mainPage">
         <div class="article">
-          <el-popover
+          <div class="directory"
+            @click="showDir=!showDir"
+            :style="{ right: mobile ? '10px' : '40px', bottom: mobile ? '40px' : '100px',
+             'background-color': showDir ? '#fffaf9' : ''}">
+            <el-icon style="color: var(--el-color-primary);"><Memo /></el-icon>
+          </div>
+          <div class="directory-box"
+            v-show="showDir"
+            :style="{ right: mobile ? '10px' : '40px',  bottom: mobile ? '96px' : '156px'}">
+            <div
+              v-for="anchor in titles"
+              class="directory-item"
+              :style="{ padding: `2px 0 2px ${anchor.indent * 14}px`, fontSize: '14px' }"
+              @click="handleAnchorClick(anchor)"
+              >
+              <a style="cursor: pointer">{{ anchor.title }}</a>
+            </div>
+          </div>
+          <!-- <el-popover
               placement="top"
               :width="250"
               style="right: 200px"
@@ -111,7 +129,7 @@ loadTxtFile();
                 >
                 <a style="cursor: pointer">{{ anchor.title }}</a>
               </div>
-            </el-popover>
+            </el-popover> -->
           <v-md-editor :model-value="markdown" mode="preview" ref="previewRef"></v-md-editor>
           <el-divider />
           <div id="gitalk-container"></div>
@@ -156,6 +174,20 @@ loadTxtFile();
     }
 
     .directory:hover {
+      background-color: #fffaf9;
+    }
+
+    .directory-box {
+      position: fixed;
+      z-index: 10;
+      background-color: var(--color-background);
+      padding: 10px;
+      border-radius: 10px;
+      width: 250px;
+      box-shadow: var(--el-box-shadow-lighter);
+    }
+
+    .directory-item:hover {
       background-color: #fffaf9;
     }
   }
