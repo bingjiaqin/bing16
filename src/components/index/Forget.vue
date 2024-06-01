@@ -4,18 +4,32 @@ import {ref} from "vue";
 
 const mobile = isMobile()
 const picList = [
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be4920c91f5.jpg", 
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be489a670c2.jpg", 
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be48aab6e33.jpg", 
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be48b5b4350.jpg", 
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be48d392a0f.jpg", 
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be48de7349a.jpg", 
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be48e9057d8.jpg", 
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be48ffbb3ce.jpg", 
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be49130492b.jpg", 
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be492fe76d0.jpg", 
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be49358552c.jpg", 
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be495034639.jpg"
+  "https://lsky.bing16.xyz:2096/i/2024/03/01/65e0ab0aea2ff.jpg", 
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665ab804675f7.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665ab878f16c0.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665ab8876037a.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665ab886da6a3.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665ab8826209c.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665ab88419f81.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665ab885d1509.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665ab8911e4bc.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665ab89813f7a.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665ab896298c4.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665ab89423a38.jpg"
+];
+const picThumbnailList = [
+  "https://lsky.bing16.xyz:2096/i/2024/03/01/65e0ab0aea2ff.jpg", 
+  "https://lsky.bing16.xyz:2096/thumbnails/6cb69b909962cc0297acee3d94f59f46.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/50c28e29ba4e5c4f31b38b8f5929e414.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/9ba27de0cacccdb47475232c6c57c517.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/d3d8821cc765bea2229717f6008eee12.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/9cc45192af573cac977281754d6d7bff.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/6c769e262a750dccf9f92d89c116fa3a.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/910dca27a9b6a70c8874315ef421d134.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/04176d0e216b3b2b52424a855532300f.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/9eabd7644080072bc721adcb1d6ac3b5.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/cf97621a4ceee79d6d0599b1fef6625a.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/5fae26a6857d4f18af98de8b940e6443.png"
 ];
 const index = ref(0);
 const showViewer = ref(false);
@@ -45,7 +59,7 @@ defineProps({
       <div class="pic">
         <img
             :class="{smallPic: index !== 0, mainPic: index === 0}"
-            v-for="(pic, index) in picList"
+            v-for="(pic, index) in picThumbnailList"
             @click="view(index)"
             :src="pic"
             loading="lazy"/>

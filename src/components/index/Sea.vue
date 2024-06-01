@@ -4,12 +4,21 @@ import {isMobile} from "@/utils/MobileUtils";
 
 const mobile = isMobile()
 const picList = [
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be43b3da60f.jpg",
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be44ba503e5.jpg",
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be444796cdd.jpg",
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be448c727d5.jpg",
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be450ba5d4e.jpg",
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be44e6c6c47.jpg"];
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665abd0ef0dcb.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665abd11e282a.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665abd1bb0f88.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665abd1a50092.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665abd21e1547.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665abd28b9e22.jpg"
+];
+const picThumbnailList = [
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665abd0ef0dcb.jpg",
+  "https://lsky.bing16.xyz:2096/thumbnails/5dbeb5dfe21c50cabc07e3bcd860a806.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/71d9a92a812251014ddad67a015b08d7.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/5dd2e19a54ed744a5ef21d6ce3e2e1e2.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/3828e43ea4f7d5a027fe7a38fd4216ce.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/230e369b1b029afe0de0e81d03403987.png"
+];
 const index = ref(0);
 const showViewer = ref(false);
 
@@ -38,7 +47,7 @@ defineProps({
       <div class="pic">
         <img
             :class="{smallPic: index !== 0, mainPic: index === 0}"
-            v-for="(pic, index) in picList"
+            v-for="(pic, index) in picThumbnailList"
             @click="view(index)"
             :src="pic"
             loading="lazy"/>

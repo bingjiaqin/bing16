@@ -4,14 +4,25 @@ import {ref} from "vue";
 
 const mobile = isMobile()
 const picList = [
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be45ac06dc7.jpg",
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be45bfbde56.jpg", 
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be463153865.jpg", 
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be4619f241c.jpg", 
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be45eb58950.jpg", 
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be45d6adf60.jpg", 
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be464562fde.jpg", 
-  "https://lsky.bing16.xyz:2096/i/2024/02/03/65be4601054ae.jpg"];
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665abc6c9acd3.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665abc70e2060.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665abc76d25f0.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665abc7b5bb19.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665abc7daca36.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665abc8109f24.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665abc8527f49.jpg",
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665abc8956f1b.jpg"
+];
+const picThumbnailList = [
+  "https://lsky.bing16.xyz:2096/i/2024/06/01/665abc6c9acd3.jpg",
+  "https://lsky.bing16.xyz:2096/thumbnails/5f9e4c3dfa528573483c958cd43527dd.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/212b591e575a841d233bd742039d6cfa.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/fa0cf6aaa55d2637077261b5ef13fc17.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/2b566cee320b55da9ddb339a7b9e8a2d.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/1faa86515d39349d5fab62ef9c1fe687.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/e380b44cfccf62ec54969f9c1acdf807.png",
+  "https://lsky.bing16.xyz:2096/thumbnails/42387d0be7a067100229d83ab3edd22c.png"
+];
 const index = ref(0);
 const showViewer = ref(false);
 
@@ -40,7 +51,7 @@ defineProps({
       <div class="pic">
         <img
             :class="{smallPic: index !== 0, mainPic: index === 0}"
-            v-for="(pic, index) in picList"
+            v-for="(pic, index) in picThumbnailList"
             @click="view(index)"
             :src="pic"
             loading="lazy"/>
