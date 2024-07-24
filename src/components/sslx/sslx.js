@@ -1559,6 +1559,11 @@ export const DATA = [
         "content": "&emsp;&emsp;不知道为什么，期待能被邀请，却又拒绝被邀请。<br/>",
         "time": "2024-06-01 15:23",
         "Pic": ""
+      },
+      {
+        "content": "&emsp;&emsp;我终将成为我自己的光。<br/>",
+        "time": "2024-07-24 08:44",
+        "Pic": ""
       }
     ]
   }
