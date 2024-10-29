@@ -1579,6 +1579,11 @@ export const DATA = [
         "content": "&emsp;&emsp;我的身体，感觉到无尽的疲倦。<br/>",
         "time": "2024-10-29 08:23",
         "Pic": ""
+      },
+      {
+        "content": "&emsp;&emsp;太阳从大地生长起来，<br/>&emsp;&emsp;将江水染成红色，黄色，<br/>&emsp;&emsp;直到我的心被勾起，<br/>&emsp;&emsp;飘荡在无尽的雪地上。<br/>",
+        "time": "2024-10-30 00:57",
+        "Pic": ""
       }
     ]
   }
