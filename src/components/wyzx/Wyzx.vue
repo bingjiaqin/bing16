@@ -47,7 +47,7 @@ const filteredData = ref(data);
 }
 .card {
   border: 0;
-  border-radius: 20px;
+  border-radius: 1px;
   overflow: hidden;
   box-shadow: 6px 6px 9px var(--color-shadow),
              -6px -6px 9px var(--color-light);

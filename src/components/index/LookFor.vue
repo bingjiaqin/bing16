@@ -56,10 +56,12 @@ defineProps({
 </script>
 
 <template>
-  <el-row class="look-for" :style="{ 'background-color': bgColor, color: color }">
-    <el-col :sm="0" :md="1">
+  <el-row class="look-for"
+   :style="{ 'background-color': bgColor, color: color }"
+   :class="{mobile:mobile, notMobile:!mobile}">
+    <el-col :sm="2" :md="1">
     </el-col>
-    <el-col :sm="24" :md="13">
+    <el-col :sm="20" :md="13">
       <div class="pic">
         <img
             :class="{smallPic: index !== 0, mainPic: index === 0}"
@@ -78,8 +80,9 @@ defineProps({
         </el-image-viewer>
       </div>
     </el-col>
-    <el-col :sm="24" :md="10">
-      <div class="text">
+    <el-col :sm="20" :md="10">
+      <div class="text"
+       :class="{mobile:mobile, notMobile:!mobile}">
         <h1>寻觅 · 什么是永恒与唯一</h1>
         <i>2023.Q1</i>
         <div>2023 我失去了你。</div>
@@ -105,7 +108,13 @@ defineProps({
 .look-for {
   width: 100%;
   text-align: center;
-  padding: 50px 0;
+
+  &.mobile {
+    padding: 50px 60px;
+  }
+  &.notMobile {
+    padding: 50px 0;
+  }
 }
 .pic {
   position: relative;
@@ -123,9 +132,15 @@ defineProps({
 .text {
   text-align: left;
   position: relative;
-  padding: 60px 60px;
   top:calc(50%);
   transform: translateY(-50%);
+
+  &.mobile {
+    padding: 30px 0;
+  }
+  &.notMobile {
+    padding: 60px 60px;
+  }
 }
 h1 {
   padding-bottom: 10px;

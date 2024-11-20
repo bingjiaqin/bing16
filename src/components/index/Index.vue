@@ -32,8 +32,7 @@ function load() {
       :infinite-scroll-disabled="nextComponentIdx >= allComponents.length">
       <el-row v-for="(component, index) in components" class="index" :class="{top: index !== allComponents.length - 1}">
         <component :is="component"
-        :bgColor="`${index % 2 === 0 ? '#000' : 'var(--color-background)'}`"
-        :color="`${index % 2 === 0 ? '#9f9f9f' : ''}`"></component>
+        :bgColor="`var(--color-background)`"></component>
       </el-row>
     </el-row>
   </main>

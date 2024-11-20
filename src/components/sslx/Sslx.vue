@@ -229,6 +229,9 @@ const loadGitalk = () => {
   right: 0;
   margin-bottom: 30px;
 }
+:deep(.el-input__wrapper) {
+  height: 23px;
+}
 .card-box {
   width: 100%;;
   margin-bottom: 60px;
@@ -244,6 +247,6 @@ const loadGitalk = () => {
 }
 .el-card {
   border: 0;
-  border-radius: 10px;
+  border-radius: 1px;
 }
 </style>

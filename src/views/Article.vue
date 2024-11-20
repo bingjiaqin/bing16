@@ -182,7 +182,7 @@ loadTxtFile();
       z-index: 10;
       background-color: var(--color-background);
       padding: 10px;
-      border-radius: 10px;
+      border-radius: 1px;
       width: 250px;
       box-shadow: var(--el-box-shadow-lighter);
     }
