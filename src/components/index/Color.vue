@@ -49,7 +49,7 @@ defineProps({
    :class="{mobile:mobile, notMobile:!mobile}">
     <el-col :sm="2" :md="1">
     </el-col>
-    <el-col :sm="20" :md="13">
+    <el-col :sm="20" :md="12">
       <div class="pic">
         <img
             :class="{smallPic: index !== 0, mainPic: index === 0}"
@@ -68,6 +68,10 @@ defineProps({
         </el-image-viewer>
       </div>
     </el-col>
+    <el-col :sm="2" :md="0">
+    </el-col>
+    <el-col :sm="2" :md="1">
+    </el-col>
     <el-col :sm="20" :md="10">
       <div class="text"
        :class="{mobile:mobile, notMobile:!mobile}">
@@ -82,6 +86,8 @@ defineProps({
         <div>再到手中点亮的灯。</div>
         <div>发现奔波与停留之间，生活依旧充满色彩。</div>
       </div>
+    </el-col>
+    <el-col :sm="2" :md="0">
     </el-col>
   </el-row>
 </template>
@@ -121,7 +127,7 @@ defineProps({
     padding: 30px 0;
   }
   &.notMobile {
-    padding: 60px 60px;
+    padding: 60px 0;
   }
 }
 h1 {

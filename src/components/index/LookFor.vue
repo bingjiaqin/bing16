@@ -61,7 +61,7 @@ defineProps({
    :class="{mobile:mobile, notMobile:!mobile}">
     <el-col :sm="2" :md="1">
     </el-col>
-    <el-col :sm="20" :md="13">
+    <el-col :sm="20" :md="12">
       <div class="pic">
         <img
             :class="{smallPic: index !== 0, mainPic: index === 0}"
@@ -79,6 +79,10 @@ defineProps({
         >
         </el-image-viewer>
       </div>
+    </el-col>
+    <el-col :sm="2" :md="0">
+    </el-col>
+    <el-col :sm="2" :md="1">
     </el-col>
     <el-col :sm="20" :md="10">
       <div class="text"
@@ -100,6 +104,8 @@ defineProps({
         <div>我开始找寻你未曾来过时的记忆，</div>
         <div>就当我们从未认识，我也从未有过期待。</div>
       </div>
+    </el-col>
+    <el-col :sm="2" :md="0">
     </el-col>
   </el-row>
 </template>
@@ -139,7 +145,7 @@ defineProps({
     padding: 30px 0;
   }
   &.notMobile {
-    padding: 60px 60px;
+    padding: 60px 0;
   }
 }
 h1 {

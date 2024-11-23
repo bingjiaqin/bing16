@@ -52,24 +52,25 @@ function findMe() {
       </div>
     </el-col>
     <el-col :sm="24" :md="12">
-      <div class="main-col">
-      <el-carousel
-          :height="mobile ? '300px' : '450px'"
-          indicator-position="outside"
-          arrow="never"
-          :interval="6000">
-        <el-carousel-item v-for="(item, index) in PIC_LIST" :key="index">
-          <el-image
-              :src="item.src"
-              :key="index"
-              :title="item.title"
-              class="pic"
-              :class="{mobile:mobile, notMobile:!mobile}"
-              loading="lazy"
-              fit="contain"/>
-        </el-carousel-item>
-      </el-carousel>
-    </div>
+      <div class="main-col"
+        :class="{mobile:mobile, notMobile:!mobile}">
+        <el-carousel
+            :height="mobile ? '260px' : '450px'"
+            indicator-position="outside"
+            arrow="never"
+            :interval="6000">
+          <el-carousel-item v-for="(item, index) in PIC_LIST" :key="index">
+            <el-image
+                :src="item.src"
+                :key="index"
+                :title="item.title"
+                class="pic"
+                :class="{mobile:mobile, notMobile:!mobile}"
+                loading="lazy"
+                fit="contain"/>
+          </el-carousel-item>
+        </el-carousel>
+      </div>
     </el-col>
     <el-col :sm="0" :md="1">
     </el-col>
@@ -82,8 +83,11 @@ h1 {
 }
 .main-col {
   position: relative;
-  top: 35%;
-  transform: translateY(-55%);
+  
+  &.notMobile {
+    top: 35%;
+    transform: translateY(-55%);
+  }
 }
 .main-text {
   min-height: 350px;
@@ -103,7 +107,7 @@ h1 {
 }
 .pic {
   &.mobile {
-    height: 350px;
+    height: 300px;
   }
   &.notMobile {
     height: 450px;
@@ -118,8 +122,8 @@ h1 {
   -webkit-backdrop-filter: blur(10px);
 
   &.mobile {
-    top: 90px;
-    padding: 90px 60px 90px 60px;
+    top: 70px;
+    padding: 90px 60px;
   }
   &.notMobile {
     top: 150px;
