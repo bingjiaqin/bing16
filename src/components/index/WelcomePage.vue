@@ -49,6 +49,7 @@ function findMe() {
         <p>如果你从别的地方找到这里，
           <span @click="findMe">欢迎联系我</span>。
         </p>
+        <p style="padding-top: 10px"><small>建议使用ipv6网络环境访问</small></p>
       </div>
     </el-col>
     <el-col :sm="24" :md="12">
