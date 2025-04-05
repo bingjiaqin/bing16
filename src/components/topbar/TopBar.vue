@@ -1,60 +1,80 @@
 <template>
-  <div class="top-manu">
-    <el-menu
-        v-if="mobile"
-        :default-active="activeIndex"
-        mode="horizontal"
-        :ellipsis="false"
-        @select="handleSelect"
-        class="mobile"
-    >
-      <img src="../../assets/logo.png" class="logo logo-phone" alt="bing16">
-      <div class="flex-grow" />
-      <el-sub-menu index="2-4" v-if="props.backTo === ''">
-        <template #title>
-          <el-icon><IconMenu /></el-icon>
-        </template>
-        <el-menu-item
-            v-for="item in MENU_LIST"
-            :index="item.key">
-            <router-link :to="`/${item.key}`">{{ item.name }}</router-link>
-        </el-menu-item>
-        <el-menu-item :index="INTRO"><router-link :to="`/${INTRO}`">关于我</router-link></el-menu-item>
-      </el-sub-menu>
-    </el-menu>
-
-    <el-menu
-        v-if="!mobile"
-        :default-active="activeIndex"
-        mode="horizontal"
-        :ellipsis="false"
-        @select="handleSelect"
-    >
-      <img src="../../assets/logo.png" class="logo" alt="bing16">
-      <span class="website-name">Bing16</span>
-      <div class="flex-grow" />
-      <el-menu-item v-if="props.backTo === ''"
+  <div @mouseleave="openDropMenu=false">
+    <header class="header">
+      <div class="header_box">
+        <img src="../../assets/logo.png" class="logo" alt="bing16">
+        <span class="website-name">Bing16</span>
+        <div class="flex-grow" />
+        <div class="main_menu"
+          :class="{'active':activeIndex===item.key}"
+          v-if="props.backTo === ''"
           v-for="item in MENU_LIST"
-          :index="item.key">
-          <router-link :to="`/${item.key}`">{{ item.name }}</router-link>
-      </el-menu-item>
-      <el-menu-item v-if="props.backTo !== ''">
-        <router-link :to="{ path: props.backTo }">返回</router-link>
-      </el-menu-item>
-      <el-divider direction="vertical" class="split"/>
-      <el-menu-item v-if="props.backTo === ''" :index="INTRO"><router-link :to="`/${INTRO}`">关于我</router-link></el-menu-item>
-      <el-menu-item v-if="props.backTo !== ''" @click="close">关闭</el-menu-item>
-    </el-menu>
+          :index="item.key"
+        >
+          <router-link :to="`/${item.key}`"
+          @click="handleSelect(item.key)">
+          {{ item.name }}
+          </router-link>
+        </div>
+        <div class="text_menu" v-if="props.backTo !== ''">
+          <router-link :to="{ path: props.backTo }">返回</router-link>
+        </div>
+        <el-divider direction="vertical" class="split menu_line"/>
+        <div class="text_menu text_menu_right" v-if="props.backTo !== ''">
+          <router-link :to="{ path: props.backTo }" @click="close">关闭</router-link>
+        </div>
+        <div class="main_menu about"
+          :class="{'active':activeIndex===INTRO}"
+          v-if="props.backTo === ''"
+          :index="INTRO">
+          <router-link :to="`/${INTRO}`"
+          @click="handleSelect(INTRO)">
+            关于我
+          </router-link>
+        </div>
+        <el-button class="menu_button" v-if="props.backTo === ''"  @click="openDropMenu=!openDropMenu">
+          <el-icon v-show="openDropMenu"><IconClose/></el-icon>
+          <el-icon v-show="!openDropMenu"><IconMenu/></el-icon>
+        </el-button>
+      </div>
+    </header>
+    <div class="drop_down_menu_box"
+      :class="{'open':openDropMenu}"
+    >
+      <div class="drop_down_menu_box_inner">
+        <div class="main_menu"
+          :class="{'active':activeIndex===item.key}"
+          v-if="props.backTo === ''"
+          v-for="item in MENU_LIST"
+          :index="item.key"
+        >
+          <router-link :to="`/${item.key}`"
+          @click="handleSelect(item.key)">
+          {{ item.name }}
+          </router-link>
+        </div>
+        <div class="main_menu"
+          :class="{'active':activeIndex===INTRO}"
+          v-if="props.backTo === ''"
+          :index="INTRO">
+          <router-link :to="`/${INTRO}`"
+          @click="handleSelect(INTRO)">
+            关于我
+          </router-link>
+        </div>
+      </div>
+    </div>
   </div>
+  
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { useRoute } from 'vue-router';
 import { MENU_LIST, INTRO, DEFAULT_MENU } from './config/Menu.js'
-import { isMobile } from '@/utils/MobileUtils'
 import {
   Menu as IconMenu,
+  CaretTop as IconClose
 } from '@element-plus/icons-vue'
 
 const props = defineProps({
@@ -70,11 +90,13 @@ const props = defineProps({
 
 const emit = defineEmits(["changeMenu"])
 const activeIndex = ref(props.default)
-const mobile = isMobile()
+const openDropMenu = ref(false)
 
 const router = useRoute()
 const handleSelect = (key: string) => {
   emit('changeMenu', key);
+  activeIndex.value = key;
+  openDropMenu.value = false;
 }
 
 const close = () => {
@@ -83,58 +105,122 @@ const close = () => {
 </script>
 
 <style>
-.flex-grow {
-  flex-grow: 1;
-}
-.top-manu {
-  height: 90px;
-  padding-top: 20px;
-  padding-left: 60px;
-  padding-right: 60px;
+.header {
+  position: absolute;
+  padding: 20px 60px;
+  width: 100%;
+  z-index: 99;
+  height: 75px;
+  z-index: 99;
+  background: linear-gradient(to top, rgba(var(--color-background-num), 0.5), var(--color-background));
+  backdrop-filter: blur(10px) saturate(1.8);
+  -webkit-backdrop-filter: blur(10px) saturate(1.8);
 
-  .logo {
-    position: relative;
-    top: -2px;
-  }
+}
+.header a {
+  color: inherit;
+}
+.header a:hover {
+  color: var(--el-color-primary);
+}
+.header_box {
+  display: flex;
+  align-items: center;
+
   .website-name {
     position: relative;
     margin-left: 15px;
-    margin-top: 7px;
     margin-right: 15px;
   }
-  .split {
+  .logo {
+      position: relative;
+      top: -2px;
+  }
+  .flex-grow {
+    flex-grow: 1;
+  }
+  .main_menu {
+    color: inherit;
+    width: 6em;
+    padding-bottom: 5px;
+    text-align: center;
+  }
+  .text_menu {
+    color: inherit;
+    width: 4em;
+    padding-bottom: 5px;
+    text-align: center;
+  }
+  .text_menu_right {
+    width: 3em;
+    text-align: right;
+  }
+  .about {
+    width: 5em;
+  }
+  .active {
+    color: var(--el-color-primary);
+    border-bottom: 2px solid var(--el-color-primary);
+  }
+
+  .menu_button {
+    color: var(--el-color-primary);
+    border: 0;
+  }
+  @media (min-width: 992px) {
+    .menu_button {
+      display: none;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .main_menu {
+      display: none;
+    }
+    .split {
+      display: none;
+    }
+  }
+}
+.drop_down_menu_box {
+  display: none;
+  position: absolute;
+  z-index: 101;
+  top: 70px;
+  right: 60px;
+  width: 10em;
+  text-align: left;
+  overflow: hidden;
+  height: 0;
+  transition: height .2s cubic-bezier(0.175, 0.885, 0.32, 1.05);
+  background-color: rgb(var(--color-background-num));
+
+  border: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 2px 3px 6px var(--color-shadow),
+             -2px -3px 6px var(--color-light);
+
+  .drop_down_menu_box_inner {
+    padding: 0.5rem;
+  }
+
+  .main_menu {
     position: relative;
-    margin-left: 3px;
-    margin-top: 12px;
-    margin-right: 3px;
+    padding: 0.3rem 1em;
   }
-  .el-menu--horizontal.el-menu {
-    border-bottom: 0;
+  .active {
+    color: var(--el-color-primary);
   }
-  .el-menu {
-    height: 40px;
-    background-color: unset;
-  }
-  .el-menu--horizontal .el-menu-item:not(.is-disabled):hover, .el-menu--horizontal .el-menu-item:not(.is-disabled):focus {
-    background-color: unset;
-  }
-  .el-menu--horizontal > .el-sub-menu .el-sub-menu__title:hover {
-    background-color: unset;
-  }
-  .el-menu-item {
-    width: 90px;
-  }
-  .el-sub-menu {
-    width: 40px;
-  }
-  .el-menu-vertical-demo {
-    width: 100%;
-  }
-  .el-sub-menu__icon-arrow {
-    display: none;
-  }
-  .el-menu--horizontal > .el-sub-menu.is-active .el-sub-menu__title {
-    border-bottom: 0;
+}
+
+.drop_down_menu_box.open  {
+  height: 12em;
+}
+
+@media (max-width: 992px) {
+  .drop_down_menu_box {
+    display: block;
   }
 }
 </style>
