@@ -87,7 +87,7 @@ const textarea = ref('');
 const submit = async () => {
   try {
     const response = await axios.post('https://blog.bing16.xyz:2096/blog/sslx', { data: textarea.value });
-    if (response.statusText !== 'OK') {
+    if (response.status !== 200) {
       throw new Error('Network response was not ok');
     }
     textarea.value = '';
