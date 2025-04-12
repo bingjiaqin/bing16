@@ -1584,6 +1584,11 @@ export const DATA = [
         "content": "&emsp;&emsp;太阳从大地生长起来，<br/>&emsp;&emsp;将江水染成红色，黄色，<br/>&emsp;&emsp;直到我的心被勾起，<br/>&emsp;&emsp;飘荡在无尽的雪地上。<br/>",
         "time": "2024-10-30 00:57",
         "Pic": ""
+      },
+      {
+        "content": "&emsp;&emsp;我只想坐在沙发上看着桌上的光影晃动<br/>&emsp;&emsp;不想上班<br/>&emsp;&emsp;不想吃药<br/>&emsp;&emsp;不想穿鞋<br/>&emsp;&emsp;不想起身<br/>&emsp;&emsp;我什么都不想做<br/>&emsp;&emsp;只想虚度着时光<br/>&emsp;&emsp;看着瓶子里反射的阳光<br/>&emsp;&emsp;听着脑里的白噪音和楼下施工的声音<br/>&emsp;&emsp;可是我快没时间了<br/>&emsp;&emsp;可是我什么都不想做<br/>&emsp;&emsp;生活好难<br/>",
+        "time": "2025-04-12 19:33",
+        "Pic": ""
       }
     ]
   }
