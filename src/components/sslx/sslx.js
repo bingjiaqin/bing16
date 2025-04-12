@@ -1589,6 +1589,11 @@ export const DATA = [
         "content": "&emsp;&emsp;我只想坐在沙发上看着桌上的光影晃动<br/>&emsp;&emsp;不想上班<br/>&emsp;&emsp;不想吃药<br/>&emsp;&emsp;不想穿鞋<br/>&emsp;&emsp;不想起身<br/>&emsp;&emsp;我什么都不想做<br/>&emsp;&emsp;只想虚度着时光<br/>&emsp;&emsp;看着瓶子里反射的阳光<br/>&emsp;&emsp;听着脑里的白噪音和楼下施工的声音<br/>&emsp;&emsp;可是我快没时间了<br/>&emsp;&emsp;可是我什么都不想做<br/>&emsp;&emsp;生活好难<br/>",
         "time": "2025-04-12 19:33",
         "Pic": ""
+      },
+      {
+        "content": "&emsp;&emsp;空闲的时间才能产生创造力，忙碌的时间只能产生生产力。<br/>",
+        "time": "2025-04-12 19:36",
+        "Pic": ""
       }
     ]
   }
