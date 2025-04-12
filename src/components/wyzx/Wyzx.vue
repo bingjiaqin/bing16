@@ -19,7 +19,12 @@ const filteredData = ref(data);
           style="text-align: center; margin-bottom: 20px"
       >
         <div class="card" :body-style="{ padding: '0px' }">
-          <el-image :src="item.pic"/>
+          <el-image :src="item.pic">
+            <template #error>
+              <el-image :src="item.pic.replace('lsky.bing16.xyz','lskyv4.bing16.xyz')">
+              </el-image>
+            </template>
+          </el-image>
           <div style="padding: 14px">
             <h3>{{ item.title }}</h3>
             <div class="bottom">

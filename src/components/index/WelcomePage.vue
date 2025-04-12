@@ -68,7 +68,19 @@ function findMe() {
                 class="pic"
                 :class="{mobile:mobile, notMobile:!mobile}"
                 loading="lazy"
-                fit="contain"/>
+                fit="contain">
+              <template #error>
+                <el-image
+                    :src="item.src.replace('lsky.bing16.xyz','lskyv4.bing16.xyz')"
+                    :key="index"
+                    :title="item.title"
+                    class="pic"
+                    :class="{mobile:mobile, notMobile:!mobile}"
+                    loading="lazy"
+                    fit="contain">
+                </el-image>
+              </template>
+            </el-image>
           </el-carousel-item>
         </el-carousel>
       </div>

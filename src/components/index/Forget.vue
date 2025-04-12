@@ -1,6 +1,6 @@
 <script setup>
 import {isMobile} from "@/utils/MobileUtils";
-import {ref} from "vue";
+import {ref,nextTick} from "vue";
 
 const mobile = isMobile()
 const picList = [
@@ -35,6 +35,7 @@ const showViewer = ref(false);
 const view = (idx) => {
   index.value = idx;
   showViewer.value = true;
+  setViverOnError();
 }
 
 defineProps({
@@ -47,6 +48,15 @@ defineProps({
     default: ''
   }
 })
+
+const setViverOnError = () => {
+  nextTick(() => {
+    const elements = document.querySelectorAll('.el-image-viewer__img');
+    elements.forEach(element => {
+      element.setAttribute("onerror", "this.onerror=null;this.src=this.src.replace('lsky.bing16.xyz', 'lskyv4.bing16.xyz');");
+    });
+  });
+};
 </script>
 
 <template>
@@ -62,6 +72,7 @@ defineProps({
             v-for="(pic, index) in picThumbnailList"
             @click="view(index)"
             :src="pic"
+            onerror="this.onerror=null;this.src=this.src.replace('lsky.bing16.xyz', 'lskyv4.bing16.xyz');"
             loading="lazy"/>
         <el-image-viewer
             hide-on-click-modal
