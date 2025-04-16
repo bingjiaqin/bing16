@@ -115,13 +115,15 @@ const close = () => {
   background: linear-gradient(to top, rgba(var(--color-background-num), 0.5), var(--color-background));
   backdrop-filter: blur(10px) saturate(1.8);
   -webkit-backdrop-filter: blur(10px) saturate(1.8);
-
 }
 .header a {
   color: inherit;
 }
 .header a:hover {
   color: var(--el-color-primary);
+}
+.header .el-button {
+  background-color: var(--color-background);
 }
 .header_box {
   display: flex;
