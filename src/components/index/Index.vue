@@ -1,5 +1,6 @@
 <script setup>
 import WelcomePage from "./WelcomePage.vue";
+import Hesitate from "@/components/index/Hesitate.vue";
 import Sea from "./Sea.vue";
 import Color from "@/components/index/Color.vue";
 import LookFor from "@/components/index/LookFor.vue";
@@ -8,7 +9,7 @@ import Empty from "@/components/index/Empty.vue";
 import {isMobile} from "@/utils/MobileUtils";
 import { ref, shallowRef } from 'vue';
 
-const allComponents = [Forget, LookFor, Color, Sea, Empty];
+const allComponents = [Hesitate, Forget, LookFor, Color, Sea, Empty];
 const components = shallowRef([allComponents[0]]);
 const nextComponentIdx = ref(1);
 
