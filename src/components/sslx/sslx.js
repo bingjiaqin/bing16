@@ -1614,6 +1614,11 @@ export const DATA = [
         "content": "&emsp;&emsp;我想成为真正的人，而不是工具。<br/>&emsp;&emsp;如果有一天我真的开始走进荒野，这句话将是我的引言。<br/>",
         "time": "2025-07-27 09:19",
         "Pic": ""
+      },
+      {
+        "content": "&emsp;&emsp;有时候得到了反而感到害怕<br/>",
+        "time": "2025-12-12 21:41",
+        "Pic": ""
       }
     ]
   }
