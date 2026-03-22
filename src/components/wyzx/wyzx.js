@@ -1,7 +1,7 @@
 export const DATA = [
     {
         "title": "Openclaw安装",
-        "pic": "https://lsky.bing16.xyz:2096/i/2026/03/22/69bfaadf334b6.png",
+        "pic": "https://lsky.bing16.xyz:2096/i/2026/03/22/69bfb1a646c1d.png",
         "intro": "记录在Mac上部署Docker版本Openclaw的过程。",
         "href": "wyzx/macos-docker-openclaw",
         "tags": [

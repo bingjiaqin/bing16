@@ -1,5 +1,7 @@
 # Mac 上基于 Docker 安装 OpenClaw 指南
 
+> 更新日期：2026-03-22
+
 > 基于 Docker 在 macOS 上快速部署 OpenClaw
 
 ## 前置要求
