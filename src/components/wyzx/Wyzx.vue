@@ -21,7 +21,7 @@ const filteredData = ref(data);
         <div class="card" :body-style="{ padding: '0px' }">
           <el-image :src="item.pic">
             <template #error>
-              <el-image :src="item.pic.replace('lsky.bing16.xyz','lskyv4.bing16.xyz')">
+              <el-image :src="item.pic.replace('lsky.remnants.cc','lskyv4.remnants.cc')">
               </el-image>
             </template>
           </el-image>

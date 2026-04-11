@@ -71,7 +71,7 @@ function findMe() {
                 fit="contain">
               <template #error>
                 <el-image
-                    :src="item.src.replace('lsky.bing16.xyz','lskyv4.bing16.xyz')"
+                    :src="item.src.replace('lsky.remnants.cc','lskyv4.remnants.cc')"
                     :key="index"
                     :title="item.title"
                     class="pic"

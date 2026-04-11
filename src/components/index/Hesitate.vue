@@ -4,22 +4,22 @@ import {ref,nextTick} from "vue";
 
 const mobile = isMobile()
 const picList = [
-  "https://lsky.bing16.xyz:2096/i/2025/11/21/69204eb646558.jpeg",
-  "https://lsky.bing16.xyz:2096/i/2025/11/21/69204c8d1697c.jpeg",
-  "https://lsky.bing16.xyz:2096/i/2025/11/21/69204ca555bb3.jpeg",
-  "https://lsky.bing16.xyz:2096/i/2025/11/21/692058f7f4017.jpeg",
-  "https://lsky.bing16.xyz:2096/i/2025/11/21/692058c875e0d.jpeg",
-  "https://lsky.bing16.xyz:2096/i/2025/11/21/69204cc64c417.jpeg",
-  "https://lsky.bing16.xyz:2096/i/2025/11/21/692058438b1db.jpg"
+  "https://lsky.remnants.cc:2096/i/2025/11/21/69204eb646558.jpeg",
+  "https://lsky.remnants.cc:2096/i/2025/11/21/69204c8d1697c.jpeg",
+  "https://lsky.remnants.cc:2096/i/2025/11/21/69204ca555bb3.jpeg",
+  "https://lsky.remnants.cc:2096/i/2025/11/21/692058f7f4017.jpeg",
+  "https://lsky.remnants.cc:2096/i/2025/11/21/692058c875e0d.jpeg",
+  "https://lsky.remnants.cc:2096/i/2025/11/21/69204cc64c417.jpeg",
+  "https://lsky.remnants.cc:2096/i/2025/11/21/692058438b1db.jpg"
 ];
 const picThumbnailList = [
-  "https://lsky.bing16.xyz:2096/i/2025/11/21/69204eb646558.jpeg",
-  "https://lsky.bing16.xyz:2096/thumbnails/953b518edc17e307767efd45996ccbf0.png",
-  "https://lsky.bing16.xyz:2096/thumbnails/d70e45b667e35bc6195f0d6369532e12.png",
-  "https://lsky.bing16.xyz:2096/thumbnails/18c627ff99ac6b0181181e08f5f6a67c.png",
-  "https://lsky.bing16.xyz:2096/thumbnails/458efa2639c0f1d5dea6cd62198e88ce.png",
-  "https://lsky.bing16.xyz:2096/thumbnails/a946f2debf8482f511c04348de447a69.png",
-  "https://lsky.bing16.xyz:2096/thumbnails/48482de9b4df877ae63ecdd426960fdd.png"
+  "https://lsky.remnants.cc:2096/i/2025/11/21/69204eb646558.jpeg",
+  "https://lsky.remnants.cc:2096/thumbnails/953b518edc17e307767efd45996ccbf0.png",
+  "https://lsky.remnants.cc:2096/thumbnails/d70e45b667e35bc6195f0d6369532e12.png",
+  "https://lsky.remnants.cc:2096/thumbnails/18c627ff99ac6b0181181e08f5f6a67c.png",
+  "https://lsky.remnants.cc:2096/thumbnails/458efa2639c0f1d5dea6cd62198e88ce.png",
+  "https://lsky.remnants.cc:2096/thumbnails/a946f2debf8482f511c04348de447a69.png",
+  "https://lsky.remnants.cc:2096/thumbnails/48482de9b4df877ae63ecdd426960fdd.png"
 ];
 const index = ref(0);
 const showViewer = ref(false);
@@ -45,7 +45,7 @@ const setViverOnError = () => {
   nextTick(() => {
     const elements = document.querySelectorAll('.el-image-viewer__img');
     elements.forEach(element => {
-      element.setAttribute("onerror", "this.onerror=null;this.src=this.src.replace('lsky.bing16.xyz', 'lskyv4.bing16.xyz');");
+      element.setAttribute("onerror", "this.onerror=null;this.src=this.src.replace('lsky.remnants.cc', 'lskyv4.remnants.cc');");
     });
   });
 };
@@ -64,7 +64,7 @@ const setViverOnError = () => {
             v-for="(pic, index) in picThumbnailList"
             @click="view(index)"
             :src="pic"
-            onerror="this.onerror=null;this.src=this.src.replace('lsky.bing16.xyz', 'lskyv4.bing16.xyz');"
+            onerror="this.onerror=null;this.src=this.src.replace('lsky.remnants.cc', 'lskyv4.remnants.cc');"
             loading="lazy"/>
         <el-image-viewer
             hide-on-click-modal
