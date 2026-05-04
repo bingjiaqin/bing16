@@ -159,7 +159,8 @@ main {
 }
 
 .dot:hover {
-  background: var(--color-text);
+  background: var(--color-primary);
+  opacity: 0.6;
   transform: scale(1.2);
 }
 </style>
