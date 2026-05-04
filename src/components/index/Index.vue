@@ -1,4 +1,5 @@
 <script setup>
+import { ref, shallowRef, onMounted, onUnmounted } from 'vue';
 import WelcomePage from "./WelcomePage.vue";
 import Hesitate from "@/components/index/Hesitate.vue";
 import Sea from "./Sea.vue";
@@ -7,24 +8,59 @@ import LookFor from "@/components/index/LookFor.vue";
 import Forget from "@/components/index/Forget.vue";
 import Empty from "@/components/index/Empty.vue";
 import {isMobile} from "@/utils/MobileUtils";
-import { ref, shallowRef } from 'vue';
 
 const allComponents = [Hesitate, Forget, LookFor, Color, Sea, Empty];
 const components = shallowRef([allComponents[0]]);
 const nextComponentIdx = ref(1);
+const totalSections = ref(1);
+const activeSection = ref(0);
 
-const mobile = isMobile()
+const mobile = isMobile();
+const mainRef = ref(null);
 
 function load() {
   if (nextComponentIdx.value < allComponents.length) {
     components.value.push(allComponents[nextComponentIdx.value]);
     nextComponentIdx.value = nextComponentIdx.value + 1;
+    totalSections.value = components.value.length + 1; // +1 for welcome
   }
 }
+
+function scrollToSection(idx) {
+  if (!mainRef.value) return;
+  const children = mainRef.value.querySelectorAll('.index');
+  if (children[idx]) {
+    children[idx].scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+let scrollTimer = null;
+function onScroll() {
+  if (scrollTimer) cancelAnimationFrame(scrollTimer);
+  scrollTimer = requestAnimationFrame(() => {
+    if (!mainRef.value) return;
+    const scrollTop = mainRef.value.scrollTop;
+    const sections = mainRef.value.querySelectorAll('.index');
+    let closest = 0;
+    let minDist = Infinity;
+    sections.forEach((section, i) => {
+      const dist = Math.abs(section.offsetTop - scrollTop);
+      if (dist < minDist) {
+        minDist = dist;
+        closest = i;
+      }
+    });
+    activeSection.value = closest;
+  });
+}
+
+onMounted(() => {
+  totalSections.value = 7; // welcome + 6 lazy
+});
 </script>
 
 <template>
-  <main :class="{notMobile:!mobile}">
+  <main ref="mainRef" :class="{notMobile:!mobile}" @scroll="onScroll">
     <el-row class="index">
       <welcome-page></welcome-page>
     </el-row>
@@ -36,6 +72,16 @@ function load() {
         :bgColor="`var(--color-background)`"></component>
       </el-row>
     </el-row>
+    <!-- 分页指示器 -->
+    <div class="page-dots" v-if="!mobile">
+      <div
+        v-for="i in totalSections"
+        :key="i"
+        class="dot"
+        :class="{ active: i - 1 === activeSection }"
+        @click="scrollToSection(i - 1)"
+      ></div>
+    </div>
   </main>
 </template>
 
@@ -44,6 +90,12 @@ main {
   overflow: scroll;
   height: 100vh;
   overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   &.notMobile {
     scroll-snap-type: y proximity;
@@ -57,5 +109,37 @@ main {
 }
 .top {
   z-index: 100;
+}
+
+/* 分页指示器 */
+.page-dots {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 999;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-border);
+  cursor: pointer;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dot.active {
+  background: var(--color-primary);
+  transform: scale(1.4);
+  box-shadow: 0 0 6px rgba(234, 88, 87, 0.4);
+}
+
+.dot:hover {
+  background: var(--color-text);
+  transform: scale(1.2);
 }
 </style>
