@@ -26,3 +26,9 @@ h1 {
     place-items: center;
   }
 }
+
+/* 覆盖 Element Plus el-footer 默认 padding */
+.el-footer {
+  --el-footer-padding: 0 !important;
+  padding: 0 !important;
+}
