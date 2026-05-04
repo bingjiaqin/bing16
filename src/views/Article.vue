@@ -89,7 +89,9 @@ loadTxtFile();
         <top-bar :backTo="root">
         </top-bar>
       </el-header>
-      <el-backtop :right="mobile ? 10 : 100" :bottom="100" />
+      <el-backtop :right="mobile ? 10 : 100" :bottom="100" 
+      target=".common-layout"
+    />
       <el-main class="mainPage">
         <div class="article">
           <div class="directory"
