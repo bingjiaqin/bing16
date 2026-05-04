@@ -1,5 +1,5 @@
 <script setup>
-import { ref, shallowRef, onMounted, onUnmounted } from 'vue';
+import { ref, computed, shallowRef, onMounted, onUnmounted } from 'vue';
 import WelcomePage from "./WelcomePage.vue";
 import Hesitate from "@/components/index/Hesitate.vue";
 import Sea from "./Sea.vue";
@@ -12,7 +12,7 @@ import {isMobile} from "@/utils/MobileUtils";
 const allComponents = [Hesitate, Forget, LookFor, Color, Sea, Empty];
 const components = shallowRef([allComponents[0]]);
 const nextComponentIdx = ref(1);
-const totalSections = ref(1);
+const totalSections = computed(() => components.value.length + 1); // +1 for welcome
 const activeSection = ref(0);
 
 const mobile = isMobile();
@@ -22,12 +22,17 @@ function load() {
   if (nextComponentIdx.value < allComponents.length) {
     components.value.push(allComponents[nextComponentIdx.value]);
     nextComponentIdx.value = nextComponentIdx.value + 1;
-    totalSections.value = components.value.length + 1; // +1 for welcome
   }
 }
 
 function scrollToSection(idx) {
   if (!mainRef.value) return;
+  // welcome 是 index 0，索引 > 0 时需要确保组件已加载
+  // nextComponentIdx = 已加载的组件数量
+  // 目标 idx 对应的组件在 components.value 中的位置是 idx - 1
+  while (nextComponentIdx.value < idx) {
+    load();
+  }
   const children = mainRef.value.querySelectorAll('.index');
   if (children[idx]) {
     children[idx].scrollIntoView({ behavior: 'smooth' });
