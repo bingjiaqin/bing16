@@ -13,15 +13,15 @@ const allComponents = [Hesitate, Forget, LookFor, Color, Sea, Empty];
 const components = shallowRef([allComponents[0]]);
 const nextComponentIdx = ref(1);
 const totalSections = computed(() => allComponents.length + 1);
-const sectionLabels = ["你好，欣喜相逢", "2025.Q3 迷茫 · 痛苦与厌倦", "2024.Q1 遗忘 · 重蹈覆辙", "2023.Q1 寻觅 · 什么是永恒与唯一", "2022.Q4 生活 · 奔波与停留", "2022.Q3 旅途 · 在人间", "你好，欣喜相逢"];
 const activeSection = ref(0);
+const sectionLabels = ["你好，欣喜相逢", "2025.Q3 迷茫 · 痛苦与厌倦", "2024.Q1 遗忘 · 重蹈覆辙", "2023.Q1 寻觅 · 什么是永恒与唯一", "2022.Q4 生活 · 奔波与停留", "2022.Q3 旅途 · 在人间", "你好，欣喜相逢"];
 
 const mobile = isMobile();
 const mainRef = ref(null);
 
 // IntersectionObserver 跟踪当前可见区块
 let observer = null;
-const sectionEls = new Map(); // el -> index
+const sectionEls = new Map();
 
 function observeSections() {
   if (!mainRef.value) return;
@@ -55,7 +55,6 @@ function load() {
   if (nextComponentIdx.value < allComponents.length) {
     components.value.push(allComponents[nextComponentIdx.value]);
     nextComponentIdx.value = nextComponentIdx.value + 1;
-    // 新组件挂载后重新建立观察
     nextTick(() => observeSections());
   }
 }
@@ -98,15 +97,11 @@ onUnmounted(() => {
       <div
         v-for="i in totalSections"
         :key="i"
-        class="dot-wrapper"
-      >
-        <div
-          class="dot"
-          :class="{ active: i - 1 === activeSection }"
-          @click="scrollToSection(i - 1)"
-        ></div>
-        <div class="dot-tooltip" v-text="sectionLabels[i - 1]"></div>
-      </div>
+        class="dot"
+        :class="{ active: i - 1 === activeSection }"
+        :title="sectionLabels[i - 1]"
+        @click="scrollToSection(i - 1)"
+      ></div>
     </div>
   </main>
 </template>
@@ -170,43 +165,3 @@ main {
   transform: scale(1.2);
 }
 </style>
-
-/* 分页指示器 - 带 tooltip */
-.dot-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 10px;
-}
-
-.dot-tooltip {
-  position: absolute;
-  right: calc(100% + 12px);
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--color-text);
-  color: var(--color-background);
-  font-size: 12px;
-  white-space: nowrap;
-  padding: 4px 10px;
-  border-radius: 6px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 200ms ease;
-}
-
-.dot-tooltip::after {
-  content: '';
-  position: absolute;
-  right: -5px;
-  top: 50%;
-  transform: translateY(-50%);
-  border-left: 5px solid var(--color-text);
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-}
-
-.dot-wrapper:hover .dot-tooltip {
-  opacity: 1;
-}
