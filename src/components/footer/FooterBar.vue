@@ -14,7 +14,8 @@
 <style scoped>
 .footer {
   width: 100%;
-  padding: 30px 40px 0 0;
+  padding-left: 60px;
+  padding-right: 60px;
   text-align: right;
   z-index: 99;
   font-size: 13px;
