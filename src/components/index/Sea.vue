@@ -106,7 +106,7 @@ const setViverOnError = () => {
     padding: 50px 60px;
   }
   &.notMobile {
-    padding: 50px 0;
+    padding: 50px 60px;
   }
 }
 .pic {
