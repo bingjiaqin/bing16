@@ -14,14 +14,23 @@
 <style scoped>
 .footer {
   width: 100%;
-  padding-top: 20px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding: 30px 40px 40px;
   text-align: right;
   z-index: 99;
+  font-size: 13px;
+  color: var(--el-text-color-secondary, #999);
+  border-top: 1px solid var(--color-border);
+  margin-top: 40px;
 
   &:hover {
     opacity: 0.7;
+  }
+
+  a {
+    color: inherit;
+    &:hover {
+      color: var(--color-primary);
+    }
   }
 }
 </style>

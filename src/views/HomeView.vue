@@ -80,6 +80,7 @@ const scrollToTop = () => {
   &.notMainPage {
     overflow-y: scroll;
     position: absolute;
+    scroll-behavior: smooth;
   }
 }
 

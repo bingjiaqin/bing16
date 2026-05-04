@@ -118,6 +118,7 @@ const close = () => {
 }
 .header a {
   color: inherit;
+  transition: color 200ms;
 }
 .header a:hover {
   color: var(--el-color-primary);
@@ -146,6 +147,8 @@ const close = () => {
     width: 6em;
     padding-bottom: 5px;
     text-align: center;
+    font-size: 14px;
+    letter-spacing: 0.5px;
   }
   .text_menu {
     color: inherit;

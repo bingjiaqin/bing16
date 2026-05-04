@@ -38,14 +38,28 @@
 
 <style scoped>
 .content {
-  padding: 100px 60px;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px 60px 80px;
+  line-height: 1.9;
+  font-size: 16px;
+}
+h2 {
+  font-family: var(--font-en);
+  font-size: 2rem;
+  letter-spacing: 1px;
 }
 h3 {
-  margin-top: 30px;
+  margin-top: 40px;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 p {
   text-indent: 2em;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+.el-divider {
+  margin: 20px 0;
 }
 </style>

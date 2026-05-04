@@ -44,8 +44,17 @@
 
   --color-light: var(--vt-c-light-light);
   --color-shadow: var(--vt-c-shadow-light);
+  --color-shadow-card: rgba(0, 0, 0, 0.06);
 
   --color-primary: #EA5857;
+
+  --font-cn: "LXGW WenKai Screen", "Noto Serif SC", serif;
+  --font-en: "Playfair Display", Georgia, serif;
+}
+
+::selection {
+  background: rgba(234, 88, 87, 0.15);
+  color: #1a1a1a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -63,6 +72,7 @@
 
     --color-light: var(--vt-c-light-dark);
     --color-shadow: var(--vt-c-shadow-dark);
+    --color-shadow-card: rgba(0, 0, 0, 0.2);
   }
 }
 
