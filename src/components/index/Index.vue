@@ -19,7 +19,6 @@ const sectionLabels = ["你好，欣喜相逢", "2025.Q3 迷茫 · 痛苦与厌�
 const mobile = isMobile();
 const mainRef = ref(null);
 
-// IntersectionObserver 跟踪当前可见区块
 let observer = null;
 const sectionEls = new Map();
 
@@ -38,14 +37,10 @@ function observeSections() {
         }
       }
     },
-    {
-      root: mainRef.value,
-      threshold: [0.3, 0.5, 0.7],
-    }
+    { root: mainRef.value, threshold: [0.3, 0.5, 0.7] }
   );
 
-  const sections = mainRef.value.querySelectorAll('.index');
-  sections.forEach((el, i) => {
+  mainRef.value.querySelectorAll('.index').forEach((el, i) => {
     sectionEls.set(el, i);
     observer.observe(el);
   });
@@ -61,22 +56,13 @@ function load() {
 
 function scrollToSection(idx) {
   if (!mainRef.value) return;
-  while (nextComponentIdx.value < idx) {
-    load();
-  }
+  while (nextComponentIdx.value < idx) load();
   const children = mainRef.value.querySelectorAll('.index');
-  if (children[idx]) {
-    children[idx].scrollIntoView({ behavior: 'smooth' });
-  }
+  if (children[idx]) children[idx].scrollIntoView({ behavior: 'smooth' });
 }
 
-onMounted(() => {
-  observeSections();
-});
-
-onUnmounted(() => {
-  if (observer) observer.disconnect();
-});
+onMounted(() => { observeSections(); });
+onUnmounted(() => { if (observer) observer.disconnect(); });
 </script>
 
 <template>
@@ -88,20 +74,20 @@ onUnmounted(() => {
       v-infinite-scroll="load"
       :infinite-scroll-disabled="nextComponentIdx >= allComponents.length">
       <el-row v-for="(component, index) in components" class="index" :class="{top: index !== allComponents.length - 1}">
-        <component :is="component"
-        :bgColor="`var(--color-background)`"></component>
+        <component :is="component" :bgColor="`var(--color-background)`"></component>
       </el-row>
     </el-row>
-    <!-- 分页指示器 -->
+
     <div class="page-dots" v-if="!mobile">
       <div
         v-for="i in totalSections"
         :key="i"
         class="dot"
         :class="{ active: i - 1 === activeSection }"
-        :title="sectionLabels[i - 1]"
         @click="scrollToSection(i - 1)"
-      ></div>
+      >
+        <span class="dot-tip" v-text="sectionLabels[i - 1]"></span>
+      </div>
     </div>
   </main>
 </template>
@@ -113,24 +99,11 @@ main {
   overflow-x: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  &.notMobile {
-    scroll-snap-type: y proximity;
-    scroll-behavior: smooth;
-  }
+  &::-webkit-scrollbar { display: none; }
+  &.notMobile { scroll-snap-type: y proximity; scroll-behavior: smooth; }
 }
-.index {
-  min-height: 100vh;
-  width: 100%;
-  scroll-snap-align: start;
-}
-.top {
-  z-index: 100;
-}
+.index { min-height: 100vh; width: 100%; scroll-snap-align: start; }
+.top { z-index: 100; }
 
 /* 分页指示器 */
 .page-dots {
@@ -142,9 +115,11 @@ main {
   flex-direction: column;
   gap: 10px;
   z-index: 999;
+  align-items: flex-end;
 }
 
 .dot {
+  position: relative;
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -161,7 +136,41 @@ main {
 
 .dot:hover {
   background: var(--color-primary);
-  opacity: 1;
   transform: scale(1.2);
+}
+
+/* 自制 tooltip */
+.dot-tip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-size: 13px;
+  padding: 5px 12px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  line-height: 1.4;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.dot-tip::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 5px solid rgba(0, 0, 0, 0.35);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+.dot:hover .dot-tip {
+  opacity: 1;
 }
 </style>
