@@ -1,5 +1,5 @@
 <script setup>
-import { ref, shallowRef } from 'vue';
+import { ref, computed, shallowRef } from 'vue';
 import WelcomePage from "./WelcomePage.vue";
 import Hesitate from "@/components/index/Hesitate.vue";
 import Sea from "./Sea.vue";
@@ -12,7 +12,7 @@ import {isMobile} from "@/utils/MobileUtils";
 const allComponents = [Hesitate, Forget, LookFor, Color, Sea, Empty];
 const components = shallowRef([allComponents[0]]);
 const nextComponentIdx = ref(1);
-const totalSections = ref(7); // 固定 7 屏：welcome + 6 个懒加载组件
+const totalSections = computed(() => allComponents.length + 1);
 const activeSection = ref(0);
 
 const mobile = isMobile();
@@ -27,9 +27,6 @@ function load() {
 
 function scrollToSection(idx) {
   if (!mainRef.value) return;
-  // welcome 是 index 0，索引 > 0 时需要确保组件已加载
-  // nextComponentIdx = 已加载的组件数量
-  // 目标 idx 对应的组件在 components.value 中的位置是 idx - 1
   while (nextComponentIdx.value < idx) {
     load();
   }
@@ -39,27 +36,13 @@ function scrollToSection(idx) {
   }
 }
 
-let scrollTimer = null;
 function onScroll() {
-  if (scrollTimer) cancelAnimationFrame(scrollTimer);
-  scrollTimer = requestAnimationFrame(() => {
-    if (!mainRef.value) return;
-    const scrollTop = mainRef.value.scrollTop;
-    const sections = mainRef.value.querySelectorAll('.index');
-    let closest = 0;
-    let minDist = Infinity;
-    sections.forEach((section, i) => {
-      const dist = Math.abs(section.offsetTop - scrollTop);
-      if (dist < minDist) {
-        minDist = dist;
-        closest = i;
-      }
-    });
-    activeSection.value = closest;
-  });
+  if (!mainRef.value) return;
+  const scrollTop = mainRef.value.scrollTop;
+  const vh = window.innerHeight;
+  const idx = Math.round(scrollTop / vh);
+  activeSection.value = Math.min(idx, totalSections.value - 1);
 }
-
-
 </script>
 
 <template>
