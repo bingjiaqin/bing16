@@ -1,8 +1,11 @@
 @import './base.css';
 
 #app {
-  width: 100%;
-  min-height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  font-weight: normal;
 }
 
 a {
@@ -15,10 +18,13 @@ h1 {
   font-size: 25px;
 }
 
-/* 为内部 absolute 定位的 header 和 footer 提供定位参考 */
-.el-header {
-  position: relative;
-}
-.el-footer {
-  position: relative;
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+
+  #app {
+    padding: 0 2rem;
+  }
 }
