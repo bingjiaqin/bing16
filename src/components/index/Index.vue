@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, shallowRef } from 'vue';
+import { ref, computed, shallowRef, onMounted, onUnmounted, nextTick } from 'vue';
 import WelcomePage from "./WelcomePage.vue";
 import Hesitate from "@/components/index/Hesitate.vue";
 import Sea from "./Sea.vue";
@@ -18,10 +18,44 @@ const activeSection = ref(0);
 const mobile = isMobile();
 const mainRef = ref(null);
 
+// IntersectionObserver 跟踪当前可见区块
+let observer = null;
+const sectionEls = new Map(); // el -> index
+
+function observeSections() {
+  if (!mainRef.value) return;
+  if (observer) observer.disconnect();
+
+  observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
+          const idx = sectionEls.get(entry.target);
+          if (idx !== undefined) {
+            activeSection.value = idx;
+          }
+        }
+      }
+    },
+    {
+      root: mainRef.value,
+      threshold: [0.3, 0.5, 0.7],
+    }
+  );
+
+  const sections = mainRef.value.querySelectorAll('.index');
+  sections.forEach((el, i) => {
+    sectionEls.set(el, i);
+    observer.observe(el);
+  });
+}
+
 function load() {
   if (nextComponentIdx.value < allComponents.length) {
     components.value.push(allComponents[nextComponentIdx.value]);
     nextComponentIdx.value = nextComponentIdx.value + 1;
+    // 新组件挂载后重新建立观察
+    nextTick(() => observeSections());
   }
 }
 
@@ -36,17 +70,17 @@ function scrollToSection(idx) {
   }
 }
 
-function onScroll() {
-  if (!mainRef.value) return;
-  const scrollTop = mainRef.value.scrollTop;
-  const vh = mainRef.value.clientHeight;
-  const idx = Math.round(scrollTop / vh);
-  activeSection.value = Math.min(idx, totalSections.value - 1);
-}
+onMounted(() => {
+  observeSections();
+});
+
+onUnmounted(() => {
+  if (observer) observer.disconnect();
+});
 </script>
 
 <template>
-  <main ref="mainRef" :class="{notMobile:!mobile}" @scroll="onScroll">
+  <main ref="mainRef" :class="{notMobile:!mobile}">
     <el-row class="index">
       <welcome-page></welcome-page>
     </el-row>
