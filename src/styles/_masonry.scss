@@ -1,0 +1,40 @@
+/* Brick / Masonry layout using CSS columns */
+.masonry {
+  column-count: 4;
+  column-gap: 20px;
+  padding: 80px 60px 60px;
+
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .card {
+    border: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 6px 6px 9px var(--color-shadow),
+                -6px -6px 9px var(--color-light);
+    transition: all 100ms linear;
+    text-align: center;
+
+    &:hover {
+      transform: translate(-2px, -2px) scale(1.01);
+      transition: all 100ms linear;
+      box-shadow: 10px 10px 20px var(--color-shadow),
+                  -3px -3px 12px var(--color-light);
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .masonry { column-count: 3; }
+}
+@media (max-width: 992px) {
+  .masonry { column-count: 2; }
+}
+@media (max-width: 576px) {
+  .masonry { column-count: 1; padding: 80px 20px 40px; }
+}
