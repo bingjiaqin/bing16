@@ -1,19 +1,53 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { DATA } from './wyzx.js'
 
 const data = DATA;
-const filteredData = ref(data);
+
+// 响应式列数
+const getColumnCount = () => {
+  const w = window.innerWidth;
+  if (w > 1200) return 4;
+  if (w > 992) return 3;
+  if (w > 576) return 2;
+  return 1;
+};
+
+const columnCount = ref(getColumnCount());
+
+const onResize = () => {
+  columnCount.value = getColumnCount();
+};
+
+onMounted(() => window.addEventListener('resize', onResize));
+onUnmounted(() => window.removeEventListener('resize', onResize));
+
+// 按 round-robin 分配数据到各列
+const columns = computed(() => {
+  const cols = [];
+  const count = columnCount.value;
+  for (let i = 0; i < count; i++) {
+    cols.push([]);
+  }
+  data.forEach((item, index) => {
+    cols[index % count].push(item);
+  });
+  return cols;
+});
 </script>
 
 <template>
   <div class="masonry">
     <div
-        v-for="(item, index) in filteredData"
-        :key="index"
-        class="masonry-item"
+        v-for="(col, colIndex) in columns"
+        :key="colIndex"
+        class="masonry-col"
     >
-      <div class="card">
+      <div
+          v-for="(item, index) in col"
+          :key="colIndex + '-' + index"
+          class="card"
+      >
         <el-image :src="item.pic">
           <template #error>
             <el-image :src="item.pic.replace('lsky.remnants.cc','lskyv4.remnants.cc')">

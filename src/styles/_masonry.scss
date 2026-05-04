@@ -1,40 +1,42 @@
-/* Masonry layout using CSS columns + padding-top for visual alignment */
+/* Masonry layout using flexbox with manual column distribution */
 .masonry {
-  column-count: 4;
-  column-gap: 20px;
-  padding: 90px 60px 60px;
+  display: flex;
+  gap: 20px;
+  padding: 80px 60px 60px;
+  align-items: flex-start;
+}
 
-  .masonry-item {
-    break-inside: avoid;
-    margin-bottom: 20px;
-    display: inline-block;
-    width: 100%;
-  }
+.masonry-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
 
-  .card {
-    border: 0;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 6px 6px 9px var(--color-shadow),
-                -6px -6px 9px var(--color-light);
+.masonry-col .card {
+  border: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 6px 6px 9px var(--color-shadow),
+              -6px -6px 9px var(--color-light);
+  transition: all 100ms linear;
+  text-align: center;
+
+  &:hover {
+    transform: translate(-2px, -2px) scale(1.01);
     transition: all 100ms linear;
-    text-align: center;
-
-    &:hover {
-      transform: translate(-2px, -2px) scale(1.01);
-      transition: all 100ms linear;
-      box-shadow: 10px 10px 20px var(--color-shadow),
-                  -3px -3px 12px var(--color-light);
-    }
+    box-shadow: 10px 10px 20px var(--color-shadow),
+                -3px -3px 12px var(--color-light);
   }
 }
 
 @media (max-width: 1200px) {
-  .masonry { column-count: 3; }
+  .masonry { padding: 80px 40px 40px; }
 }
 @media (max-width: 992px) {
-  .masonry { column-count: 2; }
+  .masonry { padding: 80px 30px 30px; }
 }
-@media (max-width: 576px) {
-  .masonry { column-count: 1; padding: 80px 20px 40px; }
+@media (max-width: 768px) {
+  .masonry { padding: 80px 20px 20px; }
 }
