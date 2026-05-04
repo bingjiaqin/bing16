@@ -14,7 +14,7 @@ const components = shallowRef([allComponents[0]]);
 const nextComponentIdx = ref(1);
 const totalSections = computed(() => allComponents.length + 1);
 const activeSection = ref(0);
-const sectionLabels = ["你好，欣喜相逢", "2025.Q3 迷茫 · 痛苦与厌倦", "2024.Q1 遗忘 · 重蹈覆辙", "2023.Q1 寻觅 · 什么是永恒与唯一", "2022.Q4 生活 · 奔波与停留", "2022.Q3 旅途 · 在人间", "你好，欣喜相逢"];
+const sectionLabels = ["你好，欣喜相逢", "2025.Q3 迷茫 · 痛苦与厌倦", "2024.Q1 遗忘 · 重蹈覆辙", "2023.Q1 寻觅 · 什么是永恒与唯一", "2022.Q4 生活 · 奔波与停留", "2022.Q3 旅途 · 在人间", "END"];
 
 const mobile = isMobile();
 const mainRef = ref(null);
