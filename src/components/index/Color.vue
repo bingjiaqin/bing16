@@ -108,12 +108,7 @@ const setViverOnError = () => {
   width: 100%;
   text-align: center;
 
-  &.mobile {
-    padding: 50px 60px;
-  }
-  &.notMobile {
-    padding: 50px 60px;
-  }
+  padding: 50px 60px;
 }
 .pic {
   position: relative;
