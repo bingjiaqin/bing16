@@ -39,7 +39,7 @@ function scrollToSection(idx) {
 function onScroll() {
   if (!mainRef.value) return;
   const scrollTop = mainRef.value.scrollTop;
-  const vh = window.innerHeight;
+  const vh = mainRef.value.clientHeight;
   const idx = Math.round(scrollTop / vh);
   activeSection.value = Math.min(idx, totalSections.value - 1);
 }
