@@ -7,9 +7,10 @@ const data = DATA;
 // 响应式列数
 const getColumnCount = () => {
   const w = window.innerWidth;
-  if (w > 1200) return 4;
-  if (w > 992) return 3;
-  if (w > 576) return 2;
+  if (w > 1400) return 5;
+  if (w > 1100) return 4;
+  if (w > 768) return 3;
+  if (w > 480) return 2;
   return 1;
 };
 
@@ -54,8 +55,8 @@ const columns = computed(() => {
             </el-image>
           </template>
         </el-image>
-        <div style="padding: 14px">
-          <h3>{{ item.title }}</h3>
+        <div class="card-body">
+          <h3 class="card-title">{{ item.title }}</h3>
           <div class="bottom">
             <time class="time">{{ item.intro }}</time>
           </div>

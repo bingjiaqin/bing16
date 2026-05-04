@@ -7,9 +7,10 @@ const data = DATA.itmes;
 // 响应式列数
 const getColumnCount = () => {
   const w = window.innerWidth;
-  if (w > 1200) return 4;
-  if (w > 992) return 3;
-  if (w > 576) return 2;
+  if (w > 1400) return 5;
+  if (w > 1100) return 4;
+  if (w > 768) return 3;
+  if (w > 480) return 2;
   return 1;
 };
 
@@ -48,12 +49,12 @@ const columns = computed(() => {
           :key="colIndex + '-' + index"
           class="card"
       >
-        <div style="padding: 14px">
-          <h3 style="margin-bottom: 20px;">{{ item.title }}</h3>
-          <div class="bottom" style="margin-bottom: 20px;">
+        <div class="card-body">
+          <h3 class="card-title">{{ item.title }}</h3>
+          <div class="bottom">
             <time class="time">{{ item.intro }}</time>
           </div>
-          <div style="margin-bottom: 20px;">[{{ item.group }}]</div>
+          <div class="card-group">[{{ item.group }}]</div>
           <div v-if="item.type==='md'">
             <router-link :to="{ path: `/article/${item.href}` }" target="_blank">查看</router-link>
           </div>
