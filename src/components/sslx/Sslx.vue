@@ -209,21 +209,14 @@ const loadGitalk = () => {
 
 <style scoped>
 .content {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 120px 60px 80px;
-  line-height: 1.9;
+  padding: 100px 60px;
 }
 .search {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 .title {
-  margin-top: 24px;
+  margin-top: 20px;
   margin-bottom: 20px;
-  font-family: var(--font-en);
-}
-h1.title {
-  font-size: 2rem;
 }
 .pagination-box {
   width: 100%;
@@ -240,28 +233,20 @@ h1.title {
   height: 23px;
 }
 .card-box {
-  width: 100%;
+  width: 100%;;
   margin-bottom: 60px;
 }
 .box-card {
-  margin-top: 16px;
-  margin-bottom: 16px;
-  line-height: 1.8;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .time-box {
   width: 100%;
   text-align: right;
-  margin-top: 16px;
-  font-size: 13px;
-  color: var(--el-text-color-secondary, #999);
+  margin-top: 10px;
 }
 .el-card {
   border: 0;
-  border-radius: 10px;
-  box-shadow: 0 1px 3px var(--color-shadow-card);
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.el-card:hover {
-  box-shadow: 0 4px 15px var(--color-shadow-card);
+  border-radius: 1px;
 }
 </style>

@@ -93,9 +93,6 @@ function findMe() {
 <style scoped>
 h1 {
   margin-bottom: 18px;
-  font-family: var(--font-en);
-  font-size: 28px;
-  letter-spacing: 2px;
 }
 .main-col {
   position: relative;
@@ -109,12 +106,6 @@ h1 {
   min-height: 350px;
   position: relative;
   transform: translateY(-30%);
-  line-height: 2;
-  font-size: 17px;
-
-  p {
-    margin-bottom: 8px;
-  }
 
   &.mobile {
     min-height: 20px;
