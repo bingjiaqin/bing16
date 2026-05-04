@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, shallowRef, onMounted, onUnmounted } from 'vue';
+import { ref, shallowRef } from 'vue';
 import WelcomePage from "./WelcomePage.vue";
 import Hesitate from "@/components/index/Hesitate.vue";
 import Sea from "./Sea.vue";
@@ -12,7 +12,7 @@ import {isMobile} from "@/utils/MobileUtils";
 const allComponents = [Hesitate, Forget, LookFor, Color, Sea, Empty];
 const components = shallowRef([allComponents[0]]);
 const nextComponentIdx = ref(1);
-const totalSections = computed(() => components.value.length + 1); // +1 for welcome
+const totalSections = ref(7); // 固定 7 屏：welcome + 6 个懒加载组件
 const activeSection = ref(0);
 
 const mobile = isMobile();
@@ -59,9 +59,7 @@ function onScroll() {
   });
 }
 
-onMounted(() => {
-  totalSections.value = 7; // welcome + 6 lazy
-});
+
 </script>
 
 <template>
