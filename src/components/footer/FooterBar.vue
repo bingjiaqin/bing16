@@ -19,7 +19,6 @@
   z-index: 99;
   font-size: 13px;
   color: var(--el-text-color-secondary, #999);
-  border-top: 1px solid var(--color-border);
   margin-top: 40px;
 
   &:hover {
