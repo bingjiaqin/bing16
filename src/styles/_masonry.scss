@@ -31,17 +31,21 @@
   }
 }
 
-/* 卡片内部 padding 统一收窄 */
+/* 卡片内部 padding */
 .card-body {
-  padding: 10px 12px;
+  padding: 14px;
 }
 
 .card-title {
-  margin-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+.card-body .bottom {
+  margin-bottom: 16px;
 }
 
 .card-group {
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   color: var(--el-text-color-secondary, #999);
 }
 
