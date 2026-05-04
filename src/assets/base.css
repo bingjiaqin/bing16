@@ -44,6 +44,8 @@
 
   --color-light: var(--vt-c-light-light);
   --color-shadow: var(--vt-c-shadow-light);
+
+  --color-primary: #EA5857;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -62,6 +64,11 @@
     --color-light: var(--vt-c-light-dark);
     --color-shadow: var(--vt-c-shadow-dark);
   }
+}
+
+
+a {
+  color: var(--color-primary);
 }
 
 *,

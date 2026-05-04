@@ -39,6 +39,8 @@ const filteredData = ref(data.itmes);
 </template>
 
 <style scoped>
+@import '../../styles/_card.scss';
+
 .content {
   padding: 100px 60px;
 }
@@ -46,17 +48,6 @@ const filteredData = ref(data.itmes);
   padding-top: 30px;
 }
 .card {
-  border: 0;
-  border-radius: 1px;
-  overflow: hidden;
-  box-shadow: 6px 6px 9px var(--color-shadow),
-             -6px -6px 9px var(--color-light);
-  transition: all 100ms linear;
-}
-.card:hover {
-  transform: scale(1.02);
-  transition: all 100ms linear;
-  box-shadow: 10px 10px 20px var(--color-shadow),
-             -3px -3px 12px var(--color-light);
+  border-radius: 8px;
 }
 </style>

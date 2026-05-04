@@ -19,5 +19,9 @@
   padding-right: 30px;
   text-align: right;
   z-index: 99;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 </style>
