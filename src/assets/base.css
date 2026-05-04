@@ -90,7 +90,6 @@ a {
 }
 
 body {
-  overflow: hidden;
   height: calc(100vh - var(--vh-offset, 0px));
   color: var(--color-text);
   background: var(--color-background);

@@ -142,8 +142,13 @@ loadTxtFile();
 </template>
 
 <style scoped>
+.el-main {
+  overflow: visible;
+}
+
 .common-layout {
   position:absolute;
+  overflow-y: auto;
   top: 0;
   left: 0;
   bottom: 0;
