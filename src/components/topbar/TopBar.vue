@@ -147,8 +147,6 @@ const close = () => {
     width: 6em;
     padding-bottom: 5px;
     text-align: center;
-    font-size: 14px;
-    letter-spacing: 0.5px;
   }
   .text_menu {
     color: inherit;
