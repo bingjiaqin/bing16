@@ -23,7 +23,10 @@ if (path !== '') {
 }
 
 const scrollToTop = () => {
-  document.documentElement.scrollTop || document.body.scrollTop;
+  const el = document.querySelector('.mainPage.notMainPage');
+  if (el) {
+    el.scrollTop = 0;
+  }
 }
 </script>
 
