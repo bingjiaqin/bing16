@@ -160,7 +160,7 @@ main {
 
 .dot:hover {
   background: var(--color-primary);
-  opacity: 0.6;
+  opacity: 1;
   transform: scale(1.2);
 }
 </style>
