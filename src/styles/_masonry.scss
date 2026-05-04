@@ -1,8 +1,8 @@
-/* Brick / Masonry layout using CSS columns */
+/* Masonry layout using CSS columns + padding-top for visual alignment */
 .masonry {
   column-count: 4;
   column-gap: 20px;
-  padding: 80px 60px 60px;
+  padding: 90px 60px 60px;
 
   .masonry-item {
     break-inside: avoid;
