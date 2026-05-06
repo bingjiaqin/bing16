@@ -104,7 +104,7 @@ loadTxtFile();
             <el-icon style="color: var(--el-color-primary);"><Memo /></el-icon>
           </div>
           <div class="directory-box"
-            v-show="showDir"
+            :class="{ 'is-visible': showDir }"
             :style="{ right: mobile ? '10px' : '40px',  bottom: mobile ? '96px' : '156px'}">
             <div
               v-for="anchor in titles"
@@ -190,41 +190,64 @@ loadTxtFile();
       align-items: center;
       cursor: pointer;
       z-index: 999;
-      transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
       color: var(--color-text);
     }
 
     .directory:hover {
       border-color: var(--color-primary);
       color: var(--color-primary);
-      transform: scale(1.1);
-      box-shadow: 0 0 8px rgba(234, 88, 87, 0.25);
+      transform: scale(1.12);
+      box-shadow: 0 0 16px rgba(234, 88, 87, 0.3);
+    }
+
+    .directory:active {
+      transform: scale(0.95);
+      transition-duration: 80ms;
     }
 
     .directory-box {
       position: fixed;
       z-index: 998;
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       padding: 12px 0;
-      border-radius: 12px;
+      border-radius: 16px;
       width: 280px;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      opacity: 0;
+      transform: translateY(8px) scale(0.97);
+      transform-origin: bottom right;
+      pointer-events: none;
+      transition: opacity 280ms cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 280ms cubic-bezier(0.34, 1.2, 0.64, 1),
+                  backdrop-filter 280ms ease,
+                  box-shadow 280ms ease;
+    }
+
+    .directory-box.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
     }
 
     .directory-item {
       cursor: pointer;
-      transition: background 150ms ease;
+      transition: background 200ms ease, transform 150ms ease;
+      transform: translateX(0);
     }
 
     .directory-item a {
       color: rgba(255, 255, 255, 0.85);
       display: block;
+      transition: color 150ms ease;
     }
 
     .directory-item:hover {
-      background: rgba(234, 88, 87, 0.5);
+      background: rgba(234, 88, 87, 0.45);
+      transform: translateX(2px);
     }
 
     .directory-item:hover a {
