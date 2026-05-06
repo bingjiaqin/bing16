@@ -169,12 +169,12 @@ loadTxtFile();
         <top-bar :backTo="root">
         </top-bar>
       </el-header>
-      <div class="backtop-btn"
-        @click="scrollToTop">
-        <el-icon style="color: var(--el-color-primary);"><CaretTop /></el-icon>
-      </div>
       <el-main class="mainPage">
         <div class="article">
+          <div class="backtop-btn"
+            @click="scrollToTop">
+            <el-icon style="color: var(--el-color-primary);"><CaretTop /></el-icon>
+          </div>
           <div class="directory"
             @click="showDir=!showDir"
             :style="{ right: mobile ? '10px' : '40px', bottom: mobile ? '40px' : '100px',
