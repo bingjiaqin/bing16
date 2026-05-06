@@ -229,6 +229,10 @@ const close = () => {
 }
 
 .drop_down_menu_box_inner .main_menu {
+  padding: 0;}
+
+.drop_down_menu_box_inner .main_menu a {
+  display: block;
   padding: 0.3rem 1em;
   border-radius: 4px;
   transition: background 200ms ease, transform 150ms ease;
