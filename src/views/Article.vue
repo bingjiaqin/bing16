@@ -159,7 +159,16 @@ loadTxtFile();
   bottom: 0;
   right: 0;
 
-  .article {
+  display: flex;
+  flex-direction: column;
+}
+
+.el-main {
+  overflow: visible;
+  flex: 1;
+}
+
+.article {
     max-width: 850px;
     margin: auto;
     padding: 0 2rem;
@@ -222,5 +231,4 @@ loadTxtFile();
       color: #fff;
     }
   }
-}
 </style>

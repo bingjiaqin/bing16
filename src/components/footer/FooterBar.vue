@@ -14,13 +14,11 @@
 <style scoped>
 .footer {
   width: 100%;
-  padding-left: 60px;
-  padding-right: 60px;
+  padding: 40px 60px 20px;
   text-align: right;
   z-index: 99;
   font-size: 13px;
   color: var(--el-text-color-secondary, #999);
-  margin-top: 40px;
 
   &:hover {
     opacity: 0.7;

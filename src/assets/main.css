@@ -27,8 +27,16 @@ h1 {
   }
 }
 
-/* 覆盖 Element Plus el-footer 默认 padding */
+/* 覆盖 Element Plus el-footer 默认 padding 和 height */
 .el-footer {
   --el-footer-padding: 0 !important;
+  --el-footer-height: auto !important;
   padding: 0 !important;
+  height: auto !important;
+}
+
+.el-footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
