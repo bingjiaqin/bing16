@@ -163,7 +163,7 @@ loadTxtFile();
         <top-bar :backTo="root">
         </top-bar>
       </el-header>
-      <el-backtop :right="mobile ? 10 : 40" :bottom="mobile ? 40 : 100"
+      <el-backtop :right="mobile ? 10 : 100" :bottom="mobile ? 40 : 100"
       target=".common-layout"
     />
       <el-main class="mainPage">
@@ -277,26 +277,7 @@ loadTxtFile();
       transition-duration: 80ms;
     }
 
-    :deep(.el-backtop) {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 1px solid var(--color-border);
-      color: var(--color-text);
-      transition: all 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
 
-    :deep(.el-backtop:hover) {
-      border-color: var(--color-primary);
-      color: var(--color-primary);
-      transform: scale(1.12);
-      box-shadow: 0 0 16px rgba(234, 88, 87, 0.3);
-    }
-
-    :deep(.el-backtop:active) {
-      transform: scale(0.95);
-      transition-duration: 80ms;
-    }
 
     .directory-box {
       position: fixed;
