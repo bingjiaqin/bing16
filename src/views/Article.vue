@@ -163,9 +163,12 @@ loadTxtFile();
         <top-bar :backTo="root">
         </top-bar>
       </el-header>
-      <el-backtop :right="mobile ? 10 : 100" :bottom="mobile ? 40 : 100"
-      target=".common-layout"
-    />
+      <div class="backtop-btn"
+        :style="{ right: mobile ? '10px' : '40px', bottom: mobile ? '40px' : '100px' }">
+        <el-backtop target=".common-layout"
+          :right="0" :bottom="0"
+        />
+      </div>
       <el-main class="mainPage">
         <div class="article">
           <div class="directory"
@@ -270,6 +273,37 @@ loadTxtFile();
       color: var(--color-primary);
       transform: scale(1.12);
       box-shadow: 0 0 16px rgba(234, 88, 87, 0.3);
+    }
+
+    .backtop-btn {
+      position: fixed;
+      right: 40px;
+      bottom: 100px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--color-border);
+      background: var(--color-background);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+      pointer-events: none;
+      z-index: 998;
+    }
+
+    .backtop-btn:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      transform: scale(1.12);
+      box-shadow: 0 0 16px rgba(234, 88, 87, 0.3);
+    }
+
+    :deep(.el-backtop) {
+      position: static;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
     }
 
     .directory:active {
