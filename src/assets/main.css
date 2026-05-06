@@ -36,7 +36,5 @@ h1 {
 }
 
 .el-footer {
-  position: absolute;
   width: 100%;
-  bottom: 0;
 }

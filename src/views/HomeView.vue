@@ -48,7 +48,7 @@ const scrollToTop = () => {
       <el-footer v-if="currPage !== 'index'">
           <footer-bar></footer-bar>
         </el-footer>
-      <el-footer v-if="currPage === 'index'">
+      <el-footer v-if="currPage === 'index'" style="position: absolute;">
           <footer-bar></footer-bar>
         </el-footer>
     </el-container>
