@@ -270,10 +270,10 @@ loadTxtFile();
 
     .float-btns {
       position: fixed;
-      right: 40px;
+      left: 40px;
       bottom: 100px;
       display: flex;
-      flex-direction: row-reverse;
+      flex-direction: row;
       align-items: center;
       gap: 12px;
       z-index: 998;
@@ -312,8 +312,8 @@ loadTxtFile();
     @media (max-width: 768px) {
       .float-btns {
         right: 10px;
-        bottom: 40px;
-        flex-direction: column-reverse;
+        top: 100px;
+        flex-direction: column;
         gap: 10px;
       }
     }
