@@ -182,15 +182,15 @@ loadTxtFile();
       <el-main class="mainPage">
         <div class="article">
           <div class="float-btns">
-            <div class="backtop-btn"
-              v-show="showBacktop"
-              @click="scrollToTop">
-              <el-icon style="color: var(--el-color-primary);"><CaretTop /></el-icon>
-            </div>
             <div class="directory"
               @click="showDir=!showDir"
               :style="{ 'background-color': showDir ? '#fffaf9' : ''}">
               <el-icon style="color: var(--el-color-primary);"><Memo /></el-icon>
+            </div>
+            <div class="backtop-btn"
+              v-show="showBacktop"
+              @click="scrollToTop">
+              <el-icon style="color: var(--el-color-primary);"><CaretTop /></el-icon>
             </div>
           </div>
           <div class="directory-box"
@@ -313,7 +313,7 @@ loadTxtFile();
       .float-btns {
         right: 10px;
         top: 100px;
-        flex-direction: column;
+        flex-direction: column-reverse;
         gap: 10px;
       }
     }
