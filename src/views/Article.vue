@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onMounted, nextTick } from 'vue';
+import { ref, onMounted, nextTick, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import TopBar from "@/components/topbar/TopBar.vue";
 import FooterBar from "@/components/footer/FooterBar.vue";
@@ -48,7 +48,14 @@ const updateTitiles = () => {
   });
 }
 
-onMounted(() => updateTitiles());
+onMounted(() => {
+   updateTitiles();
+   document.addEventListener('click', closeDir);
+ });
+
+ onUnmounted(() => {
+   document.removeEventListener('click', closeDir);
+ });
 
  // 动态导入txt文件内容
  async function loadTxtFile() {
@@ -81,6 +88,14 @@ onMounted(() => updateTitiles());
  }
 
 loadTxtFile();
+
+ const closeDir = (e: MouseEvent) => {
+   const btn = document.querySelector('.directory');
+   const box = document.querySelector('.directory-box');
+   if (btn && btn.contains(e.target as Node)) return;
+   if (box && box.contains(e.target as Node)) return;
+   showDir.value = false;
+ };
 
  const showDir = ref(false);
 </script>
