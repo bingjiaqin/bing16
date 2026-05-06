@@ -53,11 +53,15 @@ onMounted(() => {
    updateTitiles();
    document.addEventListener('click', closeDir);
    document.addEventListener('mousemove', onDocMouseMove);
+   const layout = document.querySelector('.common-layout') as HTMLElement;
+   if (layout) layout.addEventListener('scroll', scrollListener);
  });
 
  onUnmounted(() => {
    document.removeEventListener('click', closeDir);
    document.removeEventListener('mousemove', onDocMouseMove);
+   const layout = document.querySelector('.common-layout') as HTMLElement;
+   if (layout) layout.removeEventListener('scroll', scrollListener);
  });
 
  // 动态导入txt文件内容
@@ -160,6 +164,12 @@ loadTxtFile();
  };
 
  const showDir = ref(false);
+ const showBacktop = ref(false);
+
+ const scrollListener = () => {
+   const layout = document.querySelector('.common-layout') as HTMLElement;
+   if (layout) showBacktop.value = layout.scrollTop > 200;
+ };
 </script>
 
 <template>
@@ -171,15 +181,17 @@ loadTxtFile();
       </el-header>
       <el-main class="mainPage">
         <div class="article">
-          <div class="backtop-btn"
-            @click="scrollToTop">
-            <el-icon style="color: var(--el-color-primary);"><CaretTop /></el-icon>
-          </div>
-          <div class="directory"
-            @click="showDir=!showDir"
-            :style="{ right: mobile ? '10px' : '40px', bottom: mobile ? '40px' : '100px',
-             'background-color': showDir ? '#fffaf9' : ''}">
-            <el-icon style="color: var(--el-color-primary);"><Memo /></el-icon>
+          <div class="float-btns">
+            <div class="backtop-btn"
+              v-show="showBacktop"
+              @click="scrollToTop">
+              <el-icon style="color: var(--el-color-primary);"><CaretTop /></el-icon>
+            </div>
+            <div class="directory"
+              @click="showDir=!showDir"
+              :style="{ 'background-color': showDir ? '#fffaf9' : ''}">
+              <el-icon style="color: var(--el-color-primary);"><Memo /></el-icon>
+            </div>
           </div>
           <div class="directory-box"
             :class="{ 'is-visible': showDir }"
@@ -256,38 +268,19 @@ loadTxtFile();
       color: var(--color-text);
     }
 
-    .backtop-btn {
+    .float-btns {
       position: fixed;
       right: 40px;
-      bottom: 156px;
-      width: 40px;
-      height: 40px;
-      background: var(--color-background);
-      border: 1px solid var(--color-border);
-      border-radius: 50%;
+      bottom: 100px;
       display: flex;
-      justify-content: center;
+      flex-direction: row-reverse;
       align-items: center;
-      cursor: pointer;
+      gap: 12px;
       z-index: 998;
-      transition: all 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
-      color: var(--color-text);
     }
 
-    .backtop-btn:hover {
-      border-color: var(--color-primary);
-      color: var(--color-primary);
-      transform: scale(1.12);
-      box-shadow: 0 0 16px rgba(234, 88, 87, 0.3);
-    }
-
-    .backtop-btn:active {
-      transform: scale(0.95);
-      transition-duration: 80ms;
-    }
-
+    .backtop-btn,
     .directory {
-      position: fixed;
       width: 40px;
       height: 40px;
       background: var(--color-background);
@@ -297,11 +290,12 @@ loadTxtFile();
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      z-index: 999;
       transition: all 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
       color: var(--color-text);
+      position: relative;
     }
 
+    .backtop-btn:hover,
     .directory:hover {
       border-color: var(--color-primary);
       color: var(--color-primary);
@@ -309,9 +303,19 @@ loadTxtFile();
       box-shadow: 0 0 16px rgba(234, 88, 87, 0.3);
     }
 
+    .backtop-btn:active,
     .directory:active {
       transform: scale(0.95);
       transition-duration: 80ms;
+    }
+
+    @media (max-width: 768px) {
+      .float-btns {
+        right: 10px;
+        bottom: 40px;
+        flex-direction: column-reverse;
+        gap: 10px;
+      }
     }
 
 
