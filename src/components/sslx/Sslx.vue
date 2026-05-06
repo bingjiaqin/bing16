@@ -86,7 +86,9 @@ const textarea = ref('');
 
 const submit = async () => {
   try {
-    const response = await axios.post('https://blog.remnants.cc:2096/blog/sslx', { data: textarea.value });
+    const token = localStorage.getItem('GT_ACCESS_TOKEN');
+    const headers = token ? { 'Authorization': `token ${token}` } : {};
+    const response = await axios.post('https://blog.remnants.cc:2096/blog/sslx', { data: textarea.value }, { headers });
     if (response.status !== 200) {
       throw new Error('Network response was not ok');
     }
