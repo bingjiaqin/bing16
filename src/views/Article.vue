@@ -174,12 +174,6 @@ loadTxtFile();
              'background-color': showDir ? '#fffaf9' : ''}">
             <el-icon style="color: var(--el-color-primary);"><Memo /></el-icon>
           </div>
-          <!-- hover梯形连接区域 -->
-          <svg v-if="showDir" class="dir-hover-zone"
-            :style="{ width: mobile ? '300px' : '400px', height: mobile ? '160px' : '220px',
-             right: mobile ? '10px' : '40px', bottom: mobile ? '40px' : '100px' }">
-            <polygon :points="hoverZonePoints" class="dir-hover-polygon"/>
-          </svg>
           <div class="directory-box"
             :class="{ 'is-visible': showDir }"
             :style="{ right: mobile ? '10px' : '40px',  bottom: mobile ? '96px' : '156px'}">
