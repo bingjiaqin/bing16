@@ -2,6 +2,7 @@
 import { ref, onMounted, nextTick, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import TopBar from "@/components/topbar/TopBar.vue";
+import { Top } from '@element-plus/icons-vue';
 import FooterBar from "@/components/footer/FooterBar.vue";
 import { isMobile } from '@/utils/MobileUtils';
 import 'gitalk/dist/gitalk.css';
@@ -153,6 +154,11 @@ loadTxtFile();
    showDir.value = false;
  };
 
+ const scrollToTop = () => {
+   const layout = document.querySelector('.common-layout');
+   if (layout) layout.scrollTo({ top: 0, behavior: 'smooth' });
+ };
+
  const showDir = ref(false);
 </script>
 
@@ -163,9 +169,11 @@ loadTxtFile();
         <top-bar :backTo="root">
         </top-bar>
       </el-header>
-      <el-backtop :right="mobile ? 10 : 100" :bottom="mobile ? 40 : 100"
-      target=".common-layout"
-    />
+      <div class="backtop-btn"
+        :style="{ right: mobile ? '10px' : '40px', bottom: mobile ? '40px' : '100px' }"
+        @click="scrollToTop">
+        <el-icon style="color: var(--el-color-primary);"><Top /></el-icon>
+      </div>
       <el-main class="mainPage">
         <div class="article">
           <div class="directory"
@@ -270,6 +278,34 @@ loadTxtFile();
       color: var(--color-primary);
       transform: scale(1.12);
       box-shadow: 0 0 16px rgba(234, 88, 87, 0.3);
+    }
+
+    .backtop-btn {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--color-border);
+      background: var(--color-background);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 999;
+      transition: all 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+      color: var(--color-text);
+    }
+
+    .backtop-btn:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      transform: scale(1.12);
+      box-shadow: 0 0 16px rgba(234, 88, 87, 0.3);
+    }
+
+    .backtop-btn:active {
+      transform: scale(0.95);
+      transition-duration: 80ms;
     }
 
     .directory:active {
