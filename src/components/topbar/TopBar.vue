@@ -219,6 +219,13 @@ const close = () => {
 
 .drop_down_menu_box.open  {
   height: 12em;
+  padding: 6px 0;
+  border-width: 1px;
+}
+
+.drop_down_menu_box:not(.open) {
+  padding: 0;
+  border-width: 0;
 }
 
 .drop_down_menu_box_inner .main_menu {
