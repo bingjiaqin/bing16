@@ -282,8 +282,6 @@ loadTxtFile();
 
     .backtop-btn {
       position: fixed;
-      right: 40px;
-      bottom: 100px;
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -293,8 +291,8 @@ loadTxtFile();
       justify-content: center;
       align-items: center;
       transition: all 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
-      pointer-events: none;
       z-index: 998;
+      color: var(--color-text);
     }
 
     .backtop-btn:hover {
@@ -304,6 +302,10 @@ loadTxtFile();
       box-shadow: 0 0 16px rgba(234, 88, 87, 0.3);
     }
 
+    .backtop-btn:active {
+      transform: scale(0.95);
+      transition-duration: 80ms;
+    }
 
     .directory:active {
       transform: scale(0.95);
