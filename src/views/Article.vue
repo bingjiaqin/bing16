@@ -15,14 +15,15 @@ const mobile = isMobile()
 
  const handleAnchorClick = (anchor:any) => {
   const { lineIndex } = anchor;
-
   const heading = previewRef.value.$el.querySelector(`[data-v-md-line="${lineIndex}"]`);
-
   if (heading) {
-    window.scrollTo({
-      top: heading.offsetTop,
-      behavior: 'smooth'
-    });
+    const layout = document.querySelector('.common-layout');
+    if (layout) {
+      layout.scrollTo({
+        top: heading.offsetTop - 5,
+        behavior: 'smooth'
+      });
+    }
   }
 };
 
@@ -30,19 +31,21 @@ const mobile = isMobile()
 const titles = ref();
 
 const updateTitiles = () => {
-  const anchors = previewRef.value.$el.querySelectorAll('h2,h3,h4,h5');
-  titles.value = Array.from(anchors).filter((title:any) => !!title.innerText.trim());
-  if (!titles.value.length) {
-    titles.value = [];
-    return;
-  }
-  const hTags = Array.from(new Set(titles.value.map((title) => title.tagName))).sort();
+  nextTick(() => {
+    const anchors = previewRef.value.$el.querySelectorAll('h2,h3,h4,h5');
+    titles.value = Array.from(anchors).filter((title:any) => !!title.innerText.trim());
+    if (!titles.value.length) {
+      titles.value = [];
+      return;
+    }
+    const hTags = Array.from(new Set(titles.value.map((title) => title.tagName))).sort();
 
-  titles.value = titles.value.map((el:any) => ({
-    title: `· ${el.innerText}`,
-    lineIndex: el.getAttribute('data-v-md-line'),
-    indent: hTags.indexOf(el.tagName),
-  }));
+    titles.value = titles.value.map((el:any) => ({
+      title: `· ${el.innerText}`,
+      lineIndex: el.getAttribute('data-v-md-line') || el.getAttribute('data-line'),
+      indent: hTags.indexOf(el.tagName),
+    }));
+  });
 }
 
 onMounted(() => updateTitiles());
@@ -106,7 +109,7 @@ loadTxtFile();
             <div
               v-for="anchor in titles"
               class="directory-item"
-              :style="{ padding: `2px 0 2px ${anchor.indent * 14}px`, fontSize: '14px' }"
+              :style="{ padding: '6px 16px 6px ' + (anchor.indent * 14 + 16) + 'px', fontSize: '14px' }"
               @click="handleAnchorClick(anchor)"
               >
               <a style="cursor: pointer">{{ anchor.title }}</a>
@@ -126,7 +129,7 @@ loadTxtFile();
               </template>
               <div
                 v-for="anchor in titles"
-                :style="{ padding: `2px 0 2px ${anchor.indent * 14}px`, fontSize: '14px' }"
+                :style="{ paddingLeft: `${anchor.indent * 14}px`, fontSize: '14px' }"
                 @click="handleAnchorClick(anchor)"
                 >
                 <a style="cursor: pointer">{{ anchor.title }}</a>
@@ -170,32 +173,53 @@ loadTxtFile();
       position: fixed;
       width: 40px;
       height: 40px;
-      background-color: #fff;
-      border-radius: 100%;
+      background: var(--color-background);
+      border: 1px solid var(--color-border);
+      border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
       z-index: 999;
-      box-shadow: var(--el-box-shadow-lighter);
+      transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      color: var(--color-text);
     }
 
     .directory:hover {
-      background-color: #fffaf9;
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      transform: scale(1.1);
+      box-shadow: 0 0 8px rgba(234, 88, 87, 0.25);
     }
 
     .directory-box {
       position: fixed;
-      z-index: 10;
-      background-color: var(--color-background);
-      padding: 10px;
-      border-radius: 1px;
-      width: 250px;
-      box-shadow: var(--el-box-shadow-lighter);
+      z-index: 998;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 12px 0;
+      border-radius: 12px;
+      width: 280px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .directory-item {
+      cursor: pointer;
+      transition: background 150ms ease;
+    }
+
+    .directory-item a {
+      color: rgba(255, 255, 255, 0.85);
+      display: block;
     }
 
     .directory-item:hover {
-      background-color: #fffaf9;
+      background: rgba(234, 88, 87, 0.5);
+    }
+
+    .directory-item:hover a {
+      color: #fff;
     }
   }
 }
