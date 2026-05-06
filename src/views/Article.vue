@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onMounted, nextTick, onUnmounted } from 'vue';
+import { ref, onMounted, nextTick, onUnmounted, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import TopBar from "@/components/topbar/TopBar.vue";
 import FooterBar from "@/components/footer/FooterBar.vue";
@@ -94,16 +94,36 @@ loadTxtFile();
  let dirTimer: ReturnType<typeof setTimeout> | null = null;
 
  const isInHoverZone = (e: MouseEvent) => {
-   const btn = document.querySelector('.directory');
-   const box = document.querySelector('.directory-box');
-   if (!btn || !box) return false;
-   const btnRect = btn.getBoundingClientRect();
-   const boxRect = box.getBoundingClientRect();
-   const minX = Math.min(btnRect.left, boxRect.left);
-   const minY = Math.min(btnRect.top, boxRect.top);
-   const maxX = Math.max(btnRect.right, boxRect.right);
-   const maxY = Math.max(btnRect.bottom, boxRect.bottom);
-   return e.clientX >= minX && e.clientX <= maxX && e.clientY >= minY && e.clientY <= maxY;
+   const zone = document.querySelector('.dir-hover-zone');
+   if (!zone) return false;
+   const rect = zone.getBoundingClientRect();
+   const x = e.clientX - rect.left;
+   const y = e.clientY - rect.top;
+   return isPointInPolygon(x, y, hoverZonePointsArr);
+ };
+
+ // 梯形: 按钮顶边 -> 卡片两边斜边向下扩展
+ // 按钮: SVG x=260-300, y=120-160
+ // 卡片: SVG x=60-340, y=0-200
+ // 四边形: 左上(卡左上) -> 右上(卡右上) -> 右下(按钮右上) -> 左下(按钮左上)
+ const hoverZonePointsArr = mobile
+   ? [[0, 56], [260, 56], [45, 0], [15, 0]]
+   : [[60, 0], [340, 0], [300, 120], [260, 120]];
+
+ const hoverZonePoints = computed(() =>
+   hoverZonePointsArr.map(p => p.join(',')).join(' ')
+ );
+
+ const isPointInPolygon = (x: number, y: number, polygon: number[][]): boolean => {
+   let inside = false;
+   for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+     const xi = polygon[i][0], yi = polygon[i][1];
+     const xj = polygon[j][0], yj = polygon[j][1];
+     const intersect = ((yi > y) !== (yj > y)) &&
+       (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+     if (intersect) inside = !inside;
+   }
+   return inside;
  };
 
  const onDocMouseMove = (e: MouseEvent) => {
@@ -144,6 +164,12 @@ loadTxtFile();
              'background-color': showDir ? '#fffaf9' : ''}">
             <el-icon style="color: var(--el-color-primary);"><Memo /></el-icon>
           </div>
+          <!-- hover梯形连接区域 -->
+          <svg v-if="showDir" class="dir-hover-zone"
+            :style="{ width: mobile ? '300px' : '400px', height: mobile ? '160px' : '220px',
+             right: mobile ? '10px' : '40px', bottom: mobile ? '40px' : '100px' }">
+            <polygon :points="hoverZonePoints" class="dir-hover-polygon"/>
+          </svg>
           <div class="directory-box"
             :class="{ 'is-visible': showDir }"
             :style="{ right: mobile ? '10px' : '40px',  bottom: mobile ? '96px' : '156px'}">
@@ -245,6 +271,17 @@ loadTxtFile();
     .directory:active {
       transform: scale(0.95);
       transition-duration: 80ms;
+    }
+
+    .dir-hover-zone {
+      position: fixed;
+      z-index: 997;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .dir-hover-polygon {
+      fill: transparent;
     }
 
     .directory-box {
