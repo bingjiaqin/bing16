@@ -51,10 +51,12 @@ const updateTitiles = () => {
 onMounted(() => {
    updateTitiles();
    document.addEventListener('click', closeDir);
+   document.addEventListener('mousemove', onDocMouseMove);
  });
 
  onUnmounted(() => {
    document.removeEventListener('click', closeDir);
+   document.removeEventListener('mousemove', onDocMouseMove);
  });
 
  // 动态导入txt文件内容
@@ -89,23 +91,36 @@ onMounted(() => {
 
 loadTxtFile();
 
+ let dirTimer: ReturnType<typeof setTimeout> | null = null;
+
+ const isInHoverZone = (e: MouseEvent) => {
+   const btn = document.querySelector('.directory');
+   const box = document.querySelector('.directory-box');
+   if (!btn || !box) return false;
+   const btnRect = btn.getBoundingClientRect();
+   const boxRect = box.getBoundingClientRect();
+   const minX = Math.min(btnRect.left, boxRect.left);
+   const minY = Math.min(btnRect.top, boxRect.top);
+   const maxX = Math.max(btnRect.right, boxRect.right);
+   const maxY = Math.max(btnRect.bottom, boxRect.bottom);
+   return e.clientX >= minX && e.clientX <= maxX && e.clientY >= minY && e.clientY <= maxY;
+ };
+
+ const onDocMouseMove = (e: MouseEvent) => {
+   if (!showDir.value) return;
+   if (isInHoverZone(e)) {
+     if (dirTimer) { clearTimeout(dirTimer); dirTimer = null; }
+   } else {
+     if (!dirTimer) dirTimer = setTimeout(() => { showDir.value = false; }, 150);
+   }
+ };
+
  const closeDir = (e: MouseEvent) => {
    const btn = document.querySelector('.directory');
    const box = document.querySelector('.directory-box');
    if (btn && btn.contains(e.target as Node)) return;
    if (box && box.contains(e.target as Node)) return;
    showDir.value = false;
- };
-
- let dirTimer: ReturnType<typeof setTimeout> | null = null;
- const onBtnLeave = () => {
-   dirTimer = setTimeout(() => { showDir.value = false; }, 150);
- };
- const onCardLeave = () => {
-   dirTimer = setTimeout(() => { showDir.value = false; }, 150);
- };
- const onBtnEnter = () => {
-   if (dirTimer) { clearTimeout(dirTimer); dirTimer = null; }
  };
 
  const showDir = ref(false);
@@ -125,16 +140,12 @@ loadTxtFile();
         <div class="article">
           <div class="directory"
             @click="showDir=!showDir"
-            @mouseleave="onBtnLeave"
-            @mouseenter="onBtnEnter"
             :style="{ right: mobile ? '10px' : '40px', bottom: mobile ? '40px' : '100px',
              'background-color': showDir ? '#fffaf9' : ''}">
             <el-icon style="color: var(--el-color-primary);"><Memo /></el-icon>
           </div>
           <div class="directory-box"
             :class="{ 'is-visible': showDir }"
-            @mouseleave="onCardLeave"
-            @mouseenter="onBtnEnter"
             :style="{ right: mobile ? '10px' : '40px',  bottom: mobile ? '96px' : '156px'}">
             <div
               v-for="anchor in titles"
