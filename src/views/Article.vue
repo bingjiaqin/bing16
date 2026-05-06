@@ -281,13 +281,9 @@ loadTxtFile();
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: var(--color-background);
       border: 1px solid var(--color-border);
       color: var(--color-text);
-      box-shadow: none;
       transition: all 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
-      right: 40px !important;
-      bottom: 100px !important;
     }
 
     :deep(.el-backtop:hover) {
