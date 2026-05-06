@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onMounted, nextTick, onUnmounted, computed } from 'vue';
+import { ref, onMounted, nextTick, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import TopBar from "@/components/topbar/TopBar.vue";
 import FooterBar from "@/components/footer/FooterBar.vue";
@@ -93,26 +93,36 @@ loadTxtFile();
 
  let dirTimer: ReturnType<typeof setTimeout> | null = null;
 
- const isInHoverZone = (e: MouseEvent) => {
-   const zone = document.querySelector('.dir-hover-zone');
-   if (!zone) return false;
-   const rect = zone.getBoundingClientRect();
-   const x = e.clientX - rect.left;
-   const y = e.clientY - rect.top;
-   return isPointInPolygon(x, y, hoverZonePointsArr);
+ // 动态计算hover梯形多边形顶点(viewport坐标)
+ const getHoverZonePolygon = (): number[][] => {
+   const btn = document.querySelector('.directory') as HTMLElement;
+   const box = document.querySelector('.directory-box') as HTMLElement;
+   if (!btn || !box) return [];
+
+   const btnRect = btn.getBoundingClientRect();
+   const boxRect = box.getBoundingClientRect();
+
+   // 梯形: 按钮顶边 -> 卡片顶边(两腰向内收)
+   // 左腰: 按钮左上 -> 卡片左上
+   // 右腰: 按钮右上 -> 卡片右上
+   const polygon = [
+     [boxRect.left, boxRect.top],           // 卡左上
+     [boxRect.right, boxRect.top],          // 卡右上
+     [btnRect.right, btnRect.top],          // 按钮右上(顶边中点偏右)
+     [btnRect.left + btnRect.width * 0.3, btnRect.top],  // 按钮顶边向内一点
+     [btnRect.left + btnRect.width * 0.3, btnRect.bottom], // 按钮左上向内
+     [btnRect.left, btnRect.bottom],         // 按钮左下
+     [boxRect.left, boxRect.bottom],        // 卡左下
+   ];
+   return polygon;
  };
 
- // 梯形: 按钮顶边 -> 卡片两边斜边向下扩展
- // 按钮: SVG x=260-300, y=120-160
- // 卡片: SVG x=60-340, y=0-200
- // 四边形: 左上(卡左上) -> 右上(卡右上) -> 右下(按钮右上) -> 左下(按钮左上)
- const hoverZonePointsArr = mobile
-   ? [[0, 56], [260, 56], [45, 0], [15, 0]]
-   : [[60, 0], [340, 0], [300, 120], [260, 120]];
-
- const hoverZonePoints = computed(() =>
-   hoverZonePointsArr.map(p => p.join(',')).join(' ')
- );
+ const isInHoverZone = (e: MouseEvent) => {
+   if (!showDir.value) return false;
+   const polygon = getHoverZonePolygon();
+   if (!polygon.length) return false;
+   return isPointInPolygon(e.clientX, e.clientY, polygon);
+ };
 
  const isPointInPolygon = (x: number, y: number, polygon: number[][]): boolean => {
    let inside = false;
@@ -271,17 +281,6 @@ loadTxtFile();
     .directory:active {
       transform: scale(0.95);
       transition-duration: 80ms;
-    }
-
-    .dir-hover-zone {
-      position: fixed;
-      z-index: 997;
-      pointer-events: none;
-      overflow: visible;
-    }
-
-    .dir-hover-polygon {
-      fill: transparent;
     }
 
     .directory-box {
