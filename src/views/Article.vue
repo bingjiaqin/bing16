@@ -2,6 +2,7 @@
 import { ref, onMounted, nextTick, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import TopBar from "@/components/topbar/TopBar.vue";
+import { Top } from '@element-plus/icons-vue';
 import FooterBar from "@/components/footer/FooterBar.vue";
 import { isMobile } from '@/utils/MobileUtils';
 import 'gitalk/dist/gitalk.css';
@@ -153,6 +154,11 @@ loadTxtFile();
    showDir.value = false;
  };
 
+ const scrollToTop = () => {
+   const layout = document.querySelector('.common-layout');
+   if (layout) layout.scrollTo({ top: 0, behavior: 'smooth' });
+ };
+
  const showDir = ref(false);
 </script>
 
@@ -164,10 +170,9 @@ loadTxtFile();
         </top-bar>
       </el-header>
       <div class="backtop-btn"
-        :style="{ right: mobile ? '10px' : '40px', bottom: mobile ? '40px' : '100px' }">
-        <el-backtop target=".common-layout"
-          :right="0" :bottom="0"
-        />
+        :style="{ right: mobile ? '10px' : '40px', bottom: mobile ? '40px' : '100px' }"
+        @click="scrollToTop">
+        <el-icon style="color: var(--color-text);"><Top /></el-icon>
       </div>
       <el-main class="mainPage">
         <div class="article">
@@ -299,12 +304,6 @@ loadTxtFile();
       box-shadow: 0 0 16px rgba(234, 88, 87, 0.3);
     }
 
-    :deep(.el-backtop) {
-      position: static;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-    }
 
     .directory:active {
       transform: scale(0.95);
