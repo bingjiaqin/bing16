@@ -311,7 +311,7 @@ loadTxtFile();
 
     @media (max-width: 768px) {
       .float-btns {
-        right: 10px;
+        right: 16px;
         bottom: 40px;
         flex-direction: column-reverse;
         gap: 10px;
