@@ -97,6 +97,17 @@ loadTxtFile();
    showDir.value = false;
  };
 
+ let dirTimer: ReturnType<typeof setTimeout> | null = null;
+ const onBtnLeave = () => {
+   dirTimer = setTimeout(() => { showDir.value = false; }, 150);
+ };
+ const onCardLeave = () => {
+   dirTimer = setTimeout(() => { showDir.value = false; }, 150);
+ };
+ const onBtnEnter = () => {
+   if (dirTimer) { clearTimeout(dirTimer); dirTimer = null; }
+ };
+
  const showDir = ref(false);
 </script>
 
@@ -114,12 +125,16 @@ loadTxtFile();
         <div class="article">
           <div class="directory"
             @click="showDir=!showDir"
+            @mouseleave="onBtnLeave"
+            @mouseenter="onBtnEnter"
             :style="{ right: mobile ? '10px' : '40px', bottom: mobile ? '40px' : '100px',
              'background-color': showDir ? '#fffaf9' : ''}">
             <el-icon style="color: var(--el-color-primary);"><Memo /></el-icon>
           </div>
           <div class="directory-box"
             :class="{ 'is-visible': showDir }"
+            @mouseleave="onCardLeave"
+            @mouseenter="onBtnEnter"
             :style="{ right: mobile ? '10px' : '40px',  bottom: mobile ? '96px' : '156px'}">
             <div
               v-for="anchor in titles"
