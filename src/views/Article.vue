@@ -328,7 +328,7 @@ loadTxtFile();
       -webkit-backdrop-filter: blur(20px);
       padding: 12px 0;
       border-radius: 16px;
-      width: 280px;
+      width: 300px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
       border: 1px solid rgba(255, 255, 255, 0.08);
       opacity: 0;
