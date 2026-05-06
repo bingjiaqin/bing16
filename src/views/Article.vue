@@ -170,7 +170,6 @@ loadTxtFile();
         </top-bar>
       </el-header>
       <div class="backtop-btn"
-        :style="{ right: mobile ? '10px' : '40px', bottom: mobile ? '96px' : '156px' }"
         @click="scrollToTop">
         <el-icon style="color: var(--el-color-primary);"><CaretTop /></el-icon>
       </div>
@@ -259,6 +258,8 @@ loadTxtFile();
 
     .backtop-btn {
       position: fixed;
+      right: 40px;
+      bottom: 156px;
       width: 40px;
       height: 40px;
       background: var(--color-background);
