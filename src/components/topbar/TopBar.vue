@@ -196,13 +196,13 @@ const close = () => {
   overflow: hidden;
   height: 0;
   transition: height .2s cubic-bezier(0.175, 0.885, 0.32, 1.05);
-  background-color: rgb(var(--color-background-num));
-
-  border: 0;
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 2px 3px 6px var(--color-shadow),
-             -2px -3px 6px var(--color-light);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 6px 0;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
   .drop_down_menu_box_inner {
     padding: 0.5rem;
@@ -219,6 +219,22 @@ const close = () => {
 
 .drop_down_menu_box.open  {
   height: 12em;
+}
+
+.drop_down_menu_box_inner .main_menu {
+  padding: 0.3rem 1em;
+  border-radius: 4px;
+  transition: background 200ms ease, transform 150ms ease;
+  transform: translateX(0);
+}
+
+.drop_down_menu_box_inner .main_menu:hover {
+  background: rgba(234, 88, 87, 0.45);
+  transform: translateX(2px);
+}
+
+.drop_down_menu_box_inner .main_menu:hover a {
+  color: #fff;
 }
 
 @media (max-width: 992px) {
