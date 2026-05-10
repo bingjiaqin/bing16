@@ -305,6 +305,9 @@ const loadGitalk = () => {
   appearance: none;
   border: none;
   user-select: none;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: background;
 }
 
 
