@@ -1,12 +1,8 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue';
-import { DATA } from './wyzx.js'
+import { useMasonry } from '@/composables/useMasonry';
+import { DATA } from './wyzx.js';
 
-const data = DATA;
-
-// 响应式列数
-const getColumnCount = () => {
-  const w = window.innerWidth;
+const getColumnCount = (w) => {
   if (w > 1400) return 5;
   if (w > 1100) return 4;
   if (w > 768) return 3;
@@ -14,27 +10,7 @@ const getColumnCount = () => {
   return 1;
 };
 
-const columnCount = ref(getColumnCount());
-
-const onResize = () => {
-  columnCount.value = getColumnCount();
-};
-
-onMounted(() => window.addEventListener('resize', onResize));
-onUnmounted(() => window.removeEventListener('resize', onResize));
-
-// 按 round-robin 分配数据到各列
-const columns = computed(() => {
-  const cols = [];
-  const count = columnCount.value;
-  for (let i = 0; i < count; i++) {
-    cols.push([]);
-  }
-  data.forEach((item, index) => {
-    cols[index % count].push(item);
-  });
-  return cols;
-});
+const { columns } = useMasonry(() => DATA, getColumnCount);
 </script>
 
 <template>
