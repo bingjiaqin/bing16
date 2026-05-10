@@ -302,6 +302,7 @@ const loadGitalk = () => {
   transition: all 0.2s;
 }
 
+
 .year-tab:hover {
   opacity: 0.85;
 }
@@ -310,6 +311,14 @@ const loadGitalk = () => {
   background: var(--color-primary);
   color: #fff;
   opacity: 1;
+}
+
+.year-tab:focus {
+  outline: none;
+}
+
+.year-tab:focus-visible {
+  outline: none;
 }
 
 .title {
