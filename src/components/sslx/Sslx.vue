@@ -18,6 +18,14 @@ const currData = ref(filteredData.value[currPage.value - 1]);
 const keyword = ref('');
 const mobile = isMobile();
 
+// 防抖 timer
+let debounceTimer = null;
+const handleInput = (val) => {
+  keyword.value = val;
+  if (debounceTimer) clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(() => filter(keyword.value), 300);
+};
+
 // 年份 tab 相关
 const selectedYear = ref('全部');
 
@@ -40,6 +48,11 @@ const selectYear = (year) => {
   applyFilters();
 };
 
+onUnmounted(() => {
+  if (timerId) clearInterval(timerId);
+  if (debounceTimer) clearTimeout(debounceTimer);
+});
+
 const applyFilters = () => {
   // 先按关键词过滤
   // 再按年份叠加过滤
@@ -61,17 +74,18 @@ const currentChange = (curr) => {
 };
 
 const filter = (key) => {
-  keyword.value = key;
-  if (keyword.value.length > 0) {
+  // key 就是 keyword.value，但 handleInput 已经赋值过了
+  // 这里只做过滤逻辑，keyword 已在 handleInput 中更新
+  if (key.length > 0) {
     const filtered = [];
     for (const item of data) {
-      if (item.subTitle.toUpperCase().includes(keyword.value.toUpperCase())
-          || item.year.toUpperCase().includes(keyword.value.toUpperCase())) {
+      if (item.subTitle.toUpperCase().includes(key.toUpperCase())
+          || item.year.toUpperCase().includes(key.toUpperCase())) {
         filtered.push(item);
       } else {
         const lists = item.lists.filter(
-          subItem => subItem.content.toUpperCase().includes(keyword.value.toUpperCase())
-                  || subItem.time.toUpperCase().includes(keyword.value.toUpperCase())
+          subItem => subItem.content.toUpperCase().includes(key.toUpperCase())
+                  || subItem.time.toUpperCase().includes(key.toUpperCase())
         );
         if (lists.length !== 0) {
           filtered.push({ year: item.year, subTitle: item.subTitle, lists });
@@ -151,6 +165,7 @@ const loadGitalk = () => {
         v-model="keyword"
         class="search-input"
         placeholder="搜索"
+        @input="handleInput"
         @change="filter"
       >
         <template #suffix>
