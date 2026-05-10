@@ -282,18 +282,19 @@ const loadGitalk = () => {
   padding: 4px 12px;
   border-radius: 2px;
   font-size: 14px;
-  color: #666;
+  color: var(--color-text);
+  opacity: 0.6;
   transition: all 0.2s;
 }
 
 .year-tab:hover {
-  color: #333;
+  opacity: 0.85;
 }
 
 .year-tab.active {
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(8px);
+  background: var(--color-primary);
   color: #fff;
+  opacity: 1;
 }
 
 .title {
@@ -332,9 +333,13 @@ const loadGitalk = () => {
 }
 
 .more-link {
-  color: #666;
+  color: var(--color-primary);
   font-size: 14px;
   text-decoration: none;
+}
+
+.more-link:hover {
+  opacity: 0.75;
 }
 
 .el-card {
