@@ -300,6 +300,11 @@ const loadGitalk = () => {
   color: var(--color-text);
   opacity: 0.6;
   transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  user-select: none;
 }
 
 
