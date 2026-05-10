@@ -172,7 +172,7 @@ const loadGitalk = () => {
             {{ year }}
           </span>
         </div>
-        <a href="sslx/History.html" target="_blank" class="more-link">more</a>
+        <a href="sslx/History.html" target="_blank" rel="noopener noreferrer" class="more-link">more</a>
       </div>
       <div class="page-selector">
         <el-pagination

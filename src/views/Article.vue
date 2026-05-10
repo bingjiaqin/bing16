@@ -89,7 +89,7 @@ onMounted(() => {
         gitalk.render('gitalk-container');
     } catch (error) {
         console.log(`Error loading the text file: ${error}`);
-        markdown.value = '## 404 Not Fount';
+        markdown.value = '## 404 Not Found';
         root.value = 'notFound';
     }
  }
@@ -357,6 +357,9 @@ loadTxtFile();
       color: rgba(255, 255, 255, 0.85);
       display: block;
       transition: color 150ms ease;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .directory-item:hover {

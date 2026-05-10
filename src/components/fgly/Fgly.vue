@@ -35,7 +35,7 @@ const { columns } = useMasonry(() => DATA.itmes, getColumnCount);
             <router-link :to="{ path: `/article/${item.href}` }" target="_blank">查看</router-link>
           </div>
           <div v-else>
-            <a :href="item.href" target="_blank">查看</a>
+            <a :href="item.href" target="_blank" rel="noopener noreferrer">查看</a>
           </div>
         </div>
       </div>

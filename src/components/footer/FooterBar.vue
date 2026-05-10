@@ -5,7 +5,7 @@
 <template>
   <div class="footer">
     © 2018-2024 <a href="https://remnants.cc">Bing16.</a> All rights reserved.
-    <a target="_blank" title="51la网站统计" href="https://v6.51.la/land/KAB7DS6mDtzdJLC4">
+    <a target="_blank" rel="noopener noreferrer" title="51la网站统计" href="https://v6.51.la/land/KAB7DS6mDtzdJLC4">
       <img src="https://sdk.51.la/icon/2-2.png" style="height: 13px" alt="51la网站统计">
     </a>
   </div>
